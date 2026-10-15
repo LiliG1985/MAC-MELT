@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mac and Melt | Caribbean mac & cheese in Sale</title>
+  <meta name="description" content="Caribbean-inspired macaroni cheese, macaroni pies and loaded bowls. Pre-order for collection in Sale, or book Mac and Melt to cater your event.">
+  <meta name="theme-color" content="#F5C02E">
+
+  <meta property="og:title" content="Mac and Melt | Caribbean mac & cheese in Sale">
+  <meta property="og:description" content="Jerk chicken, curry goat and peppered steak, baked into proper macaroni cheese. Pre-order or book us for catering.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.macandmelt.co.uk">
+  <meta property="og:image" content="https://87708882764c4ad6c76a.cdn6.editmysite.com/uploads/b/87708882764c4ad6c76ace49afadb29c00c05c717fd761362091bd6ce9710c5d/2026-03-19_19-45-37_1773949550.jpg?width=1200&optimize=medium">
+
+  <link rel="icon" href="https://87708882764c4ad6c76a.cdn6.editmysite.com/uploads/b/c7d610f0-f880-11f0-afc3-513ef8e8fa96/logo_A36E58E0-E224-4703-AD94-1676D7E404E4.png?width=96&optimize=medium">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Figtree:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <style>/* Mac and Melt
+   Palette pulled from the logo: molten cheese, lagoon blue, ink navy,
+   a soft crust cream and a scotch-bonnet red used only for "New" and prices. */
+:root {
+  --cheese: #F5C02E;
+  --cheese-deep: #E8A915;
+  --lagoon: #2F7FA8;
+  --lagoon-deep: #23668A;
+  --ink: #1C2541;
+  --crust: #FFF4D6;
+  --bonnet: #D9412A;
+  --white: #FFFFFF;
+
+  --display: "Bagel Fat One", "Arial Rounded MT Bold", system-ui, sans-serif;
+  --body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --wrap: 1180px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --radius-lg: 28px;
+  --radius-sm: 999px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+body {
+  margin: 0;
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--crust);
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; height: auto; }
+h1, h2, h3, h4 { margin: 0; line-height: 1.1; }
+h1, h2 { font-family: var(--display); font-weight: 400; letter-spacing: -0.01em; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; border-radius: 6px; }
+
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip { position: absolute; left: -999px; top: 8px; background: var(--ink); color: var(--white); padding: 8px 14px; border-radius: 8px; z-index: 20; }
+.skip:focus { left: 8px; }
+
+.section-lede { max-width: 52ch; margin-top: 12px; font-size: 1.125rem; }
+.fine { font-size: 0.9375rem; opacity: 0.8; margin-top: 14px; }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 48px; padding: 0 24px;
+  border-radius: var(--radius-sm);
+  font-weight: 800; font-size: 1rem; text-decoration: none;
+  border: 2.5px solid var(--ink);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.btn--ink { background: var(--ink); color: var(--cheese); }
+.btn--line { background: transparent; color: var(--ink); }
+.btn--cheese { background: var(--cheese); color: var(--ink); }
+.btn:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--ink); }
+.catering .btn--cheese:hover { box-shadow: 4px 4px 0 var(--cheese-deep); }
+
+.link { font-weight: 700; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+
+/* Nav */
+.nav {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 10px var(--gutter);
+  background: var(--cheese);
+  border-bottom: 2.5px solid var(--ink);
+}
+.nav__brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav__brand img { width: 52px; height: 52px; object-fit: contain; }
+.nav__brand span { font-family: var(--display); font-size: 1.5rem; }
+.nav__links { display: flex; align-items: center; gap: 28px; }
+.nav__links a:not(.btn) { font-weight: 700; text-decoration: none; }
+.nav__links a:not(.btn):hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 5px; }
+.nav__toggle { display: none; }
+
+@media (max-width: 760px) {
+  .nav__toggle {
+    display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px;
+    border: 2.5px solid var(--ink); border-radius: var(--radius-sm);
+    background: transparent; font: 800 1rem var(--body); color: var(--ink);
+  }
+  .nav__links {
+    position: absolute; left: 0; right: 0; top: 100%;
+    flex-direction: column; align-items: stretch; gap: 0;
+    background: var(--cheese); border-bottom: 2.5px solid var(--ink);
+    padding: 8px var(--gutter) 20px;
+    display: none;
+  }
+  .nav__links.is-open { display: flex; }
+  .nav__links a:not(.btn) { padding: 14px 0; border-bottom: 1.5px solid rgba(28,37,65,.2); }
+  .nav__links .btn { margin-top: 16px; }
+}
+
+/* Hero */
+.hero {
+  background: var(--cheese);
+  display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(24px, 5vw, 72px);
+  align-items: center;
+  padding: clamp(40px, 7vw, 88px) var(--gutter) clamp(56px, 7vw, 96px);
+  max-width: none;
+}
+.hero > * { max-width: 620px; min-width: 0; }
+.hero__photo > img:first-child, .catering__photo img { width: 100%; }
+.catering__grid > *, .find__grid > *, .bowl > * { min-width: 0; }
+.hero__text { justify-self: end; }
+.hero h1 { font-size: clamp(2.6rem, 6.2vw, 5.2rem); line-height: 0.98; }
+.hero__lede { margin-top: 22px; font-size: clamp(1.1rem, 1.6vw, 1.3rem); max-width: 44ch; }
+.hero__ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.hero__open { display: flex; align-items: center; gap: 10px; margin-top: 26px; font-weight: 700; }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: var(--bonnet); box-shadow: 0 0 0 4px rgba(217,65,42,.2); }
+
+.hero__photo { position: relative; margin: 0; justify-self: start; }
+.hero__photo > img:first-child {
+  border-radius: var(--radius-lg);
+  border: 3px solid var(--ink);
+  box-shadow: 10px 10px 0 var(--ink);
+  transform: rotate(1.5deg);
+  aspect-ratio: 1 / 1; object-fit: cover;
+}
+.hero__sticker {
+  position: absolute; left: -36px; bottom: -40px;
+  width: clamp(104px, 13vw, 160px);
+  transform: rotate(-10deg);
+  filter: drop-shadow(3px 4px 0 rgba(28,37,65,.35));
+}
+
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero__text, .hero__photo { justify-self: stretch; max-width: none; }
+  .hero__photo { margin: 8px 8px 24px 0; }
+  .hero__sticker { left: auto; right: -6px; bottom: -34px; }
+}
+
+/* How it works — the cheese drips into this section */
+.how { position: relative; background: var(--lagoon); color: var(--white); padding: clamp(90px, 10vw, 140px) 0 clamp(64px, 8vw, 104px); }
+.drip { position: absolute; top: -1px; left: 0; width: 100%; height: clamp(60px, 8vw, 120px); fill: var(--cheese); }
+.how h2 { font-size: clamp(2.2rem, 4.5vw, 3.4rem); }
+.steps { list-style: none; counter-reset: step; padding: 0; margin: 44px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 3vw, 40px); }
+.steps li { counter-increment: step; border-top: 2.5px solid rgba(255,255,255,.55); padding-top: 18px; }
+.steps li::before {
+  content: counter(step);
+  display: inline-grid; place-items: center;
+  width: 44px; height: 44px; margin-bottom: 14px;
+  border-radius: 50%; background: var(--cheese); color: var(--ink);
+  font-family: var(--display); font-size: 1.4rem;
+}
+.steps h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 6px; }
+.steps p { opacity: .92; max-width: 34ch; }
+@media (max-width: 760px) { .steps { grid-template-columns: 1fr; } }
+
+/* Menu */
+.menu { padding: clamp(64px, 9vw, 120px) 0; }
+.menu__head h2 { font-size: clamp(2.6rem, 6vw, 4.4rem); }
+.tabs {
+  display: flex; gap: 8px; margin: 36px 0 28px;
+  overflow-x: auto; scrollbar-width: none; padding: 4px 2px 8px;
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tabs [role="tab"] {
+  flex: none; min-height: 46px; padding: 0 20px;
+  border: 2.5px solid var(--ink); border-radius: var(--radius-sm);
+  background: transparent; color: var(--ink);
+  font: 800 1rem var(--body); cursor: pointer;
+}
+.tabs [role="tab"]:hover { background: rgba(245,192,46,.35); }
+.tabs [aria-selected="true"] { background: var(--ink); color: var(--cheese); }
+
+.panel { border: 2.5px solid var(--ink); border-radius: var(--radius-lg); background: var(--white); padding: clamp(22px, 4vw, 44px); }
+.panel[hidden] { display: none; }
+
+.bowl { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(24px, 4vw, 56px); }
+.bowl__intro h3 { font-family: var(--display); font-weight: 400; font-size: clamp(2rem, 3.6vw, 2.8rem); }
+.bowl__intro p { margin-top: 14px; max-width: 40ch; }
+.bowl__price { font-size: 1.15rem; }
+.bowl__price strong { font-family: var(--display); font-weight: 400; font-size: 2.2rem; color: var(--bonnet); vertical-align: -2px; }
+.bowl__price span { opacity: .75; }
+.bowl__choices { display: grid; gap: 26px; }
+.bowl__choices h4 { font-size: 1.05rem; font-weight: 800; margin-bottom: 10px; }
+.chips { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.chips li { background: var(--crust); border: 1.5px solid rgba(28,37,65,.25); border-radius: var(--radius-sm); padding: 7px 14px; font-weight: 600; }
+.new { font-style: normal; font-size: .75rem; font-weight: 800; color: var(--white); background: var(--bonnet); border-radius: 6px; padding: 1px 6px; margin-left: 4px; vertical-align: 2px; }
+@media (max-width: 760px) { .bowl { grid-template-columns: 1fr; } }
+
+.items { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, 1fr); column-gap: clamp(24px, 4vw, 56px); }
+.items li { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 18px 0; border-bottom: 1.5px dashed rgba(28,37,65,.3); }
+.items h3 { font-size: 1.15rem; font-weight: 800; }
+.items p { margin-top: 4px; font-size: .975rem; opacity: .82; max-width: 40ch; }
+.price { flex: none; font-weight: 800; color: var(--bonnet); white-space: nowrap; }
+.items--compact li { padding: 14px 0; }
+@media (max-width: 760px) { .items { grid-template-columns: 1fr; } }
+
+.menu__cta { margin-top: 32px; }
+
+/* Catering */
+.catering { background: var(--ink); color: var(--crust); padding: clamp(64px, 9vw, 120px) 0; }
+.catering__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 88px); align-items: center; }
+.catering__photo img { border-radius: var(--radius-lg); border: 3px solid var(--cheese); transform: rotate(-1.5deg); aspect-ratio: 4 / 5; object-fit: cover; object-position: 30% 50%; }
+.catering h2 { font-size: clamp(2.2rem, 4.6vw, 3.6rem); color: var(--cheese); }
+.catering__text > p { margin-top: 18px; font-size: 1.15rem; max-width: 46ch; }
+.ticks { list-style: none; padding: 0; margin: 26px 0 32px; display: grid; gap: 12px; }
+.ticks li { display: flex; gap: 12px; align-items: flex-start; }
+.ticks li::before { content: ""; flex: none; width: 22px; height: 22px; margin-top: 3px; border-radius: 50%; background: var(--cheese) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='%231C2541' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 15px no-repeat; }
+.catering .btn--cheese { border-color: var(--cheese); }
+@media (max-width: 860px) {
+  .catering__grid { grid-template-columns: 1fr; }
+  .catering__photo img { aspect-ratio: 4 / 3; }
+}
+
+/* Reviews */
+.reviews { background: var(--cheese); padding: clamp(64px, 9vw, 112px) 0; border-bottom: 2.5px solid var(--ink); }
+.reviews .wrap { display: grid; gap: clamp(28px, 5vw, 56px); }
+.quote { margin: 0; max-width: 100%; }
+.quote--alt { text-align: right; }
+.quote blockquote { margin: 0; max-width: 11em; font-family: var(--display); font-size: clamp(2.4rem, 6.5vw, 5rem); line-height: 1; }
+.quote--alt blockquote { margin-left: auto; }
+.quote blockquote::before { content: "\201C"; }
+.quote blockquote::after { content: "\201D"; }
+.quote figcaption { margin-top: 12px; font-weight: 700; }
+@media (max-width: 600px) { .quote--alt { justify-self: start; text-align: left; } }
+
+/* Find us */
+.find { padding: clamp(64px, 8vw, 104px) 0; }
+.find__grid { display: grid; grid-template-columns: 1.3fr 1fr 0.8fr; gap: clamp(28px, 5vw, 64px); }
+.find h2 { font-size: clamp(2.2rem, 4.4vw, 3.4rem); }
+.find address { font-style: normal; font-size: 1.3rem; font-weight: 600; margin: 18px 0 12px; }
+.find h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 6px; }
+.find h3 + p { margin-bottom: 22px; }
+.socials { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.socials a { font-weight: 700; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+@media (max-width: 860px) { .find__grid { grid-template-columns: 1fr 1fr; } .find__grid > :first-child { grid-column: 1 / -1; } }
+@media (max-width: 520px) { .find__grid { grid-template-columns: 1fr; } }
+
+/* Footer */
+.footer { background: var(--lagoon-deep); color: var(--crust); padding: 48px 0 32px; }
+.footer__inner { display: grid; gap: 10px; }
+.footer__word { font-family: var(--display); font-size: clamp(3.4rem, 13vw, 9rem); line-height: .9; color: var(--cheese); margin-bottom: 18px; }
+.footer p:not(.footer__word) { opacity: .85; font-size: .95rem; }
+</style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Mac and Melt",
+    "servesCuisine": ["Caribbean", "Macaroni cheese"],
+    "telephone": "+44 7546 009465",
+    "email": "macandmelt2024@outlook.com",
+    "url": "https://www.macandmelt.co.uk",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "19 Goodwood Avenue",
+      "addressLocality": "Sale",
+      "postalCode": "M33 4QN",
+      "addressCountry": "GB"
+    },
+    "sameAs": [
+      "https://www.facebook.com/MacandMelt",
+      "https://www.instagram.com/mac_amd_melt_",
+      "https://www.tiktok.com/@mac_and_melt"
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav" id="top">
+    <a class="nav__brand" href="#top" aria-label="Mac and Melt home">
+      <img src="https://87708882764c4ad6c76a.cdn6.editmysite.com/uploads/b/c7d610f0-f880-11f0-afc3-513ef8e8fa96/logo_A36E58E0-E224-4703-AD94-1676D7E404E4.png?width=240&optimize=medium" alt="" width="56" height="56">
+      <span>Mac &amp; Melt</span>
+    </a>
+    <button class="nav__toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <nav id="nav-links" class="nav__links" aria-label="Main">
+      <a href="#menu">Food</a>
+      <a href="#catering">Catering</a>
+      <a href="#find-us">Find us</a>
+      <!-- SQUARE: pre-order link (Square Appointments) -->
+      <a class="btn btn--ink" href="https://book.squareup.com/appointments/wcd63i6rsgu1ch/location/LYRM016FMPTPK/services">Pre-order</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__text">
+        <h1>Caribbean flavour, baked into proper mac&nbsp;&amp;&nbsp;cheese.</h1>
+        <p class="hero__lede">Jerk chicken, curry goat and peppered steak folded into a three-cheese macaroni. Pre-order for collection in Sale, or have us cater your next event.</p>
+        <div class="hero__ctas">
+          <!-- SQUARE: pre-order link -->
+          <a class="btn btn--ink" href="https://book.squareup.com/appointments/wcd63i6rsgu1ch/location/LYRM016FMPTPK/services">Pre-order now</a>
+          <a class="btn btn--line" href="#catering">Book catering</a>
+        </div>
+        <p class="hero__open"><span class="dot" aria-hidden="true"></span>Opens Friday from 2pm, collection in Sale M33</p>
+      </div>
+      <figure class="hero__photo">
+        <img src="https://87708882764c4ad6c76a.cdn6.editmysite.com/uploads/b/87708882764c4ad6c76ace49afadb29c00c05c717fd761362091bd6ce9710c5d/2026-03-19_19-45-37_1773949550.jpg?width=1400&optimize=medium" alt="A Mac and Melt spread: baked macaroni cheese, jerk chicken, roasted sweet potato, steamed veg and coleslaw" width="1200" height="1134">
+        <img class="hero__sticker" src="https://87708882764c4ad6c76a.cdn6.editmysite.com/uploads/b/c7d610f0-f880-11f0-afc3-513ef8e8fa96/logo_A36E58E0-E224-4703-AD94-1676D7E404E4.png?width=400&optimize=medium" alt="" width="160" height="160">
+      </figure>
+    </section>
+
+    <!-- HOW TO ORDER (drips down from the hero) -->
+    <section class="how" aria-labelledby="how-title">
+      <svg class="drip" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 0H1440V38C1408 38 1398 52 1396 70C1394 96 1372 100 1366 70C1360 40 1340 38 1300 40C1240 42 1230 50 1226 82C1222 112 1196 114 1190 82C1186 56 1176 40 1120 40C1040 40 1032 46 1030 60C1028 76 1010 78 1006 60C1002 44 990 38 930 38C860 38 850 48 846 92C842 128 812 126 808 92C804 58 794 40 740 40C680 40 668 50 666 64C664 80 644 80 640 64C636 48 626 38 560 38C500 38 488 48 486 74C484 100 460 102 456 74C452 50 440 40 380 40C300 40 290 52 288 96C286 124 258 124 256 96C254 60 244 40 190 40C130 40 118 48 116 62C114 78 96 78 92 62C88 46 76 38 40 38C20 38 0 38 0 38Z"/>
+      </svg>
+      <div class="wrap">
+        <h2 id="how-title">How ordering works</h2>
+        <p class="section-lede">Everything is made to order, so we cook what's been ordered and little goes to waste.</p>
+        <ol class="steps">
+          <li>
+            <h3>Pre-order online</h3>
+            <p>Pick your trays, pies and bowls and choose a collection slot.</p>
+          </li>
+          <li>
+            <h3>We cook it fresh</h3>
+            <p>Your order is made from scratch for your slot, nothing sitting under a heat lamp.</p>
+          </li>
+          <li>
+            <h3>Collect baked or ready to bake</h3>
+            <p>Take it hot, or pre-baked to keep in the fridge or freezer and finish at home.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- MENU -->
+    <section class="menu" id="menu" aria-labelledby="menu-title">
+      <div class="wrap">
+        <div class="menu__head">
+          <h2 id="menu-title">The food</h2>
+          <p class="section-lede">Prices for collection. Tray sizes and bowl add-ons are on the order page.</p>
+        </div>
+
+        <div class="tabs" role="tablist" aria-label="Menu sections">
+          <button role="tab" id="tab-bowls" aria-controls="panel-bowls" aria-selected="true">Bowls</button>
+          <button role="tab" id="tab-pies" aria-controls="panel-pies" aria-selected="false" tabindex="-1">Macaroni pies</button>
+          <button role="tab" id="tab-trays" aria-controls="panel-trays" aria-selected="false" tabindex="-1">Mac trays</button>
+          <button role="tab" id="tab-kids" aria-controls="panel-kids" aria-selected="false" tabindex="-1">Kids</button>
+          <button role="tab" id="tab-sides" aria-controls="panel-sides" aria-selected="false" tabindex="-1">Sides</button>
+        </div>
+
+        <!-- Bowls -->
+        <div class="panel" role="tabpanel" id="panel-bowls" aria-labelledby="tab-bowls">
+          <div class="bowl">
+            <div class="bowl__intro">
+              <h3>Build your bowl</h3>
+              <p>A seasonal bowl built on our signature classic mac &amp; cheese. Every bowl comes with salad and coleslaw.</p>
+              <p class="bowl__price"><strong>£14</strong> a bowl <span>or double up for</span> <strong>£17</strong></p>
+            </div>
+            <div class="bowl__choices">
+              <div>
+                <h4>Pick a protein</h4>
+                <ul class="chips">
+                  <li>Jerk chicken</li>
+                  <li>Curried goat</li>
+                  <li>Jerk honey salmon <em class="new">New</em></li>
+                  <li>Peppered steak <em class="new">New</em></li>
+                  <li>Chickpea &amp; veg curry</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Pick two sides</h4>
+                <ul class="chips">
+                  <li>Coleslaw</li>
+                  <li>Fresh salad</li>
+                  <li>Steamed vegetables</li>
+                  <li>Mango salsa</li>
+                  <li>Roasted sweet potato <em class="new">New</em></li>
+                  <li>Corn on the cob <em class="new">New</em></li>
+                </ul>
+                <p class="fine">Sides other than salad and coleslaw carry a small extra charge.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pies -->
+        <div class="panel" role="tabpanel" id="panel-pies" aria-labelledby="tab-pies" hidden>
+          <ul class="items">
+            <li><div><h3>Curry goat macaroni pie</h3><p>Slow-cooked curry goat under a baked macaroni crust.</p></div><span class="price">£12</span></li>
+            <li><div><h3>Jerk chicken macaroni pie</h3><p>Smoky jerk chicken baked into three-cheese mac.</p></div><span class="price">£12</span></li>
+            <li><div><h3>Peppered steak macaroni pie</h3><p>Peppered steak with a golden, crispy top.</p></div><span class="price">£12</span></li>
+          </ul>
+          <p class="fine">Add steak or curry goat gravy for £1.50.</p>
+        </div>
+
+        <!-- Trays -->
+        <div class="panel" role="tabpanel" id="panel-trays" aria-labelledby="tab-trays" hidden>
+          <ul class="items">
+            <li><div><h3>The Classic</h3><p>Three-cheese sauce with a soft, gooey centre. The original.</p></div><span class="price">from £10</span></li>
+            <li><div><h3>Pepperoni</h3><p>Topped with Italian herbs, onions, peppers and chilli oil.</p></div><span class="price">from £10</span></li>
+            <li><div><h3>Mexican Wave</h3><p>Spicy Cajun chicken.</p></div><span class="price">sizes vary</span></li>
+            <li><div><h3>The Veggie</h3><p>The classic with red onions and peppers. Tastes like pizza.</p></div><span class="price">sizes vary</span></li>
+            <li><div><h3>Truffle Lover</h3><p>Truffle and mushroom.</p></div><span class="price">sizes vary</span></li>
+            <li><div><h3>Prawn</h3><p>Our classic mac with prawns.</p></div><span class="price">sizes vary</span></li>
+          </ul>
+        </div>
+
+        <!-- Kids -->
+        <div class="panel" role="tabpanel" id="panel-kids" aria-labelledby="tab-kids" hidden>
+          <ul class="items">
+            <li><div><h3>Classic mini mac</h3><p>Creamy three-cheese macaroni.</p></div><span class="price">£4.50</span></li>
+            <li><div><h3>Mini veggie mac</h3><p>Creamy mac with mixed vegetables. Tastes like pizza.</p></div><span class="price">£4.50</span></li>
+            <li><div><h3>Mini pepperoni mac</h3><p>Creamy mac topped with pepperoni.</p></div><span class="price">£5</span></li>
+          </ul>
+        </div>
+
+        <!-- Sides -->
+        <div class="panel" role="tabpanel" id="panel-sides" aria-labelledby="tab-sides" hidden>
+          <ul class="items items--compact">
+            <li><div><h3>Rice and peas</h3><p>Fluffy, with herbs and spices.</p></div><span class="price">sizes vary</span></li>
+            <li><div><h3>Plantain</h3></div><span class="price">£2</span></li>
+            <li><div><h3>Roasted sweet potato</h3></div><span class="price">£2</span></li>
+            <li><div><h3>Steamed veg</h3></div><span class="price">£2</span></li>
+            <li><div><h3>Mango salsa</h3></div><span class="price">£2</span></li>
+            <li><div><h3>Coleslaw</h3></div><span class="price">£2</span></li>
+            <li><div><h3>Gravy</h3><p>Steak or curry goat.</p></div><span class="price">£1.50</span></li>
+            <li><div><h3>Salad</h3></div><span class="price">free</span></li>
+          </ul>
+        </div>
+
+        <div class="menu__cta">
+          <!-- SQUARE: pre-order link -->
+          <a class="btn btn--ink" href="https://book.squareup.com/appointments/wcd63i6rsgu1ch/location/LYRM016FMPTPK/services">Pre-order for collection</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATERING -->
+    <section class="catering" id="catering" aria-labelledby="catering-title">
+      <div class="wrap catering__grid">
+        <div class="catering__photo">
+          <img src="https://87708882764c4ad6c76a.cdn6.editmysite.com/uploads/b/87708882764c4ad6c76ace49afadb29c00c05c717fd761362091bd6ce9710c5d/2026-03-19_19-45-37_1773949550.jpg?width=1000&optimize=medium" alt="A catering table laid with macaroni cheese, jerk chicken and sides" loading="lazy" width="1000" height="945">
+        </div>
+        <div class="catering__text">
+          <h2 id="catering-title">Catering that people talk about after</h2>
+          <p>Birthdays, christenings, office lunches and weddings. We bring the trays, the pies and the full spread, laid out so it looks as good as it tastes.</p>
+          <ul class="ticks">
+            <li>Served by our team, or set up for self-service</li>
+            <li>Menus built around your numbers and budget</li>
+            <li>Vegetarian and kids' options on request</li>
+          </ul>
+          <a class="btn btn--cheese" href="https://form.jotform.com/261531597663364">Enquire about your event</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="reviews" aria-labelledby="reviews-title">
+      <div class="wrap">
+        <h2 id="reviews-title" class="visually-hidden">What customers say</h2>
+        <figure class="quote">
+          <blockquote>The Curry Goat Pies are unreal.</blockquote>
+          <figcaption>Mac and Melt customer</figcaption>
+        </figure>
+        <figure class="quote quote--alt">
+          <blockquote>Jerk honey salmon? Yes please!</blockquote>
+          <figcaption>Mac and Melt customer</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- FIND US -->
+    <section class="find" id="find-us" aria-labelledby="find-title">
+      <div class="wrap find__grid">
+        <div>
+          <h2 id="find-title">Collect from Sale</h2>
+          <address>
+            19 Goodwood Avenue<br>
+            Sale, M33 4QN
+          </address>
+          <a class="link" href="https://www.google.com/maps/dir/?api=1&amp;destination=19+Goodwood+Avenue+Sale+M33+4QN">Get directions</a>
+        </div>
+        <div>
+          <h3>Opening</h3>
+          <p>Fridays from 2pm, pre-order only.</p>
+          <h3>Get in touch</h3>
+          <p><a class="link" href="tel:+447546009465">07546 009465</a><br>
+             <a class="link" href="mailto:macandmelt2024@outlook.com">macandmelt2024@outlook.com</a></p>
+        </div>
+        <div>
+          <h3>Follow the melt</h3>
+          <ul class="socials">
+            <li><a href="https://www.instagram.com/mac_amd_melt_">Instagram</a></li>
+            <li><a href="https://www.tiktok.com/@mac_and_melt">TikTok</a></li>
+            <li><a href="https://www.facebook.com/MacandMelt">Facebook</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <p class="footer__word" aria-hidden="true">Mac &amp; Melt</p>
+      <p>Caribbean-inspired macaroni cheese, made in Sale. Payments handled securely by Square.</p>
+      <p>&copy; <span id="year">2026</span> Mac and Melt</p>
+    </div>
+  </footer>
+
+  <script>// Mobile menu
+const toggle = document.querySelector('.nav__toggle');
+const links = document.getElementById('nav-links');
+toggle.addEventListener('click', () => {
+  const open = links.classList.toggle('is-open');
+  toggle.setAttribute('aria-expanded', String(open));
+  toggle.textContent = open ? 'Close' : 'Menu';
+});
+links.addEventListener('click', (e) => {
+  if (e.target.closest('a') && links.classList.contains('is-open')) toggle.click();
+});
+
+// Food tabs (keyboard accessible)
+const tabs = [...document.querySelectorAll('[role="tab"]')];
+function select(tab) {
+  tabs.forEach((t) => {
+    const on = t === tab;
+    t.setAttribute('aria-selected', String(on));
+    t.tabIndex = on ? 0 : -1;
+    document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+  });
+}
+tabs.forEach((tab, i) => {
+  tab.addEventListener('click', () => select(tab));
+  tab.addEventListener('keydown', (e) => {
+    let next = null;
+    if (e.key === 'ArrowRight') next = tabs[(i + 1) % tabs.length];
+    if (e.key === 'ArrowLeft') next = tabs[(i - 1 + tabs.length) % tabs.length];
+    if (e.key === 'Home') next = tabs[0];
+    if (e.key === 'End') next = tabs[tabs.length - 1];
+    if (next) { e.preventDefault(); select(next); next.focus(); }
+  });
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
