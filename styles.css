@@ -709,7 +709,40 @@ main { margin-top: calc(-1 * (var(--nav-h) + var(--nav-gap))); }
 }
 @keyframes popIn { from { transform: translateY(30px) scale(.94); opacity: 0; } }
 
+/* ---------- WhatsApp ---------- */
+:root { --wa: #25D366; --wa-deep: #128C4A; }
+.wa-icon { width: 24px; height: 24px; flex: none; --wa-fg: var(--wa-deep); }
+.wa-btn { gap: 10px; background: linear-gradient(180deg, #3BE07A, var(--wa)); color: var(--ink); --wa-fg: var(--wa); }
+.wa-btn .wa-icon { color: var(--white); --wa-fg: var(--wa-deep); }
+.find__contact .wa-btn { justify-self: start; margin-top: 12px; }
+.catering__ctas { display: flex; flex-wrap: wrap; gap: 14px; }
+.catering .wa-btn { border-color: var(--ink-deep); box-shadow: 4px 4px 0 var(--wa-deep), 0 14px 28px -10px rgba(0,0,0,.6); }
+
+/* Floating button, bottom right on every page */
+.wa-fab {
+  position: fixed; z-index: 44;
+  right: calc(18px + env(safe-area-inset-right, 0px)); bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+  display: inline-flex; align-items: center; gap: 10px;
+  min-height: 58px; padding: 0 20px 0 16px;
+  background: linear-gradient(180deg, #3BE07A, var(--wa));
+  color: var(--ink); font-weight: 800; text-decoration: none;
+  border: 3px solid var(--ink); border-radius: 999px;
+  box-shadow: inset 0 2px 0 rgba(255,255,255,.5), 4px 4px 0 var(--ink), 0 16px 30px -10px rgba(18,26,51,.55);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.wa-fab .wa-icon { width: 30px; height: 30px; color: var(--white); --wa-fg: var(--wa-deep); filter: drop-shadow(1px 2px 0 rgba(18,26,51,.4)); }
+.wa-fab:hover { transform: translate(-2px, -2px); box-shadow: inset 0 2px 0 rgba(255,255,255,.5), 6px 6px 0 var(--ink), 0 20px 34px -10px rgba(18,26,51,.55); }
+.wa-fab:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+/* Keep the sign-up card above the WhatsApp button */
+.popup { bottom: calc(92px + env(safe-area-inset-bottom, 0px)); }
+@media (max-width: 600px) {
+  .wa-fab { min-height: 56px; width: 56px; padding: 0; justify-content: center; right: calc(14px + env(safe-area-inset-right, 0px)); bottom: calc(14px + env(safe-area-inset-bottom, 0px)); }
+  .wa-fab__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .popup { bottom: calc(82px + env(safe-area-inset-bottom, 0px)); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+.signup__msg:empty { display: none; }

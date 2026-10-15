@@ -63,7 +63,7 @@ body {
   color: var(--ink);
   background: var(--crust);
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 html { overflow-x: clip; }
 /* Film-grain texture over the whole page for a printed, tactile feel */
@@ -314,12 +314,13 @@ main { margin-top: calc(-1 * (var(--nav-h) + var(--nav-gap))); }
 @media (max-width: 760px) { .steps { grid-template-columns: 1fr; } }
 
 /* ---------- Brand ticker ---------- */
+.ticker-wrap { position: relative; z-index: 3; overflow: hidden; margin-top: -30px; padding: 12px 0; }
 .ticker {
   position: relative; z-index: 3; overflow: hidden;
   background: linear-gradient(180deg, #26305A, var(--ink));
   border-block: 3px solid var(--cheese);
   box-shadow: 0 14px 28px -12px rgba(18,26,51,.6);
-  transform: rotate(-1.2deg); margin: -18px -10px 0;
+  transform: rotate(-1.2deg); margin: 0 -10px;
 }
 .ticker__track {
   display: flex; align-items: center; gap: 28px; width: max-content;
@@ -396,6 +397,14 @@ main { margin-top: calc(-1 * (var(--nav-h) + var(--nav-gap))); }
 .dishes__btn:hover, .dishes__pause:hover { background: var(--cheese-hi); }
 .dishes__btn:active, .dishes__pause:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
 .dishes__pause { font-size: .95rem; margin-left: auto; }
+@media (max-width: 760px) {
+  .dishes__controls { flex-wrap: nowrap; gap: 8px; }
+  .dishes .dishes__dots { gap: 5px; flex-wrap: nowrap; min-width: 0; }
+  .dishes .dishes__dots button { width: 10px; height: 10px; flex: none; }
+  .dishes .dishes__dots button[aria-current="true"] { width: 22px; }
+  .dishes__btn, .dishes__pause { min-width: 44px; min-height: 44px; padding: 0 10px; }
+  .dishes__pause { font-size: .85rem; }
+}
 .dishes__dots { display: flex; gap: 8px; flex-wrap: wrap; }
 .dishes__dots button {
   width: 14px; height: 14px; padding: 0; border-radius: 50%;
@@ -530,21 +539,64 @@ main { margin-top: calc(-1 * (var(--nav-h) + var(--nav-gap))); }
 }
 .find__logo {
   position: absolute; z-index: -1; pointer-events: none;
-  width: clamp(460px, 58vw, 880px); right: -10%; top: 50%;
-  transform: translateY(-50%) rotate(-8deg);
-  opacity: .16;
+  width: clamp(420px, 44vw, 640px); left: -12%; bottom: -22%;
+  transform: rotate(-12deg);
+  opacity: .07;
 }
-.find__grid { display: grid; grid-template-columns: 1.3fr 1fr 0.8fr; gap: clamp(28px, 5vw, 64px); }
+.find__grid { display: grid; grid-template-columns: 1fr minmax(0, 480px); gap: clamp(40px, 7vw, 110px); align-items: center; }
 .find__grid > * { min-width: 0; }
-.find h2 { font-size: clamp(2.3rem, 4.6vw, 3.6rem); text-shadow: 3px 3px 0 var(--cheese); }
-.find address { font-style: normal; font-size: 1.3rem; font-weight: 600; margin: 18px 0 12px; }
-.find h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 6px; }
-.find h3 + p { margin-bottom: 22px; }
+.find h2 { font-size: clamp(2.6rem, 5.4vw, 4.2rem); text-shadow: 3px 3px 0 var(--cheese); text-wrap: balance; }
+.find address { font-style: normal; font-size: clamp(1.25rem, 1.8vw, 1.5rem); font-weight: 700; margin: 20px 0 18px; line-height: 1.45; }
+.find__directions { min-height: 46px; }
+.find h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 8px; }
+.find__contact { margin-top: 36px; display: grid; gap: 4px; }
+.find__contact p { font-size: 1.1rem; }
+.find__social { margin-top: 28px; }
 .socials { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 10px; }
-.socials a { display: inline-flex; align-items: center; min-height: 42px; padding: 0 16px; background: var(--white); border: 2px solid var(--ink); border-radius: var(--radius-sm); font-weight: 800; text-decoration: none; box-shadow: 3px 3px 0 var(--ink); }
+.socials a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; background: var(--white); border: 2.5px solid var(--ink); border-radius: var(--radius-sm); font-weight: 800; text-decoration: none; box-shadow: 3px 3px 0 var(--ink); }
 .socials a:hover { background: var(--cheese-hi); }
-@media (max-width: 860px) { .find__grid { grid-template-columns: 1fr 1fr; } .find__grid > :first-child { grid-column: 1 / -1; } .find__logo { right: -35%; top: 60%; width: 560px; } }
-@media (max-width: 520px) { .find__grid { grid-template-columns: 1fr; } }
+
+/* Hours card: a raised ticket, like the menu card */
+.hours-card {
+  position: relative;
+  background: linear-gradient(180deg, var(--white), #FFFBF0);
+  border: 3px solid var(--ink); border-radius: var(--radius-lg);
+  padding: clamp(22px, 3vw, 32px);
+  box-shadow: 10px 10px 0 var(--cheese), 10px 10px 0 3px var(--ink), 0 40px 60px -20px rgba(18,26,51,.35);
+  margin-right: 13px;
+}
+.hours-card__head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px; padding-bottom: 16px; border-bottom: 3px solid var(--ink); }
+.hours-card__head h3 { font-family: var(--display); font-weight: 400; font-size: 1.7rem; margin: 0; }
+.open-pill { display: inline-flex; align-items: center; gap: 8px; margin: 0; font-weight: 800; font-size: .95rem; background: var(--crust); border: 2px solid var(--ink); border-radius: 999px; padding: 5px 14px; box-shadow: 2px 2px 0 var(--ink); }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: var(--cheese-deep); box-shadow: 0 0 0 4px rgba(227,163,15,.25); flex: none; }
+.dot.is-open { background: #2E9E5B; box-shadow: 0 0 0 4px rgba(46,158,91,.22); }
+
+.hours { width: 100%; border-collapse: separate; border-spacing: 0 4px; margin-top: 12px; font-variant-numeric: tabular-nums; }
+.hours th, .hours td { padding: 9px 12px; text-align: left; font-size: 1.05rem; }
+.hours th { font-weight: 600; }
+.hours td { text-align: right; color: rgba(28,37,65,.55); font-weight: 600; }
+.hours tr:not(.is-open-day) th { color: rgba(28,37,65,.6); }
+.hours tr.is-open-day th { font-weight: 800; color: var(--ink); }
+.time-chip { display: inline-block; background: var(--cheese); color: var(--ink); font-weight: 800; border: 2px solid var(--ink); border-radius: 999px; padding: 3px 12px; box-shadow: 2px 2px 0 var(--ink); }
+.today-tag { display: none; margin-left: 10px; font-size: .72rem; font-weight: 800; vertical-align: 2px; color: var(--white); background: var(--lagoon); border-radius: 6px; padding: 2px 7px; }
+.hours tr.is-today th, .hours tr.is-today td { background: var(--crust); }
+.hours tr.is-today th { border-radius: 12px 0 0 12px; }
+.hours tr.is-today td { border-radius: 0 12px 12px 0; }
+.hours tr.is-today .today-tag { display: inline-block; }
+.hours-card__note { margin-top: 12px; padding-top: 14px; border-top: 2px dashed rgba(28,37,65,.25); font-size: .95rem; opacity: .8; }
+.hours-card__cta { margin-top: 16px; width: 100%; }
+
+@media (max-width: 860px) {
+  .find__grid { grid-template-columns: 1fr; }
+  .find__info { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; }
+  .find__info > h2, .find__info > address, .find__info > .find__directions { grid-column: 1 / -1; justify-self: start; }
+  .find__contact, .find__social { margin-top: 30px; }
+}
+@media (max-width: 520px) {
+  .find__info { grid-template-columns: 1fr; }
+  .find__social { margin-top: 24px; }
+  .hours th, .hours td { padding: 8px 8px; font-size: 1rem; }
+}
 
 /* ---------- Footer ---------- */
 .footer {
@@ -622,19 +674,6 @@ main { margin-top: calc(-1 * (var(--nav-h) + var(--nav-gap))); }
   .founder__sticker { right: -14px; top: -30px; }
 }
 
-/* ---------- Hours ---------- */
-.open-pill { display: inline-flex; align-items: center; gap: 8px; margin: 2px 0 12px; font-weight: 800; background: var(--white); border: 2px solid var(--ink); border-radius: 999px; padding: 5px 14px; box-shadow: 3px 3px 0 var(--ink); }
-.is-open .dot, .dot.is-open { background: #2E9E5B; box-shadow: 0 0 0 4px rgba(46,158,91,.22); }
-.hours { border-collapse: collapse; width: 100%; max-width: 300px; font-variant-numeric: tabular-nums; }
-.hours th, .hours td { text-align: left; padding: 6px 10px; border-bottom: 1.5px dashed rgba(28,37,65,.25); }
-.hours th { font-weight: 600; }
-.hours td { font-weight: 700; }
-.hours tr.is-today { background: var(--cheese); }
-.hours tr.is-today th, .hours tr.is-today td { font-weight: 800; border-bottom-color: transparent; }
-.hours tr.is-today th { border-radius: 10px 0 0 10px; }
-.hours tr.is-today td { border-radius: 0 10px 10px 0; }
-.hours + .fine { margin-bottom: 22px; }
-
 /* ---------- Newsletter ---------- */
 .news {
   position: relative; overflow: hidden; isolation: isolate;
@@ -680,12 +719,52 @@ main { margin-top: calc(-1 * (var(--nav-h) + var(--nav-gap))); }
   border: 2px solid var(--ink); border-radius: 50%; background: var(--white);
   font: 800 1.4rem/1 var(--body); color: var(--ink); cursor: pointer; box-shadow: 2px 2px 0 var(--ink);
 }
+@media (max-width: 600px) {
+  .popup { left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); width: auto; padding: 16px 16px 14px; border-radius: 22px; }
+  .popup h2 { font-size: 1.5rem; margin-top: 0; padding-right: 48px; }
+  .popup p { margin: 4px 0 10px; font-size: .95rem; }
+  .popup__badge { display: none; }
+  .popup .signup input, .popup .signup .btn { min-height: 48px; }
+}
 @keyframes popIn { from { transform: translateY(30px) scale(.94); opacity: 0; } }
+
+/* ---------- WhatsApp ---------- */
+:root { --wa: #25D366; --wa-deep: #128C4A; }
+.wa-icon { width: 24px; height: 24px; flex: none; --wa-fg: var(--wa-deep); }
+.wa-btn { gap: 10px; background: linear-gradient(180deg, #3BE07A, var(--wa)); color: var(--ink); --wa-fg: var(--wa); }
+.wa-btn .wa-icon { color: var(--white); --wa-fg: var(--wa-deep); }
+.find__contact .wa-btn { justify-self: start; margin-top: 12px; }
+.catering__ctas { display: flex; flex-wrap: wrap; gap: 14px; }
+.catering .wa-btn { border-color: var(--ink-deep); box-shadow: 4px 4px 0 var(--wa-deep), 0 14px 28px -10px rgba(0,0,0,.6); }
+
+/* Floating button, bottom right on every page */
+.wa-fab {
+  position: fixed; z-index: 44;
+  right: calc(18px + env(safe-area-inset-right, 0px)); bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+  display: inline-flex; align-items: center; gap: 10px;
+  min-height: 58px; padding: 0 20px 0 16px;
+  background: linear-gradient(180deg, #3BE07A, var(--wa));
+  color: var(--ink); font-weight: 800; text-decoration: none;
+  border: 3px solid var(--ink); border-radius: 999px;
+  box-shadow: inset 0 2px 0 rgba(255,255,255,.5), 4px 4px 0 var(--ink), 0 16px 30px -10px rgba(18,26,51,.55);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.wa-fab .wa-icon { width: 30px; height: 30px; color: var(--white); --wa-fg: var(--wa-deep); filter: drop-shadow(1px 2px 0 rgba(18,26,51,.4)); }
+.wa-fab:hover { transform: translate(-2px, -2px); box-shadow: inset 0 2px 0 rgba(255,255,255,.5), 6px 6px 0 var(--ink), 0 20px 34px -10px rgba(18,26,51,.55); }
+.wa-fab:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+/* Keep the sign-up card above the WhatsApp button */
+.popup { bottom: calc(92px + env(safe-area-inset-bottom, 0px)); }
+@media (max-width: 600px) {
+  .wa-fab { min-height: 56px; width: 56px; padding: 0; justify-content: center; right: calc(14px + env(safe-area-inset-right, 0px)); bottom: calc(14px + env(safe-area-inset-bottom, 0px)); }
+  .wa-fab__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .popup { bottom: calc(82px + env(safe-area-inset-bottom, 0px)); }
+}
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+.signup__msg:empty { display: none; }
 </style>
 
   <script type="application/ld+json">
@@ -786,9 +865,9 @@ main { margin-top: calc(-1 * (var(--nav-h) + var(--nav-gap))); }
       </div>
     </section>
 
-    <div class="ticker" aria-hidden="true">
+    <div class="ticker-wrap" aria-hidden="true"><div class="ticker">
       <div class="ticker__track"><span class="ticker__word">Mac &amp; Melt</span><span class="badge" aria-hidden="true"><img src="https://seller-brand-assets-f.squarecdn.com/MLRKM3H93083R/f348321a9f1e37078d53d77e28effff7.jpeg?height=240" alt="" width="800" height="800"></span><span class="ticker__word">Caribbean-inspired mac &amp; cheese</span><span class="badge" aria-hidden="true"><img src="https://seller-brand-assets-f.squarecdn.com/MLRKM3H93083R/f348321a9f1e37078d53d77e28effff7.jpeg?height=240" alt="" width="800" height="800"></span><span class="ticker__word">Made fresh in Sale</span><span class="badge" aria-hidden="true"><img src="https://seller-brand-assets-f.squarecdn.com/MLRKM3H93083R/f348321a9f1e37078d53d77e28effff7.jpeg?height=240" alt="" width="800" height="800"></span><span class="ticker__word">Mac &amp; Melt</span><span class="badge" aria-hidden="true"><img src="https://seller-brand-assets-f.squarecdn.com/MLRKM3H93083R/f348321a9f1e37078d53d77e28effff7.jpeg?height=240" alt="" width="800" height="800"></span><span class="ticker__word">Caribbean-inspired mac &amp; cheese</span><span class="badge" aria-hidden="true"><img src="https://seller-brand-assets-f.squarecdn.com/MLRKM3H93083R/f348321a9f1e37078d53d77e28effff7.jpeg?height=240" alt="" width="800" height="800"></span><span class="ticker__word">Made fresh in Sale</span><span class="badge" aria-hidden="true"><img src="https://seller-brand-assets-f.squarecdn.com/MLRKM3H93083R/f348321a9f1e37078d53d77e28effff7.jpeg?height=240" alt="" width="800" height="800"></span><span class="ticker__word">Mac &amp; Melt</span><span class="badge" aria-hidden="true"><img src="https://seller-brand-assets-f.squarecdn.com/MLRKM3H93083R/f348321a9f1e37078d53d77e28effff7.jpeg?height=240" alt="" width="800" height="800"></span><span class="ticker__word">Caribbean-inspired mac &amp; cheese</span><span class="badge" aria-hidden="true"><img src="https://seller-brand-assets-f.squarecdn.com/MLRKM3H93083R/f348321a9f1e37078d53d77e28effff7.jpeg?height=240" alt="" width="800" height="800"></span><span class="ticker__word">Made fresh in Sale</span><span class="badge" aria-hidden="true"><img src="https://seller-brand-assets-f.squarecdn.com/MLRKM3H93083R/f348321a9f1e37078d53d77e28effff7.jpeg?height=240" alt="" width="800" height="800"></span></div>
-    </div>
+    </div></div>
 
     <!-- MENU -->
     <section class="menu" id="menu" aria-labelledby="menu-title">
@@ -1003,7 +1082,10 @@ main { margin-top: calc(-1 * (var(--nav-h) + var(--nav-gap))); }
             <li>Menus built around your numbers and budget</li>
             <li>Vegetarian and kids' options on request</li>
           </ul>
-          <a class="btn btn--cheese" href="https://form.jotform.com/261531597663364">Enquire about your event</a>
+          <div class="catering__ctas">
+            <a class="btn btn--cheese" href="https://form.jotform.com/261531597663364">Enquire about your event</a>
+            <a class="btn wa-btn" href="https://wa.me/447546009465?text=Hi%20Mac%20and%20Melt%21%20I%27d%20like%20to%20ask%20about%20catering%20for%20an%20event." target="_blank" rel="noopener"><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.5a9.5 9.5 0 0 0-8.2 14.3L2.5 21.5l4.8-1.3A9.5 9.5 0 1 0 12 2.5Z" fill="currentColor"/><path d="M9.1 7.3c-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.7s1.2 3.1 1.3 3.3c.2.2 2.3 3.6 5.6 4.9 2.8 1.1 3.3.9 3.9.8.6-.1 2-.8 2.2-1.6.3-.8.3-1.5.2-1.6-.1-.1-.3-.2-.6-.4l-2-1c-.3-.1-.5-.2-.7.2l-.9 1.2c-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.3Z" fill="var(--wa-fg, #fff)"/></svg>WhatsApp us</a>
+          </div>
         </div>
       </div>
     </section>
@@ -1047,30 +1129,50 @@ main { margin-top: calc(-1 * (var(--nav-h) + var(--nav-gap))); }
     <section class="find" id="find-us" aria-labelledby="find-title">
       <span class="badge find__logo" aria-hidden="true"><img src="https://seller-brand-assets-f.squarecdn.com/MLRKM3H93083R/f348321a9f1e37078d53d77e28effff7.jpeg?height=1200" alt="" width="800" height="800" loading="lazy"></span>
       <div class="wrap find__grid">
-        <div>
+        <div class="find__info">
           <h2 id="find-title">Collect from Sale</h2>
           <address>
             19 Goodwood Avenue<br>
             Sale, M33 4QN
           </address>
-          <a class="link" href="https://www.google.com/maps/dir/?api=1&amp;destination=19+Goodwood+Avenue+Sale+M33+4QN">Get directions</a>
+          <a class="btn btn--line find__directions" href="https://www.google.com/maps/dir/?api=1&amp;destination=19+Goodwood+Avenue+Sale+M33+4QN">Get directions</a>
+
+          <div class="find__contact">
+            <h3>Get in touch</h3>
+            <p><a class="link" href="tel:+447546009465">07546 009465</a></p>
+            <p><a class="link" href="mailto:macandmelt2024@outlook.com">macandmelt2024@outlook.com</a></p>
+            <a class="btn wa-btn" href="https://wa.me/447546009465?text=Hi%20Mac%20and%20Melt%21%20I%27d%20like%20to%20ask%20about%20an%20order." target="_blank" rel="noopener"><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.5a9.5 9.5 0 0 0-8.2 14.3L2.5 21.5l4.8-1.3A9.5 9.5 0 1 0 12 2.5Z" fill="currentColor"/><path d="M9.1 7.3c-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.7s1.2 3.1 1.3 3.3c.2.2 2.3 3.6 5.6 4.9 2.8 1.1 3.3.9 3.9.8.6-.1 2-.8 2.2-1.6.3-.8.3-1.5.2-1.6-.1-.1-.3-.2-.6-.4l-2-1c-.3-.1-.5-.2-.7.2l-.9 1.2c-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.3Z" fill="var(--wa-fg, #fff)"/></svg>Message us on WhatsApp</a>
+          </div>
+
+          <div class="find__social">
+            <h3>Follow the melt</h3>
+            <ul class="socials">
+              <li><a href="https://www.instagram.com/mac_amd_melt_">Instagram</a></li>
+              <li><a href="https://www.tiktok.com/@mac_and_melt">TikTok</a></li>
+              <li><a href="https://www.facebook.com/MacandMelt">Facebook</a></li>
+            </ul>
+          </div>
         </div>
-        <div>
-          <h3>Collection hours</h3>
-          <p class="open-pill"><span class="dot" aria-hidden="true"></span><span data-open-status>Open Friday and Saturday</span></p>
-          <table class="hours"><tr data-day="1"><th scope="row">Monday</th><td>Closed</td></tr><tr data-day="2"><th scope="row">Tuesday</th><td>Closed</td></tr><tr data-day="3"><th scope="row">Wednesday</th><td>Closed</td></tr><tr data-day="4"><th scope="row">Thursday</th><td>Closed</td></tr><tr data-day="5"><th scope="row">Friday</th><td>2pm to 8pm</td></tr><tr data-day="6"><th scope="row">Saturday</th><td>2pm to 8pm</td></tr><tr data-day="0"><th scope="row">Sunday</th><td>Closed</td></tr></table>
-          <p class="fine">Collection is by pre-order, so order ahead and pick a slot.</p>
-          <h3>Get in touch</h3>
-          <p><a class="link" href="tel:+447546009465">07546 009465</a><br>
-             <a class="link" href="mailto:macandmelt2024@outlook.com">macandmelt2024@outlook.com</a></p>
-        </div>
-        <div>
-          <h3>Follow the melt</h3>
-          <ul class="socials">
-            <li><a href="https://www.instagram.com/mac_amd_melt_">Instagram</a></li>
-            <li><a href="https://www.tiktok.com/@mac_and_melt">TikTok</a></li>
-            <li><a href="https://www.facebook.com/MacandMelt">Facebook</a></li>
-          </ul>
+
+        <div class="hours-card">
+          <div class="hours-card__head">
+            <h3>Collection hours</h3>
+            <p class="open-pill"><span class="dot" aria-hidden="true"></span><span data-open-status>Open Friday and Saturday</span></p>
+          </div>
+          <table class="hours">
+            <tbody>
+              <tr data-day="1"><th scope="row">Monday<span class="today-tag">Today</span></th><td>Closed</td></tr>
+              <tr data-day="2"><th scope="row">Tuesday<span class="today-tag">Today</span></th><td>Closed</td></tr>
+              <tr data-day="3"><th scope="row">Wednesday<span class="today-tag">Today</span></th><td>Closed</td></tr>
+              <tr data-day="4"><th scope="row">Thursday<span class="today-tag">Today</span></th><td>Closed</td></tr>
+              <tr data-day="5" class="is-open-day"><th scope="row">Friday<span class="today-tag">Today</span></th><td><span class="time-chip">2pm – 8pm</span></td></tr>
+              <tr data-day="6" class="is-open-day"><th scope="row">Saturday<span class="today-tag">Today</span></th><td><span class="time-chip">2pm – 8pm</span></td></tr>
+              <tr data-day="0"><th scope="row">Sunday<span class="today-tag">Today</span></th><td>Closed</td></tr>
+            </tbody>
+          </table>
+          <p class="hours-card__note">Collection is by pre-order, so order ahead and pick a slot.</p>
+          <!-- SQUARE: pre-order link -->
+          <a class="btn btn--ink hours-card__cta" href="https://book.squareup.com/appointments/wcd63i6rsgu1ch/location/LYRM016FMPTPK/services">Pre-order for collection</a>
         </div>
       </div>
     </section>
@@ -1091,6 +1193,11 @@ main { margin-top: calc(-1 * (var(--nav-h) + var(--nav-gap))); }
       </div>
     </section>
   </main>
+
+  <!-- WHATSAPP: number is +44 7546 009465 -->
+  <a class="wa-fab" href="https://wa.me/447546009465?text=Hi%20Mac%20and%20Melt%21%20I%27d%20like%20to%20ask%20about%20an%20order." target="_blank" rel="noopener" aria-label="Message Mac and Melt on WhatsApp">
+    <svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.5a9.5 9.5 0 0 0-8.2 14.3L2.5 21.5l4.8-1.3A9.5 9.5 0 1 0 12 2.5Z" fill="currentColor"/><path d="M9.1 7.3c-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.7s1.2 3.1 1.3 3.3c.2.2 2.3 3.6 5.6 4.9 2.8 1.1 3.3.9 3.9.8.6-.1 2-.8 2.2-1.6.3-.8.3-1.5.2-1.6-.1-.1-.3-.2-.6-.4l-2-1c-.3-.1-.5-.2-.7.2l-.9 1.2c-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.3Z" fill="var(--wa-fg, #fff)"/></svg><span class="wa-fab__label">WhatsApp us</span>
+  </a>
 
   <aside class="popup" aria-labelledby="popup-title" hidden>
     <button class="popup__close" type="button" aria-label="Close">&times;</button>
@@ -1276,9 +1383,10 @@ tabs.forEach((tab, i) => {
     seen = 'shown'; popup.hidden = false;
     try { localStorage.setItem('mm-news', 'shown'); } catch (e) {}
   };
-  const t = setTimeout(show, 12000);
+  const small = window.matchMedia('(max-width: 600px)').matches;
+  const t = setTimeout(show, small ? 25000 : 12000);
   const menu = document.getElementById('menu');
-  if (menu && 'IntersectionObserver' in window) {
+  if (!small && menu && 'IntersectionObserver' in window) {
     const io = new IntersectionObserver((es) => { if (es[0].isIntersecting) { show(); io.disconnect(); } }, { threshold: 0.3 });
     io.observe(menu);
   }
