@@ -161,9 +161,10 @@ tabs.forEach((tab, i) => {
     seen = 'shown'; popup.hidden = false;
     try { localStorage.setItem('mm-news', 'shown'); } catch (e) {}
   };
-  const t = setTimeout(show, 12000);
+  const small = window.matchMedia('(max-width: 600px)').matches;
+  const t = setTimeout(show, small ? 25000 : 12000);
   const menu = document.getElementById('menu');
-  if (menu && 'IntersectionObserver' in window) {
+  if (!small && menu && 'IntersectionObserver' in window) {
     const io = new IntersectionObserver((es) => { if (es[0].isIntersecting) { show(); io.disconnect(); } }, { threshold: 0.3 });
     io.observe(menu);
   }

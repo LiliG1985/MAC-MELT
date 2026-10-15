@@ -44,7 +44,7 @@ body {
   color: var(--ink);
   background: var(--crust);
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 html { overflow-x: clip; }
 /* Film-grain texture over the whole page for a printed, tactile feel */
@@ -295,12 +295,13 @@ main { margin-top: calc(-1 * (var(--nav-h) + var(--nav-gap))); }
 @media (max-width: 760px) { .steps { grid-template-columns: 1fr; } }
 
 /* ---------- Brand ticker ---------- */
+.ticker-wrap { position: relative; z-index: 3; overflow: hidden; margin-top: -30px; padding: 12px 0; }
 .ticker {
   position: relative; z-index: 3; overflow: hidden;
   background: linear-gradient(180deg, #26305A, var(--ink));
   border-block: 3px solid var(--cheese);
   box-shadow: 0 14px 28px -12px rgba(18,26,51,.6);
-  transform: rotate(-1.2deg); margin: -18px -10px 0;
+  transform: rotate(-1.2deg); margin: 0 -10px;
 }
 .ticker__track {
   display: flex; align-items: center; gap: 28px; width: max-content;
@@ -377,6 +378,14 @@ main { margin-top: calc(-1 * (var(--nav-h) + var(--nav-gap))); }
 .dishes__btn:hover, .dishes__pause:hover { background: var(--cheese-hi); }
 .dishes__btn:active, .dishes__pause:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
 .dishes__pause { font-size: .95rem; margin-left: auto; }
+@media (max-width: 760px) {
+  .dishes__controls { flex-wrap: nowrap; gap: 8px; }
+  .dishes .dishes__dots { gap: 5px; flex-wrap: nowrap; min-width: 0; }
+  .dishes .dishes__dots button { width: 10px; height: 10px; flex: none; }
+  .dishes .dishes__dots button[aria-current="true"] { width: 22px; }
+  .dishes__btn, .dishes__pause { min-width: 44px; min-height: 44px; padding: 0 10px; }
+  .dishes__pause { font-size: .85rem; }
+}
 .dishes__dots { display: flex; gap: 8px; flex-wrap: wrap; }
 .dishes__dots button {
   width: 14px; height: 14px; padding: 0; border-radius: 50%;
@@ -660,6 +669,13 @@ main { margin-top: calc(-1 * (var(--nav-h) + var(--nav-gap))); }
   position: absolute; right: 10px; top: 10px; width: 40px; height: 40px;
   border: 2px solid var(--ink); border-radius: 50%; background: var(--white);
   font: 800 1.4rem/1 var(--body); color: var(--ink); cursor: pointer; box-shadow: 2px 2px 0 var(--ink);
+}
+@media (max-width: 600px) {
+  .popup { left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); width: auto; padding: 16px 16px 14px; border-radius: 22px; }
+  .popup h2 { font-size: 1.5rem; margin-top: 0; padding-right: 48px; }
+  .popup p { margin: 4px 0 10px; font-size: .95rem; }
+  .popup__badge { display: none; }
+  .popup .signup input, .popup .signup .btn { min-height: 48px; }
 }
 @keyframes popIn { from { transform: translateY(30px) scale(.94); opacity: 0; } }
 
