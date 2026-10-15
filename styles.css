@@ -709,38 +709,6 @@ main { margin-top: calc(-1 * (var(--nav-h) + var(--nav-gap))); }
 }
 @keyframes popIn { from { transform: translateY(30px) scale(.94); opacity: 0; } }
 
-/* ---------- WhatsApp ---------- */
-:root { --wa: #25D366; --wa-deep: #128C4A; }
-.wa-icon { width: 22px; height: 22px; flex: none; --wa-fg: var(--wa-deep); }
-.wa-btn { gap: 10px; background: linear-gradient(180deg, #3BE07A, var(--wa)); color: var(--ink); --wa-fg: var(--wa); }
-.wa-btn .wa-icon { color: var(--white); --wa-fg: var(--wa-deep); }
-.find__contact .wa-btn { justify-self: start; margin-top: 12px; }
-.catering__ctas { display: flex; flex-wrap: wrap; gap: 14px; }
-.catering .wa-btn { border-color: var(--ink-deep); box-shadow: 4px 4px 0 var(--wa-deep), 0 14px 28px -10px rgba(0,0,0,.6); }
-
-/* Small floating WhatsApp logo, bottom right on every page */
-.wa-fab {
-  position: fixed; z-index: 44;
-  right: calc(18px + env(safe-area-inset-right, 0px)); bottom: calc(18px + env(safe-area-inset-bottom, 0px));
-  display: grid; place-items: center;
-  width: 52px; height: 52px; padding: 0;
-  background: var(--wa); color: var(--white);
-  border-radius: 50%; text-decoration: none;
-  box-shadow: 0 6px 16px -4px rgba(18,26,51,.45), 0 2px 4px rgba(18,26,51,.2);
-  transition: transform .15s ease, box-shadow .15s ease;
-}
-.wa-fab .wa-icon { width: 28px; height: 28px; color: var(--white); --wa-fg: var(--wa); filter: none; }
-.wa-fab:hover { transform: scale(1.08); box-shadow: 0 10px 22px -6px rgba(18,26,51,.5), 0 2px 4px rgba(18,26,51,.2); }
-.wa-fab:active { transform: scale(.96); }
-.wa-fab:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
-/* Keep the sign-up card above the WhatsApp button */
-.popup { bottom: calc(84px + env(safe-area-inset-bottom, 0px)); }
-@media (max-width: 600px) {
-  .wa-fab { width: 48px; height: 48px; right: calc(14px + env(safe-area-inset-right, 0px)); bottom: calc(14px + env(safe-area-inset-bottom, 0px)); }
-  .wa-fab .wa-icon { width: 26px; height: 26px; }
-  .popup { bottom: calc(74px + env(safe-area-inset-bottom, 0px)); }
-}
-
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
