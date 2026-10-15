@@ -43,10 +43,29 @@ When she's happy with the Vercel version:
 
 ## Images
 
-Photos and the logo currently load from her Square site. To make the site fully independent, save them into an `images/` folder and update the `src` paths in `index.html`. Add more food photos the same way; the site will look even better with a photo per dish.
+Photos and the logo currently load from her Square accounts (the logo is the badge version Square serves on her booking page, because the original logo file is 12,500px wide and would slow the site down). To make the site fully independent, save them into an `images/` folder and update the `src` paths in `index.html`. Add more food photos the same way; the site will look even better with a photo per dish.
 
 ## Check before launch
 
-- Opening hours: "Fridays from 2pm" came from the old site.
+- Opening hours are Friday and Saturday, 2pm to 8pm (from the old site). To change them, edit the hours table in `index.html` and `OPEN_DAYS`, `OPEN` and `CLOSE` near the bottom of `script.js`.
 - Dish descriptions for the pies and the catering bullet points were written fresh. Have her check them.
 - Her Instagram link is `instagram.com/mac_amd_melt_` (with "amd"). That's what the old site uses; confirm it's correct.
+
+## Dish banner photos
+
+The rotating dish banner under "The food" has one slide per dish. Slides with a photo use crops of the catering photo. The others show the logo on a brand colour. To give a dish its own photo, add the image to `images/` and set it on that slide in `index.html`, for example:
+
+```html
+<article class="dish dish--photo" style="--pos: 50% 50%; --size: 100%">
+  <div class="dish__media" style="background-image: url(images/curry-goat-pie.jpg)" role="img" aria-label="Curry goat macaroni pie"></div>
+```
+
+## Meet Raya
+
+The "Meet Raya" section uses the photo of her at a catering event from the old homepage. The two short paragraphs about her were written fresh, so have her check them. The quote is the mission statement from the old site.
+
+## Newsletter
+
+There is a "Stay in the loop" section near the bottom and a sign-up card that slides in once per visitor. Until it's connected to a mailing list, signing up opens an email to macandmelt2024@outlook.com.
+
+To collect sign-ups properly, create a free form at formspree.io (or a Mailchimp embedded form), then paste its form URL into both `data-endpoint=""` attributes in `index.html` (search for `NEWSLETTER`).

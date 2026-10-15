@@ -114,44 +114,74 @@ a { color: inherit; }
 
 .link { font-weight: 700; text-decoration-thickness: 2px; text-underline-offset: 4px; }
 
-/* ---------- Nav ---------- */
+/* ---------- Nav: a floating, glossy sticker bar ---------- */
+:root { --nav-h: 72px; --nav-gap: 14px; }
 .nav {
-  position: sticky; top: 0; z-index: 40;
+  position: sticky; top: calc(var(--nav-gap) + env(safe-area-inset-top, 0px)); z-index: 40;
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
-  padding: 8px var(--gutter);
-  background: linear-gradient(180deg, var(--cheese-hi), var(--cheese));
-  border-bottom: 2.5px solid var(--ink);
-  box-shadow: 0 10px 24px -14px rgba(18,26,51,.5);
+  height: var(--nav-h);
+  margin: var(--nav-gap) var(--gutter) 0;
+  padding: 0 10px 0 14px;
+  border: 3px solid var(--ink); border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.55) 0%, rgba(255,255,255,0) 48%),
+    linear-gradient(180deg, var(--cheese-hi), var(--cheese) 60%, var(--cheese-deep));
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.7),
+    inset 0 -4px 0 rgba(158,104,0,.35),
+    0 6px 0 var(--ink),
+    0 22px 36px -12px rgba(18,26,51,.55);
 }
-.nav__brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-.nav__badge { width: 62px; height: 62px; flex: none; filter: drop-shadow(2px 3px 0 rgba(28,37,65,.55)); transition: transform .2s ease; }
-.nav__brand:hover .nav__badge { transform: rotate(-8deg) scale(1.05); }
-.nav__word { font-family: var(--display); font-size: 1.6rem; text-shadow: 2px 2px 0 var(--crust); }
-.nav__links { display: flex; align-items: center; gap: 28px; }
-.nav__links a:not(.btn) { font-weight: 700; text-decoration: none; }
-.nav__links a:not(.btn):hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 5px; }
+/* Grainy texture inside the bar */
+.nav::before { content: ""; position: absolute; inset: 0; border-radius: inherit; background: var(--grain); opacity: .12; mix-blend-mode: multiply; pointer-events: none; }
+.nav__brand { position: relative; display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.nav__badge {
+  width: 84px; height: 84px; flex: none; margin: 14px 0 -14px -6px;
+  transform: rotate(-8deg);
+  filter: drop-shadow(3px 4px 0 var(--ink)) drop-shadow(0 12px 14px rgba(18,26,51,.4));
+  transition: transform .25s cubic-bezier(.3,1.6,.5,1);
+}
+.nav__brand:hover .nav__badge { transform: rotate(4deg) scale(1.08); }
+.nav__word { font-family: var(--display); font-size: 1.65rem; text-shadow: 2px 2px 0 var(--crust), 4px 4px 0 rgba(28,37,65,.2); }
+.nav__links { position: relative; display: flex; align-items: center; gap: 6px; }
+.nav__links a:not(.btn) {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px;
+  font-weight: 800; text-decoration: none; border-radius: 999px; border: 2px solid transparent;
+  transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+}
+.nav__links a:not(.btn):hover {
+  background: var(--crust); border-color: var(--ink);
+  box-shadow: 3px 3px 0 var(--ink); transform: translate(-1px, -1px);
+}
+.nav__links .btn { margin-left: 8px; min-height: 50px; box-shadow: inset 0 1px 0 rgba(255,255,255,.25), 3px 3px 0 var(--cheese-deep), 0 10px 18px -8px rgba(18,26,51,.6); }
 .nav__toggle { display: none; }
 
+/* The hero slides up under the floating bar */
+main { margin-top: calc(-1 * (var(--nav-h) + var(--nav-gap))); }
+
 @media (max-width: 760px) {
-  .nav__badge { width: 50px; height: 50px; }
-  .nav__word { font-size: 1.35rem; }
+  :root { --nav-h: 62px; --nav-gap: 10px; }
+  .nav { margin-inline: 10px; padding: 0 8px 0 10px; }
+  .nav__badge { width: 64px; height: 64px; margin: 10px 0 -10px -4px; }
+  .nav__word { font-size: 1.3rem; }
   .nav__toggle {
     display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px;
-    border: 2.5px solid var(--ink); border-radius: var(--radius-sm);
+    border: 2.5px solid var(--ink); border-radius: 999px;
     background: var(--crust); font: 800 1rem var(--body); color: var(--ink);
     box-shadow: 3px 3px 0 var(--ink);
   }
   .nav__links {
-    position: absolute; left: 0; right: 0; top: 100%;
-    flex-direction: column; align-items: stretch; gap: 0;
-    background: var(--cheese); border-bottom: 2.5px solid var(--ink);
-    padding: 8px var(--gutter) 20px;
-    box-shadow: 0 20px 30px -16px rgba(18,26,51,.5);
+    position: absolute; left: 0; right: 0; top: calc(100% + 14px);
+    flex-direction: column; align-items: stretch; gap: 4px;
+    background: linear-gradient(180deg, var(--cheese-hi), var(--cheese));
+    border: 3px solid var(--ink); border-radius: 26px;
+    padding: 12px;
+    box-shadow: 0 6px 0 var(--ink), 0 24px 36px -12px rgba(18,26,51,.55);
     display: none;
   }
   .nav__links.is-open { display: flex; }
-  .nav__links a:not(.btn) { padding: 14px 0; border-bottom: 1.5px solid rgba(28,37,65,.2); }
-  .nav__links .btn { margin-top: 16px; }
+  .nav__links a:not(.btn) { justify-content: flex-start; }
+  .nav__links .btn { margin: 8px 0 0; }
 }
 
 /* ---------- Hero ---------- */
@@ -159,7 +189,7 @@ a { color: inherit; }
   position: relative; overflow: hidden; isolation: isolate;
   display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 5vw, 72px);
   align-items: center;
-  padding: clamp(44px, 7vw, 96px) var(--gutter) clamp(90px, 10vw, 140px);
+  padding: calc(var(--nav-h) + var(--nav-gap) + clamp(36px, 6vw, 80px)) var(--gutter) clamp(90px, 10vw, 140px);
   background:
     radial-gradient(120% 90% at 18% 20%, var(--cheese-hi) 0%, rgba(255,217,92,0) 55%),
     radial-gradient(90% 80% at 100% 100%, var(--cheese-deep) 0%, rgba(227,163,15,0) 60%),
@@ -196,17 +226,30 @@ a { color: inherit; }
 .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--bonnet); box-shadow: 0 0 0 4px rgba(217,65,42,.22); }
 
 /* The logo is the star: big, in front of the food photo */
-.hero__stage { position: relative; justify-self: start; width: min(100%, 600px); aspect-ratio: 1 / 1.02; }
-.hero__photo { position: absolute; margin: 0; right: 0; top: 0; width: 74%; }
-.hero__photo img {
-  width: 100%; aspect-ratio: 1 / 1; object-fit: cover;
-  border-radius: var(--radius-lg); border: 3px solid var(--ink);
-  box-shadow: var(--lift);
-  transform: rotate(4deg);
+/* The food photo melts into the yellow from the right */
+.hero__photo {
+  position: absolute; z-index: -1; margin: 0;
+  top: 0; right: 0; bottom: 0; width: 64%;
 }
+.hero__photo img {
+  width: 100%; height: 100%; object-fit: cover; object-position: 45% 55%;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.35) 18%, rgba(0,0,0,.85) 38%, #000 55%), linear-gradient(to bottom, #000 72%, transparent 100%);
+  -webkit-mask-composite: source-in;
+          mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.35) 18%, rgba(0,0,0,.85) 38%, #000 55%), linear-gradient(to bottom, #000 72%, transparent 100%);
+          mask-composite: intersect;
+}
+/* Warm the photo so it sits in the brand colours */
+.hero__photo::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(to right, var(--cheese) 0%, rgba(245,192,46,.35) 30%, rgba(245,192,46,0) 60%), radial-gradient(70% 60% at 70% 45%, rgba(0,0,0,0) 40%, rgba(227,163,15,.35) 100%);
+  mix-blend-mode: multiply; opacity: .55;
+}
+
+/* The logo is the star, floating in front of the photo */
+.hero__stage { position: relative; justify-self: center; width: min(100%, 520px); aspect-ratio: 1 / 1; }
 .hero__logo {
-  position: absolute; left: -2%; bottom: -4%;
-  width: 72%;
+  position: absolute; left: 6%; top: 8%;
+  width: 84%;
   transform: rotate(-7deg);
   filter: drop-shadow(6px 8px 0 rgba(28,37,65,.9)) drop-shadow(0 24px 30px rgba(18,26,51,.35));
   animation: bob 6s ease-in-out infinite;
@@ -216,7 +259,13 @@ a { color: inherit; }
 @media (max-width: 860px) {
   .hero { grid-template-columns: 1fr; }
   .hero__text { justify-self: stretch; max-width: none; }
-  .hero__stage { justify-self: center; width: min(100%, 460px); margin-top: 8px; }
+  .hero__stage { justify-self: center; width: min(78%, 380px); margin-top: 8px; }
+  .hero__photo { top: auto; width: 100%; height: 58%; }
+  .hero__photo img {
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,.6) 25%, #000 50%, #000 80%, transparent 100%);
+            mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,.6) 25%, #000 50%, #000 80%, transparent 100%);
+  }
+  .hero__photo::after { background: linear-gradient(to bottom, var(--cheese) 0%, rgba(245,192,46,0) 45%); }
   .hero__ghost { left: -40%; top: 30%; width: 640px; }
 }
 
@@ -297,38 +346,70 @@ a { color: inherit; }
 .menu .wrap { z-index: 1; }
 .menu__head h2 { font-size: clamp(2.8rem, 6.4vw, 4.8rem); text-shadow: 3px 3px 0 var(--cheese), 6px 6px 0 rgba(28,37,65,.12); }
 
-/* Photo band */
-.food-band { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(14px, 2.2vw, 26px); margin-top: 36px; }
-.food-band__item { margin: 0; position: relative; }
-.food-band__item:nth-child(1) { transform: rotate(-2deg); }
-.food-band__item:nth-child(2) { transform: rotate(1.5deg) translateY(10px); }
-.food-band__item:nth-child(3) { transform: rotate(-1deg); }
-.food-band__pic {
-  aspect-ratio: 4 / 5;
-  border-radius: var(--radius-lg);
-  border: 3px solid var(--ink);
-  box-shadow: var(--lift);
-  background: var(--cheese-deep) var(--spread) no-repeat;
-  background-size: 270% auto;
-  position: relative; overflow: hidden;
+/* Rotating dish banner */
+.dishes { margin-top: 36px; }
+.dishes__track {
+  display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+  scrollbar-width: none; border-radius: var(--radius-lg);
+  border: 3px solid var(--ink); box-shadow: var(--lift);
+  background: var(--ink);
 }
-/* Warm vignette for depth */
-.food-band__pic::after { content: ""; position: absolute; inset: 0; background: radial-gradient(120% 90% at 50% 30%, rgba(0,0,0,0) 55%, rgba(18,26,51,.45) 100%); }
-.food-band__item--mac .food-band__pic   { background-position: 2% 92%; }
-.food-band__item--jerk .food-band__pic  { background-position: 52% 18%; background-size: 240% auto; }
-.food-band__item--sides .food-band__pic { background-position: 96% 82%; }
-.food-band figcaption {
-  position: absolute; left: 14px; bottom: 14px; z-index: 1; white-space: nowrap;
-  background: var(--cheese); color: var(--ink);
-  border: 2px solid var(--ink); border-radius: var(--radius-sm);
-  padding: 5px 14px; font-weight: 800; font-size: .95rem;
+.dishes__track::-webkit-scrollbar { display: none; }
+.dish {
+  flex: 0 0 100%; scroll-snap-align: start; position: relative; isolation: isolate;
+  display: grid; grid-template-columns: 1fr 1.15fr; min-height: clamp(320px, 34vw, 430px);
+  color: var(--crust); background: var(--ink);
+}
+.dish__media { position: relative; overflow: hidden; order: 2; }
+.dish--photo .dish__media {
+  background: var(--cheese-deep) var(--img, var(--spread)) no-repeat;
+  background-position: var(--pos, 50% 50%); background-size: var(--size, cover);
+}
+/* Photo melts into the text panel */
+.dish--photo .dish__media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to right, var(--ink) 0%, rgba(28,37,65,.55) 22%, rgba(28,37,65,0) 50%); }
+/* Brand slides (dishes without a photo yet) */
+.dish--brand .dish__media { display: grid; place-items: center; background-image: var(--dots); background-size: 18px 18px; }
+.dish--lagoon { background: linear-gradient(135deg, var(--lagoon-hi), var(--lagoon-deep)); }
+.dish--ink { background: linear-gradient(135deg, #2A3558, var(--ink-deep)); }
+.dish--cheese { background: linear-gradient(135deg, var(--cheese-hi), var(--cheese-deep)); color: var(--ink); }
+.dish--ink .dish__media, .dish--lagoon .dish__media { background-image: radial-gradient(rgba(255,244,214,.12) 1.6px, transparent 1.8px); }
+.dish__badge { width: min(70%, 300px); transform: rotate(-9deg); filter: drop-shadow(6px 8px 0 rgba(18,26,51,.85)) drop-shadow(0 24px 30px rgba(0,0,0,.35)); }
+.dish__body { position: relative; z-index: 1; align-self: center; padding: clamp(24px, 4vw, 52px); min-width: 0; }
+.dish__kind {
+  display: inline-block; font-weight: 800; font-size: .9rem;
+  background: var(--cheese); color: var(--ink); border: 2px solid var(--ink);
+  border-radius: var(--radius-sm); padding: 3px 12px; box-shadow: 3px 3px 0 var(--ink);
+}
+.dish h3 { font-family: var(--display); font-weight: 400; font-size: clamp(2.2rem, 4.6vw, 3.8rem); line-height: 1; margin: 16px 0 12px; text-shadow: 3px 3px 0 rgba(18,26,51,.6); text-wrap: balance; }
+.dish--cheese h3 { text-shadow: 3px 3px 0 var(--crust); }
+.dish__desc { max-width: 38ch; font-size: 1.08rem; opacity: .92; }
+.dish__price { margin-top: 18px; font-family: var(--display); font-size: clamp(1.6rem, 2.6vw, 2.2rem); color: var(--cheese); text-shadow: 2px 2px 0 var(--ink-deep); }
+.dish--cheese .dish__price { color: var(--bonnet); text-shadow: 2px 2px 0 var(--crust); }
+
+.dishes__controls { display: flex; align-items: center; gap: 12px; margin-top: 22px; flex-wrap: wrap; }
+.dishes__btn, .dishes__pause {
+  min-width: 48px; min-height: 48px; padding: 0 14px;
+  border: 2.5px solid var(--ink); border-radius: var(--radius-sm);
+  background: var(--white); color: var(--ink); font: 800 1.1rem var(--body); cursor: pointer;
   box-shadow: 3px 3px 0 var(--ink);
 }
+.dishes__btn:hover, .dishes__pause:hover { background: var(--cheese-hi); }
+.dishes__btn:active, .dishes__pause:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+.dishes__pause { font-size: .95rem; margin-left: auto; }
+.dishes__dots { display: flex; gap: 8px; flex-wrap: wrap; }
+.dishes__dots button {
+  width: 14px; height: 14px; padding: 0; border-radius: 50%;
+  border: 2px solid var(--ink); background: var(--crust); cursor: pointer;
+  transition: width .2s ease, background .2s ease;
+}
+.dishes__dots button[aria-current="true"] { width: 34px; border-radius: 99px; background: var(--ink); }
+
 @media (max-width: 760px) {
-  .food-band { grid-template-columns: 1fr 1fr; }
-  .food-band__item--mac { grid-column: 1 / -1; }
-  .food-band__item--mac .food-band__pic { aspect-ratio: 16 / 10; background-size: 170% auto; }
-  .food-band figcaption { left: 10px; bottom: 10px; font-size: .8rem; padding: 3px 10px; }
+  .dish { grid-template-columns: 1fr; grid-template-rows: 220px auto; min-height: 0; }
+  .dish__media { order: 0; }
+  .dish--photo .dish__media::after { background: linear-gradient(to top, var(--ink) 0%, rgba(28,37,65,0) 55%); }
+  .dish__body { padding-top: 6px; }
+  .dish__badge { width: 170px; }
 }
 
 .tabs { display: flex; gap: 10px; margin: 44px 0 28px; overflow-x: auto; scrollbar-width: none; padding: 4px 8px 12px 2px; }
@@ -419,8 +500,8 @@ a { color: inherit; }
 .reviews { position: relative; overflow: hidden; isolation: isolate; background: var(--cheese); padding: clamp(72px, 9vw, 120px) 0; border-bottom: 3px solid var(--ink); }
 .reviews::before {
   content: ""; position: absolute; inset: 0; z-index: -1;
-  background: var(--spread) center / cover no-repeat;
-  opacity: .22; mix-blend-mode: multiply; filter: grayscale(.2) blur(1px);
+  background: url("https://87708882764c4ad6c76a.cdn6.editmysite.com/uploads/b/87708882764c4ad6c76ace49afadb29c00c05c717fd761362091bd6ce9710c5d/IMG_2454_1772237172.jpeg?width=1600&optimize=medium") center 40% / cover no-repeat;
+  opacity: .24; mix-blend-mode: multiply; filter: grayscale(.2) blur(1px);
 }
 .reviews::after {
   content: ""; position: absolute; inset: 0; z-index: -1;
@@ -483,6 +564,124 @@ a { color: inherit; }
 .footer__word { font-family: var(--display); font-size: clamp(3rem, 11vw, 8.5rem); line-height: .9; color: var(--cheese); text-shadow: 4px 4px 0 var(--ink), 8px 8px 0 rgba(0,0,0,.25); }
 .footer p:not(.footer__word) { opacity: .9; font-size: .95rem; }
 
+/* ---------- How: photo beside the heading ---------- */
+.how__head { display: grid; grid-template-columns: 1fr auto; gap: clamp(24px, 4vw, 56px); align-items: center; }
+.how__head > * { min-width: 0; }
+.how__photo { margin: 0; width: clamp(180px, 22vw, 280px); transform: rotate(4deg); }
+.how__photo img {
+  width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 30%;
+  border-radius: 22px; border: 3px solid var(--ink);
+  box-shadow: 8px 8px 0 var(--cheese), 8px 8px 0 3px var(--ink), 0 30px 50px -16px rgba(10,20,40,.7);
+}
+@media (max-width: 760px) {
+  .how__head { grid-template-columns: 1fr; }
+  .how__photo { width: min(70%, 260px); justify-self: center; }
+}
+
+/* ---------- Founder ---------- */
+.founder {
+  position: relative; overflow: hidden; isolation: isolate;
+  padding: clamp(72px, 9vw, 120px) 0;
+  background:
+    radial-gradient(60% 70% at 0% 100%, var(--crust-deep) 0%, rgba(246,227,178,0) 70%),
+    radial-gradient(50% 50% at 100% 0%, rgba(245,192,46,.35) 0%, rgba(245,192,46,0) 70%),
+    var(--crust);
+}
+.founder::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--dots); background-size: 20px 20px; -webkit-mask-image: linear-gradient(to left, #000, transparent 60%); mask-image: linear-gradient(to left, #000, transparent 60%); }
+.founder__grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(40px, 6vw, 96px); align-items: center; }
+.founder__grid > * { min-width: 0; }
+.founder__photo { position: relative; margin: 0 24px 0 0; }
+.founder__photo > img {
+  width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 62% 35%;
+  border-radius: var(--radius-lg); border: 3px solid var(--ink);
+  transform: rotate(-2.5deg);
+  box-shadow: 10px 10px 0 var(--lagoon), 10px 10px 0 3px var(--ink), 0 40px 60px -20px rgba(18,26,51,.5);
+}
+.founder__sticker { position: absolute; right: -28px; top: -34px; width: 34%; transform: rotate(10deg); filter: drop-shadow(4px 6px 0 var(--ink)); }
+.founder__photo figcaption {
+  position: absolute; left: 18px; bottom: 18px;
+  background: var(--cheese); border: 2px solid var(--ink); border-radius: 999px;
+  padding: 5px 14px; font-weight: 800; font-size: .95rem; box-shadow: 3px 3px 0 var(--ink);
+}
+.founder h2 { font-size: clamp(2.8rem, 6.4vw, 4.8rem); text-shadow: 3px 3px 0 var(--cheese), 6px 6px 0 rgba(28,37,65,.12); }
+.founder__lede { margin-top: 18px; font-size: clamp(1.2rem, 1.8vw, 1.45rem); font-weight: 600; max-width: 34ch; }
+.founder__text > p:not(.founder__lede) { margin-top: 14px; max-width: 48ch; font-size: 1.1rem; }
+.founder__quote {
+  margin: 30px 0 0; padding: 24px 26px;
+  background: var(--ink); color: var(--crust);
+  border-radius: 24px; border: 3px solid var(--ink);
+  box-shadow: 6px 6px 0 var(--cheese), 0 24px 40px -16px rgba(18,26,51,.5);
+  position: relative;
+}
+.founder__quote::before { content: "\201C"; position: absolute; top: -34px; left: 18px; font-family: var(--display); font-size: 5rem; line-height: 1; color: var(--bonnet); text-shadow: 3px 3px 0 var(--ink); }
+.founder__quote p { font-size: 1.1rem; }
+.founder__quote cite { display: block; margin-top: 12px; font-style: normal; font-weight: 800; color: var(--cheese); }
+@media (max-width: 860px) {
+  .founder__grid { grid-template-columns: 1fr; }
+  .founder__photo { max-width: 440px; margin: 20px 22px 0 0; }
+  .founder__sticker { right: -14px; top: -30px; }
+}
+
+/* ---------- Hours ---------- */
+.open-pill { display: inline-flex; align-items: center; gap: 8px; margin: 2px 0 12px; font-weight: 800; background: var(--white); border: 2px solid var(--ink); border-radius: 999px; padding: 5px 14px; box-shadow: 3px 3px 0 var(--ink); }
+.is-open .dot, .dot.is-open { background: #2E9E5B; box-shadow: 0 0 0 4px rgba(46,158,91,.22); }
+.hours { border-collapse: collapse; width: 100%; max-width: 300px; font-variant-numeric: tabular-nums; }
+.hours th, .hours td { text-align: left; padding: 6px 10px; border-bottom: 1.5px dashed rgba(28,37,65,.25); }
+.hours th { font-weight: 600; }
+.hours td { font-weight: 700; }
+.hours tr.is-today { background: var(--cheese); }
+.hours tr.is-today th, .hours tr.is-today td { font-weight: 800; border-bottom-color: transparent; }
+.hours tr.is-today th { border-radius: 10px 0 0 10px; }
+.hours tr.is-today td { border-radius: 0 10px 10px 0; }
+.hours + .fine { margin-bottom: 22px; }
+
+/* ---------- Newsletter ---------- */
+.news {
+  position: relative; overflow: hidden; isolation: isolate;
+  padding: clamp(56px, 7vw, 88px) 0;
+  background: linear-gradient(135deg, var(--cheese-hi), var(--cheese) 55%, var(--cheese-deep));
+  border-top: 3px solid var(--ink);
+}
+.news::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--dots); background-size: 18px 18px; }
+.news__inner { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(24px, 4vw, 56px); align-items: center; }
+.news__inner > * { min-width: 0; }
+.news h2 { font-size: clamp(2.4rem, 5vw, 3.8rem); text-shadow: 3px 3px 0 var(--crust); }
+.news p { margin-top: 10px; font-size: 1.15rem; max-width: 40ch; }
+.signup { display: flex; flex-wrap: wrap; gap: 12px; }
+.signup input {
+  flex: 1 1 220px; min-width: 0; min-height: 54px; padding: 0 20px;
+  font: 600 1.05rem var(--body); color: var(--ink);
+  background: var(--white); border: 3px solid var(--ink); border-radius: 999px;
+  box-shadow: inset 0 3px 0 rgba(28,37,65,.08), 4px 4px 0 var(--ink);
+}
+.signup input:focus-visible { outline: 3px solid var(--lagoon); outline-offset: 2px; }
+.signup .btn { min-height: 54px; }
+.signup__msg { flex-basis: 100%; margin: 0; font-weight: 700; min-height: 1.4em; }
+@media (max-width: 760px) { .news__inner { grid-template-columns: 1fr; } }
+
+/* Slide-in sign-up card */
+.popup {
+  position: fixed; z-index: 45;
+  right: calc(16px + env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  width: min(360px, calc(100vw - 32px));
+  padding: 26px 22px 22px; color: var(--ink);
+  background: linear-gradient(180deg, #FFFBF0, var(--crust));
+  border: 3px solid var(--ink); border-radius: 26px;
+  box-shadow: 8px 8px 0 var(--cheese), 8px 8px 0 3px var(--ink), 0 30px 60px -16px rgba(18,26,51,.6);
+  animation: popIn .45s cubic-bezier(.3,1.4,.5,1) both;
+}
+.popup h2 { font-size: 2rem; margin-top: 22px; }
+.popup p { margin: 6px 0 14px; }
+.popup .signup input { flex-basis: 100%; }
+.popup .signup .btn { width: 100%; }
+.popup__badge { position: absolute; left: 18px; top: -44px; width: 82px; transform: rotate(10deg); filter: drop-shadow(3px 4px 0 var(--ink)); }
+.popup__close {
+  position: absolute; right: 10px; top: 10px; width: 40px; height: 40px;
+  border: 2px solid var(--ink); border-radius: 50%; background: var(--white);
+  font: 800 1.4rem/1 var(--body); color: var(--ink); cursor: pointer; box-shadow: 2px 2px 0 var(--ink);
+}
+@keyframes popIn { from { transform: translateY(30px) scale(.94); opacity: 0; } }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -525,6 +724,7 @@ a { color: inherit; }
     <nav id="nav-links" class="nav__links" aria-label="Main">
       <a href="#menu">Food</a>
       <a href="#catering">Catering</a>
+      <a href="#raya">About</a>
       <a href="#find-us">Find us</a>
       <!-- SQUARE: pre-order link (Square Appointments) -->
       <a class="btn btn--ink" href="https://book.squareup.com/appointments/wcd63i6rsgu1ch/location/LYRM016FMPTPK/services">Pre-order</a>
@@ -535,6 +735,9 @@ a { color: inherit; }
     <!-- HERO -->
     <section class="hero">
       <span class="badge hero__ghost" aria-hidden="true"><img src="https://seller-brand-assets-f.squarecdn.com/MLRKM3H93083R/f348321a9f1e37078d53d77e28effff7.jpeg?height=1200" alt="" width="800" height="800"></span>
+      <figure class="hero__photo" aria-hidden="false">
+        <img src="https://87708882764c4ad6c76a.cdn6.editmysite.com/uploads/b/87708882764c4ad6c76ace49afadb29c00c05c717fd761362091bd6ce9710c5d/2026-03-19_19-45-37_1773949550.jpg?width=1400&optimize=medium" alt="A Mac and Melt spread: baked macaroni cheese, jerk chicken, roasted sweet potato, steamed veg and coleslaw" width="1200" height="1134">
+      </figure>
       <div class="hero__text">
         <h1>Caribbean flavour, baked into proper mac&nbsp;&amp;&nbsp;cheese.</h1>
         <p class="hero__lede">Jerk chicken, curry goat and peppered steak folded into a three-cheese macaroni. Pre-order for collection in Sale, or have us cater your next event.</p>
@@ -543,12 +746,9 @@ a { color: inherit; }
           <a class="btn btn--ink" href="https://book.squareup.com/appointments/wcd63i6rsgu1ch/location/LYRM016FMPTPK/services">Pre-order now</a>
           <a class="btn btn--line" href="#catering">Book catering</a>
         </div>
-        <p class="hero__open"><span class="dot" aria-hidden="true"></span>Opens Friday from 2pm, collection in Sale M33</p>
+        <p class="hero__open"><span class="dot" aria-hidden="true"></span><span data-open-status>Open Friday and Saturday, 2pm to 8pm</span></p>
       </div>
       <div class="hero__stage">
-        <figure class="hero__photo">
-          <img src="https://87708882764c4ad6c76a.cdn6.editmysite.com/uploads/b/87708882764c4ad6c76ace49afadb29c00c05c717fd761362091bd6ce9710c5d/2026-03-19_19-45-37_1773949550.jpg?width=1400&optimize=medium" alt="A Mac and Melt spread: baked macaroni cheese, jerk chicken, roasted sweet potato, steamed veg and coleslaw" width="1200" height="1134">
-        </figure>
         <span class="badge hero__logo"><img src="https://seller-brand-assets-f.squarecdn.com/MLRKM3H93083R/f348321a9f1e37078d53d77e28effff7.jpeg?height=900" alt="Mac and Melt logo: a smiling bowl of macaroni cheese" width="800" height="800"></span>
       </div>
     </section>
@@ -560,8 +760,15 @@ a { color: inherit; }
       </svg>
       <span class="badge watermark watermark--how" aria-hidden="true"><img src="https://seller-brand-assets-f.squarecdn.com/MLRKM3H93083R/f348321a9f1e37078d53d77e28effff7.jpeg?height=1200" alt="" width="800" height="800" loading="lazy"></span>
       <div class="wrap">
-        <h2 id="how-title">How ordering works</h2>
-        <p class="section-lede">Everything is made to order, so we cook what's been ordered and little goes to waste.</p>
+        <div class="how__head">
+          <div>
+            <h2 id="how-title">How ordering works</h2>
+            <p class="section-lede">Everything is made to order, so we cook what's been ordered and very little goes to waste. It's our way of doing our bit for the environment.</p>
+          </div>
+          <figure class="how__photo">
+            <img src="https://87708882764c4ad6c76a.cdn6.editmysite.com/uploads/b/87708882764c4ad6c76ace49afadb29c00c05c717fd761362091bd6ce9710c5d/83E2B3F9-2FCB-4510-92AA-47791CA54691_1772235367.jpeg?width=900&amp;optimize=medium" alt="Mac and Melt bowls packed in branded takeaway boxes, ready for collection" loading="lazy" width="1206" height="2144">
+          </figure>
+        </div>
         <ol class="steps">
           <li>
             <h3>Pre-order online</h3>
@@ -592,21 +799,99 @@ a { color: inherit; }
           <p class="section-lede">Prices for collection. Tray sizes and bowl add-ons are on the order page.</p>
         </div>
 
-        <!-- Photo band: three crops of the same spread. Swap in individual dish photos when she has them. -->
-        <div class="food-band">
-          <figure class="food-band__item food-band__item--mac">
-            <div class="food-band__pic" role="img" aria-label="Baked macaroni cheese with a golden top"></div>
-            <figcaption>Baked mac</figcaption>
-          </figure>
-          <figure class="food-band__item food-band__item--jerk">
-            <div class="food-band__pic" role="img" aria-label="Jerk chicken legs in a serving dish"></div>
-            <figcaption>Jerk chicken</figcaption>
-          </figure>
-          <figure class="food-band__item food-band__item--sides">
-            <div class="food-band__pic" role="img" aria-label="Roasted sweet potato in a black bowl"></div>
-            <figcaption>Sweet potato</figcaption>
-          </figure>
-        </div>
+        <!-- Rotating dish banner. Photo slides use crops of the catering photo; swap in a real photo per dish by
+             replacing the dish__media background (see README). -->
+        <section class="dishes" aria-roledescription="carousel" aria-label="Our dishes">
+          <div class="dishes__track" tabindex="0">
+          <article class="dish dish--photo" style="--pos: 2% 92%; --size: 270%" aria-roledescription="slide" aria-label="1 of 9: The Classic">
+            <div class="dish__media" role="img" aria-label="Baked macaroni cheese with a golden top"></div>
+            <div class="dish__body">
+              <p class="dish__kind">Mac tray</p>
+              <h3>The Classic</h3>
+              <p class="dish__desc">Three-cheese sauce with a soft, gooey centre. The one that started it all.</p>
+              <p class="dish__price">from £10</p>
+            </div>
+          </article>
+          <article class="dish dish--photo" style="--pos: 52% 18%; --size: 240%" aria-roledescription="slide" aria-label="2 of 9: Jerk chicken pie">
+            <div class="dish__media" role="img" aria-label="Jerk chicken legs in a serving dish"></div>
+            <div class="dish__body">
+              <p class="dish__kind">Macaroni pie</p>
+              <h3>Jerk chicken pie</h3>
+              <p class="dish__desc">Smoky jerk chicken baked into three-cheese mac.</p>
+              <p class="dish__price">£12</p>
+            </div>
+          </article>
+          <article class="dish dish--photo" style="--img: url(https://87708882764c4ad6c76a.cdn6.editmysite.com/uploads/b/87708882764c4ad6c76ace49afadb29c00c05c717fd761362091bd6ce9710c5d/BF789C77-D285-4E29-8012-70BFB80E0679_1772235610.jpeg?width=1200&optimize=medium); --pos: 50% 62%" aria-roledescription="slide" aria-label="3 of 9: Curry goat pie">
+            <div class="dish__media" role="img" aria-label="A curry goat macaroni pie with a forkful lifted out"></div>
+            <div class="dish__body">
+              <p class="dish__kind">Macaroni pie</p>
+              <h3>Curry goat pie</h3>
+              <p class="dish__desc">Slow-cooked curry goat under a golden macaroni crust. The customer favourite.</p>
+              <p class="dish__price">£12</p>
+            </div>
+          </article>
+          <article class="dish dish--photo" style="--img: url(https://87708882764c4ad6c76a.cdn6.editmysite.com/uploads/b/87708882764c4ad6c76ace49afadb29c00c05c717fd761362091bd6ce9710c5d/IMG_2454_1772237172.jpeg?width=1200&optimize=medium); --pos: 50% 50%" aria-roledescription="slide" aria-label="4 of 9: Build your bowl">
+            <div class="dish__media" role="img" aria-label="A bowl of baked mac with jerk chicken, coleslaw and mango salsa"></div>
+            <div class="dish__body">
+              <p class="dish__kind">Bowl</p>
+              <h3>Build your bowl</h3>
+              <p class="dish__desc">Classic mac with jerk chicken, curried goat, salmon, steak or chickpea curry, plus two sides.</p>
+              <p class="dish__price">£14, or £17 doubled</p>
+            </div>
+          </article>
+          <article class="dish dish--brand dish--ink" aria-roledescription="slide" aria-label="5 of 9: Jerk honey salmon">
+            <div class="dish__media" aria-hidden="true"><span class="badge dish__badge"><img src="https://seller-brand-assets-f.squarecdn.com/MLRKM3H93083R/f348321a9f1e37078d53d77e28effff7.jpeg?height=600" alt="" width="800" height="800" loading="lazy"></span></div>
+            <div class="dish__body">
+              <p class="dish__kind">Bowl</p>
+              <h3>Jerk honey salmon</h3>
+              <p class="dish__desc">New on the menu: sticky, sweet and smoky salmon on our classic mac.</p>
+              <p class="dish__price">£14</p>
+            </div>
+          </article>
+          <article class="dish dish--brand dish--cheese" aria-roledescription="slide" aria-label="6 of 9: Peppered steak pie">
+            <div class="dish__media" aria-hidden="true"><span class="badge dish__badge"><img src="https://seller-brand-assets-f.squarecdn.com/MLRKM3H93083R/f348321a9f1e37078d53d77e28effff7.jpeg?height=600" alt="" width="800" height="800" loading="lazy"></span></div>
+            <div class="dish__body">
+              <p class="dish__kind">Macaroni pie</p>
+              <h3>Peppered steak pie</h3>
+              <p class="dish__desc">Peppered steak with a crispy baked top. Add steak gravy for £1.50.</p>
+              <p class="dish__price">£12</p>
+            </div>
+          </article>
+          <article class="dish dish--photo" style="--img: url(https://87708882764c4ad6c76a.cdn6.editmysite.com/uploads/b/87708882764c4ad6c76ace49afadb29c00c05c717fd761362091bd6ce9710c5d/IMG_1333_1772235612.jpeg?width=1600&optimize=medium); --pos: 92% 60%; --size: 190%" aria-roledescription="slide" aria-label="7 of 9: Truffle Lover">
+            <div class="dish__media" role="img" aria-label="A tray of truffle and mushroom mac and cheese"></div>
+            <div class="dish__body">
+              <p class="dish__kind">Mac tray</p>
+              <h3>Truffle Lover</h3>
+              <p class="dish__desc">Truffle and mushroom stirred through the classic.</p>
+              <p class="dish__price">sizes vary</p>
+            </div>
+          </article>
+          <article class="dish dish--photo" style="--img: url(https://87708882764c4ad6c76a.cdn6.editmysite.com/uploads/b/87708882764c4ad6c76ace49afadb29c00c05c717fd761362091bd6ce9710c5d/IMG_1333_1772235612.jpeg?width=1600&optimize=medium); --pos: 12% 60%; --size: 190%" aria-roledescription="slide" aria-label="8 of 9: The Veggie">
+            <div class="dish__media" role="img" aria-label="A tray of mac and cheese topped with peppers and red onion"></div>
+            <div class="dish__body">
+              <p class="dish__kind">Mac tray</p>
+              <h3>The Veggie</h3>
+              <p class="dish__desc">The classic with red onions and peppers baked on top. Tastes like pizza.</p>
+              <p class="dish__price">sizes vary</p>
+            </div>
+          </article>
+          <article class="dish dish--photo" style="--pos: 96% 82%; --size: 270%" aria-roledescription="slide" aria-label="9 of 9: Plantain, sweet potato & more">
+            <div class="dish__media" role="img" aria-label="Roasted sweet potato in a black bowl"></div>
+            <div class="dish__body">
+              <p class="dish__kind">Sides</p>
+              <h3>Plantain, sweet potato & more</h3>
+              <p class="dish__desc">Rice and peas, roasted sweet potato, plantain, mango salsa, slaw.</p>
+              <p class="dish__price">from £2</p>
+            </div>
+          </article>
+          </div>
+          <div class="dishes__controls">
+            <button class="dishes__btn" data-dir="-1" aria-label="Previous dish">&larr;</button>
+            <div class="dishes__dots" role="group" aria-label="Choose a dish"></div>
+            <button class="dishes__btn" data-dir="1" aria-label="Next dish">&rarr;</button>
+            <button class="dishes__pause" aria-pressed="false">Pause</button>
+          </div>
+        </section>
 
         <div class="tabs" role="tablist" aria-label="Menu sections">
           <button role="tab" id="tab-bowls" aria-controls="panel-bowls" aria-selected="true">Bowls</button>
@@ -708,17 +993,37 @@ a { color: inherit; }
       <div class="wrap catering__grid">
         <div class="catering__photo">
           <span class="badge catering__sticker" aria-hidden="true"><img src="https://seller-brand-assets-f.squarecdn.com/MLRKM3H93083R/f348321a9f1e37078d53d77e28effff7.jpeg?height=400" alt="" width="800" height="800" loading="lazy"></span>
-          <img src="https://87708882764c4ad6c76a.cdn6.editmysite.com/uploads/b/87708882764c4ad6c76ace49afadb29c00c05c717fd761362091bd6ce9710c5d/2026-03-19_19-45-37_1773949550.jpg?width=1000&optimize=medium" alt="A catering table laid with macaroni cheese, jerk chicken and sides" loading="lazy" width="1000" height="945">
+          <img src="https://87708882764c4ad6c76a.cdn6.editmysite.com/uploads/b/87708882764c4ad6c76ace49afadb29c00c05c717fd761362091bd6ce9710c5d/IMG_1333_1772235612.jpeg?width=1200&amp;optimize=medium" alt="Two full trays of mac and cheese, one topped with peppers and one with mushrooms" loading="lazy" width="1000" height="945">
         </div>
         <div class="catering__text">
           <h2 id="catering-title">Catering that people talk about after</h2>
-          <p>Birthdays, christenings, office lunches and weddings. We bring the trays, the pies and the full spread, laid out so it looks as good as it tastes.</p>
+          <p>Superior service and personal attention for birthdays, christenings, office lunches and weddings. We bring the trays, the pies and the full spread, laid out so it looks as good as it tastes.</p>
           <ul class="ticks">
             <li>Served by our team, or set up for self-service</li>
             <li>Menus built around your numbers and budget</li>
             <li>Vegetarian and kids' options on request</li>
           </ul>
           <a class="btn btn--cheese" href="https://form.jotform.com/261531597663364">Enquire about your event</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOUNDER -->
+    <section class="founder" id="raya" aria-labelledby="founder-title">
+      <div class="wrap founder__grid">
+        <figure class="founder__photo">
+          <img src="https://87708882764c4ad6c76a.cdn6.editmysite.com/uploads/b/87708882764c4ad6c76ace49afadb29c00c05c717fd761362091bd6ce9710c5d/2ff21858-338a-48fe-b301-c1e755fb6b09_1772402531.jpeg?width=1000&amp;optimize=medium" alt="Raya, founder of Mac and Melt, serving at a catering event" loading="lazy" width="1500" height="2000">
+          <span class="badge founder__sticker" aria-hidden="true"><img src="https://seller-brand-assets-f.squarecdn.com/MLRKM3H93083R/f348321a9f1e37078d53d77e28effff7.jpeg?height=400" alt="" width="800" height="800" loading="lazy"></span>
+          <figcaption>Raya, at one of our events</figcaption>
+        </figure>
+        <div class="founder__text">
+          <h2 id="founder-title">Meet Raya</h2>
+          <p class="founder__lede">Raya started Mac and Melt in Sale in 2024 with one idea: take proper baked macaroni cheese and bring Caribbean flavour to it.</p>
+          <p>From weekend pre-orders to full event spreads, she's behind every tray, pie and bowl, and you'll often find her serving at events herself.</p>
+          <blockquote class="founder__quote">
+            <p>Our mission is to redefine macaroni cheese through refined and innovative Caribbean-inspired flavours, quality ingredients, and eye-catching catering that turns every event into an experience.</p>
+            <cite>Raya, founder</cite>
+          </blockquote>
         </div>
       </div>
     </section>
@@ -751,8 +1056,10 @@ a { color: inherit; }
           <a class="link" href="https://www.google.com/maps/dir/?api=1&amp;destination=19+Goodwood+Avenue+Sale+M33+4QN">Get directions</a>
         </div>
         <div>
-          <h3>Opening</h3>
-          <p>Fridays from 2pm, pre-order only.</p>
+          <h3>Collection hours</h3>
+          <p class="open-pill"><span class="dot" aria-hidden="true"></span><span data-open-status>Open Friday and Saturday</span></p>
+          <table class="hours"><tr data-day="1"><th scope="row">Monday</th><td>Closed</td></tr><tr data-day="2"><th scope="row">Tuesday</th><td>Closed</td></tr><tr data-day="3"><th scope="row">Wednesday</th><td>Closed</td></tr><tr data-day="4"><th scope="row">Thursday</th><td>Closed</td></tr><tr data-day="5"><th scope="row">Friday</th><td>2pm to 8pm</td></tr><tr data-day="6"><th scope="row">Saturday</th><td>2pm to 8pm</td></tr><tr data-day="0"><th scope="row">Sunday</th><td>Closed</td></tr></table>
+          <p class="fine">Collection is by pre-order, so order ahead and pick a slot.</p>
           <h3>Get in touch</h3>
           <p><a class="link" href="tel:+447546009465">07546 009465</a><br>
              <a class="link" href="mailto:macandmelt2024@outlook.com">macandmelt2024@outlook.com</a></p>
@@ -767,7 +1074,36 @@ a { color: inherit; }
         </div>
       </div>
     </section>
+    <!-- NEWSLETTER -->
+    <section class="news" id="newsletter" aria-labelledby="news-title">
+      <div class="wrap news__inner">
+        <div>
+          <h2 id="news-title">Stay in the loop</h2>
+          <p>New dishes, open days and event dates, straight to your inbox. No spam, just mac.</p>
+        </div>
+        <!-- NEWSLETTER: set data-endpoint to a Formspree/Mailchimp form URL (see README) -->
+        <form class="signup" data-endpoint="" novalidate>
+          <label class="visually-hidden" for="news-email">Email address</label>
+          <input id="news-email" name="email" type="email" autocomplete="email" placeholder="Your email address" required>
+          <button class="btn btn--ink" type="submit">Sign me up</button>
+          <p class="signup__msg" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
   </main>
+
+  <aside class="popup" aria-labelledby="popup-title" hidden>
+    <button class="popup__close" type="button" aria-label="Close">&times;</button>
+    <span class="badge popup__badge" aria-hidden="true"><img src="https://seller-brand-assets-f.squarecdn.com/MLRKM3H93083R/f348321a9f1e37078d53d77e28effff7.jpeg?height=300" alt="" width="800" height="800" loading="lazy"></span>
+    <h2 id="popup-title">Stay in the loop</h2>
+    <p>Be first to hear about new dishes and open days.</p>
+    <form class="signup signup--popup" data-endpoint="" novalidate>
+      <label class="visually-hidden" for="popup-email">Email address</label>
+      <input id="popup-email" name="email" type="email" autocomplete="email" placeholder="Your email address" required>
+      <button class="btn btn--ink" type="submit">Sign me up</button>
+      <p class="signup__msg" role="status" aria-live="polite"></p>
+    </form>
+  </aside>
 
   <footer class="footer">
     <div class="wrap footer__inner">
@@ -810,6 +1146,145 @@ tabs.forEach((tab, i) => {
     if (next) { e.preventDefault(); select(next); next.focus(); }
   });
 });
+
+// Rotating dish banner: auto-advances, swipeable, pauses on hover/focus, no autoplay for reduced motion
+(() => {
+  const root = document.querySelector('.dishes');
+  if (!root) return;
+  const track = root.querySelector('.dishes__track');
+  const slides = [...track.children];
+  const dotsWrap = root.querySelector('.dishes__dots');
+  const pauseBtn = root.querySelector('.dishes__pause');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let index = 0, timer = null, paused = reduce, hovering = false;
+
+  const dots = slides.map((s, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', 'Show ' + s.querySelector('h3').textContent);
+    b.addEventListener('click', () => { go(i); restart(); });
+    dotsWrap.appendChild(b);
+    return b;
+  });
+
+  function mark(i) {
+    index = i;
+    dots.forEach((d, n) => d.setAttribute('aria-current', String(n === i)));
+  }
+  function go(i) {
+    const n = (i + slides.length) % slides.length;
+    track.scrollTo({ left: slides[n].offsetLeft - track.offsetLeft, behavior: reduce ? 'auto' : 'smooth' });
+    mark(n);
+  }
+  function restart() {
+    clearInterval(timer);
+    if (!paused && !hovering) timer = setInterval(() => go(index + 1), 4500);
+  }
+
+  root.querySelectorAll('.dishes__btn').forEach((b) =>
+    b.addEventListener('click', () => { go(index + Number(b.dataset.dir)); restart(); }));
+
+  pauseBtn.addEventListener('click', () => {
+    paused = !paused;
+    pauseBtn.setAttribute('aria-pressed', String(paused));
+    pauseBtn.textContent = paused ? 'Play' : 'Pause';
+    restart();
+  });
+  if (reduce) { pauseBtn.textContent = 'Play'; pauseBtn.setAttribute('aria-pressed', 'true'); }
+
+  // Keep dots in sync when someone swipes
+  let t;
+  track.addEventListener('scroll', () => {
+    clearTimeout(t);
+    t = setTimeout(() => mark(Math.round(track.scrollLeft / track.clientWidth)), 80);
+  });
+  track.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') { e.preventDefault(); go(index + 1); restart(); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); go(index - 1); restart(); }
+  });
+  ['mouseenter', 'focusin'].forEach((ev) => root.addEventListener(ev, () => { hovering = true; restart(); }));
+  ['mouseleave', 'focusout'].forEach((ev) => root.addEventListener(ev, () => { hovering = false; restart(); }));
+  document.addEventListener('visibilitychange', () => { hovering = document.hidden; restart(); });
+
+  mark(0);
+  restart();
+})();
+
+// Opening hours: Friday and Saturday, 2pm to 8pm (UK time)
+(() => {
+  const OPEN_DAYS = [5, 6], OPEN = 14, CLOSE = 20;
+  const names = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  let day, hour;
+  try {
+    const parts = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', weekday: 'long', hour: 'numeric', hourCycle: 'h23' }).formatToParts(new Date());
+    day = names.indexOf(parts.find((p) => p.type === 'weekday').value);
+    hour = Number(parts.find((p) => p.type === 'hour').value);
+  } catch (e) { const d = new Date(); day = d.getDay(); hour = d.getHours(); }
+
+  const openNow = OPEN_DAYS.includes(day) && hour >= OPEN && hour < CLOSE;
+  let text;
+  if (openNow) text = 'Open now until 8pm';
+  else if (OPEN_DAYS.includes(day) && hour < OPEN) text = 'Opens today at 2pm';
+  else {
+    let d = day;
+    for (let i = 1; i <= 7; i++) { d = (day + i) % 7; if (OPEN_DAYS.includes(d)) break; }
+    text = (d === (day + 1) % 7 ? 'Opens tomorrow' : 'Opens ' + names[d]) + ' at 2pm';
+  }
+  document.querySelectorAll('[data-open-status]').forEach((el) => {
+    el.textContent = text;
+    el.parentElement.querySelector('.dot')?.classList.toggle('is-open', openNow);
+  });
+  document.querySelector(`.hours tr[data-day="${day}"]`)?.classList.add('is-today');
+})();
+
+// Newsletter: posts to data-endpoint (Formspree, Mailchimp etc.). Until one is set, it opens an email to Mac and Melt.
+(() => {
+  const EMAIL = 'macandmelt2024@outlook.com';
+  document.querySelectorAll('.signup').forEach((form) => {
+    const msg = form.querySelector('.signup__msg');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const input = form.querySelector('input[type="email"]');
+      if (!input.checkValidity()) { msg.textContent = 'Enter an email address like name@example.com.'; input.focus(); return; }
+      const endpoint = form.dataset.endpoint;
+      if (!endpoint) {
+        location.href = `mailto:${EMAIL}?subject=${encodeURIComponent('Newsletter sign-up')}&body=${encodeURIComponent('Please add ' + input.value + ' to the Mac and Melt newsletter.')}`;
+        msg.textContent = 'Your email app will open. Send the message to join the list.';
+        return;
+      }
+      msg.textContent = 'Signing you up…';
+      try {
+        const res = await fetch(endpoint, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+        if (!res.ok) throw new Error(res.status);
+        form.reset();
+        msg.textContent = "You're on the list. See you on Friday!";
+        try { localStorage.setItem('mm-news', 'joined'); } catch (err) {}
+      } catch (err) {
+        msg.textContent = `That didn't go through. Try again, or email ${EMAIL}.`;
+      }
+    });
+  });
+
+  // Slide-in card: once per visitor, after 12 seconds or once they reach the food
+  const popup = document.querySelector('.popup');
+  if (!popup) return;
+  let seen = null;
+  try { seen = localStorage.getItem('mm-news'); } catch (e) {}
+  if (seen) return;
+  const show = () => {
+    if (!popup.hidden || seen) return;
+    seen = 'shown'; popup.hidden = false;
+    try { localStorage.setItem('mm-news', 'shown'); } catch (e) {}
+  };
+  const t = setTimeout(show, 12000);
+  const menu = document.getElementById('menu');
+  if (menu && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((es) => { if (es[0].isIntersecting) { show(); io.disconnect(); } }, { threshold: 0.3 });
+    io.observe(menu);
+  }
+  popup.querySelector('.popup__close').addEventListener('click', () => { popup.hidden = true; clearTimeout(t); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') popup.hidden = true; });
+})();
 
 document.getElementById('year').textContent = new Date().getFullYear();
 </script>
