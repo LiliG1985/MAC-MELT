@@ -243,3 +243,65 @@ a { color: inherit; }
 .footer__inner { display: grid; gap: 10px; }
 .footer__word { font-family: var(--display); font-size: clamp(3.4rem, 13vw, 9rem); line-height: .9; color: var(--cheese); margin-bottom: 18px; }
 .footer p:not(.footer__word) { opacity: .85; font-size: .95rem; }
+
+/* ---------- Depth: photo band, faint photo backgrounds, logo watermark ---------- */
+:root {
+  --spread: url("https://87708882764c4ad6c76a.cdn6.editmysite.com/uploads/b/87708882764c4ad6c76ace49afadb29c00c05c717fd761362091bd6ce9710c5d/2026-03-19_19-45-37_1773949550.jpg?width=1600&optimize=medium");
+}
+
+/* Three crops of the spread under "The food" */
+.food-band {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(10px, 1.6vw, 18px);
+  margin-top: 32px;
+}
+.food-band__item { margin: 0; position: relative; }
+.food-band__pic {
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-lg);
+  border: 2.5px solid var(--ink);
+  background: var(--cheese-deep) var(--spread) no-repeat;
+  background-size: 270% auto;
+}
+.food-band__item--mac .food-band__pic   { background-position: 2% 92%; }
+.food-band__item--jerk .food-band__pic  { background-position: 52% 18%; background-size: 240% auto; }
+.food-band__item--sides .food-band__pic { background-position: 96% 82%; }
+.food-band figcaption {
+  position: absolute; left: 14px; bottom: 14px;
+  background: var(--cheese); color: var(--ink);
+  border: 2px solid var(--ink); border-radius: var(--radius-sm);
+  padding: 4px 12px; font-weight: 800; font-size: .9rem;
+}
+@media (max-width: 760px) {
+  .food-band { grid-template-columns: 1fr 1fr; }
+  .food-band__item--mac { grid-column: 1 / -1; }
+  .food-band__item--mac .food-band__pic { aspect-ratio: 16 / 10; background-size: 170% auto; }
+}
+
+/* Faint photo behind the reviews */
+.reviews { position: relative; overflow: hidden; isolation: isolate; }
+.reviews::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: var(--spread) center / cover no-repeat;
+  opacity: .14; mix-blend-mode: multiply; filter: grayscale(.3);
+}
+
+/* Big faint logo behind "Collect from Sale" */
+.find { position: relative; overflow: hidden; isolation: isolate; }
+.find__logo {
+  position: absolute; z-index: -1; pointer-events: none;
+  width: clamp(420px, 52vw, 760px); right: -8%; top: 50%;
+  transform: translateY(-50%) rotate(-8deg);
+  opacity: .1;
+}
+@media (max-width: 760px) { .find__logo { right: -30%; top: 62%; width: 520px; opacity: .08; } }
+
+/* Faint photo in the footer */
+.footer { position: relative; overflow: hidden; isolation: isolate; }
+.footer::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: var(--spread) center 70% / cover no-repeat;
+  opacity: .16; filter: grayscale(.5) contrast(1.1);
+  mix-blend-mode: luminosity;
+}
+.food-band figcaption { white-space: nowrap; }
+@media (max-width: 760px) { .food-band figcaption { left: 10px; bottom: 10px; font-size: .8rem; padding: 3px 10px; } }
