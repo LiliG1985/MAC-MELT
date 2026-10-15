@@ -378,30 +378,49 @@
     <section class="find" id="find-us" aria-labelledby="find-title">
       <span class="badge find__logo" aria-hidden="true"><img src="https://seller-brand-assets-f.squarecdn.com/MLRKM3H93083R/f348321a9f1e37078d53d77e28effff7.jpeg?height=1200" alt="" width="800" height="800" loading="lazy"></span>
       <div class="wrap find__grid">
-        <div>
+        <div class="find__info">
           <h2 id="find-title">Collect from Sale</h2>
           <address>
             19 Goodwood Avenue<br>
             Sale, M33 4QN
           </address>
-          <a class="link" href="https://www.google.com/maps/dir/?api=1&amp;destination=19+Goodwood+Avenue+Sale+M33+4QN">Get directions</a>
+          <a class="btn btn--line find__directions" href="https://www.google.com/maps/dir/?api=1&amp;destination=19+Goodwood+Avenue+Sale+M33+4QN">Get directions</a>
+
+          <div class="find__contact">
+            <h3>Get in touch</h3>
+            <p><a class="link" href="tel:+447546009465">07546 009465</a></p>
+            <p><a class="link" href="mailto:macandmelt2024@outlook.com">macandmelt2024@outlook.com</a></p>
+          </div>
+
+          <div class="find__social">
+            <h3>Follow the melt</h3>
+            <ul class="socials">
+              <li><a href="https://www.instagram.com/mac_amd_melt_">Instagram</a></li>
+              <li><a href="https://www.tiktok.com/@mac_and_melt">TikTok</a></li>
+              <li><a href="https://www.facebook.com/MacandMelt">Facebook</a></li>
+            </ul>
+          </div>
         </div>
-        <div>
-          <h3>Collection hours</h3>
-          <p class="open-pill"><span class="dot" aria-hidden="true"></span><span data-open-status>Open Friday and Saturday</span></p>
-          <table class="hours"><tr data-day="1"><th scope="row">Monday</th><td>Closed</td></tr><tr data-day="2"><th scope="row">Tuesday</th><td>Closed</td></tr><tr data-day="3"><th scope="row">Wednesday</th><td>Closed</td></tr><tr data-day="4"><th scope="row">Thursday</th><td>Closed</td></tr><tr data-day="5"><th scope="row">Friday</th><td>2pm to 8pm</td></tr><tr data-day="6"><th scope="row">Saturday</th><td>2pm to 8pm</td></tr><tr data-day="0"><th scope="row">Sunday</th><td>Closed</td></tr></table>
-          <p class="fine">Collection is by pre-order, so order ahead and pick a slot.</p>
-          <h3>Get in touch</h3>
-          <p><a class="link" href="tel:+447546009465">07546 009465</a><br>
-             <a class="link" href="mailto:macandmelt2024@outlook.com">macandmelt2024@outlook.com</a></p>
-        </div>
-        <div>
-          <h3>Follow the melt</h3>
-          <ul class="socials">
-            <li><a href="https://www.instagram.com/mac_amd_melt_">Instagram</a></li>
-            <li><a href="https://www.tiktok.com/@mac_and_melt">TikTok</a></li>
-            <li><a href="https://www.facebook.com/MacandMelt">Facebook</a></li>
-          </ul>
+
+        <div class="hours-card">
+          <div class="hours-card__head">
+            <h3>Collection hours</h3>
+            <p class="open-pill"><span class="dot" aria-hidden="true"></span><span data-open-status>Open Friday and Saturday</span></p>
+          </div>
+          <table class="hours">
+            <tbody>
+              <tr data-day="1"><th scope="row">Monday<span class="today-tag">Today</span></th><td>Closed</td></tr>
+              <tr data-day="2"><th scope="row">Tuesday<span class="today-tag">Today</span></th><td>Closed</td></tr>
+              <tr data-day="3"><th scope="row">Wednesday<span class="today-tag">Today</span></th><td>Closed</td></tr>
+              <tr data-day="4"><th scope="row">Thursday<span class="today-tag">Today</span></th><td>Closed</td></tr>
+              <tr data-day="5" class="is-open-day"><th scope="row">Friday<span class="today-tag">Today</span></th><td><span class="time-chip">2pm – 8pm</span></td></tr>
+              <tr data-day="6" class="is-open-day"><th scope="row">Saturday<span class="today-tag">Today</span></th><td><span class="time-chip">2pm – 8pm</span></td></tr>
+              <tr data-day="0"><th scope="row">Sunday<span class="today-tag">Today</span></th><td>Closed</td></tr>
+            </tbody>
+          </table>
+          <p class="hours-card__note">Collection is by pre-order, so order ahead and pick a slot.</p>
+          <!-- SQUARE: pre-order link -->
+          <a class="btn btn--ink hours-card__cta" href="https://book.squareup.com/appointments/wcd63i6rsgu1ch/location/LYRM016FMPTPK/services">Pre-order for collection</a>
         </div>
       </div>
     </section>

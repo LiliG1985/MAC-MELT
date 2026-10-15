@@ -520,21 +520,64 @@ main { margin-top: calc(-1 * (var(--nav-h) + var(--nav-gap))); }
 }
 .find__logo {
   position: absolute; z-index: -1; pointer-events: none;
-  width: clamp(460px, 58vw, 880px); right: -10%; top: 50%;
-  transform: translateY(-50%) rotate(-8deg);
-  opacity: .16;
+  width: clamp(420px, 44vw, 640px); left: -12%; bottom: -22%;
+  transform: rotate(-12deg);
+  opacity: .07;
 }
-.find__grid { display: grid; grid-template-columns: 1.3fr 1fr 0.8fr; gap: clamp(28px, 5vw, 64px); }
+.find__grid { display: grid; grid-template-columns: 1fr minmax(0, 480px); gap: clamp(40px, 7vw, 110px); align-items: center; }
 .find__grid > * { min-width: 0; }
-.find h2 { font-size: clamp(2.3rem, 4.6vw, 3.6rem); text-shadow: 3px 3px 0 var(--cheese); }
-.find address { font-style: normal; font-size: 1.3rem; font-weight: 600; margin: 18px 0 12px; }
-.find h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 6px; }
-.find h3 + p { margin-bottom: 22px; }
+.find h2 { font-size: clamp(2.6rem, 5.4vw, 4.2rem); text-shadow: 3px 3px 0 var(--cheese); text-wrap: balance; }
+.find address { font-style: normal; font-size: clamp(1.25rem, 1.8vw, 1.5rem); font-weight: 700; margin: 20px 0 18px; line-height: 1.45; }
+.find__directions { min-height: 46px; }
+.find h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 8px; }
+.find__contact { margin-top: 36px; display: grid; gap: 4px; }
+.find__contact p { font-size: 1.1rem; }
+.find__social { margin-top: 28px; }
 .socials { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 10px; }
-.socials a { display: inline-flex; align-items: center; min-height: 42px; padding: 0 16px; background: var(--white); border: 2px solid var(--ink); border-radius: var(--radius-sm); font-weight: 800; text-decoration: none; box-shadow: 3px 3px 0 var(--ink); }
+.socials a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; background: var(--white); border: 2.5px solid var(--ink); border-radius: var(--radius-sm); font-weight: 800; text-decoration: none; box-shadow: 3px 3px 0 var(--ink); }
 .socials a:hover { background: var(--cheese-hi); }
-@media (max-width: 860px) { .find__grid { grid-template-columns: 1fr 1fr; } .find__grid > :first-child { grid-column: 1 / -1; } .find__logo { right: -35%; top: 60%; width: 560px; } }
-@media (max-width: 520px) { .find__grid { grid-template-columns: 1fr; } }
+
+/* Hours card: a raised ticket, like the menu card */
+.hours-card {
+  position: relative;
+  background: linear-gradient(180deg, var(--white), #FFFBF0);
+  border: 3px solid var(--ink); border-radius: var(--radius-lg);
+  padding: clamp(22px, 3vw, 32px);
+  box-shadow: 10px 10px 0 var(--cheese), 10px 10px 0 3px var(--ink), 0 40px 60px -20px rgba(18,26,51,.35);
+  margin-right: 13px;
+}
+.hours-card__head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px; padding-bottom: 16px; border-bottom: 3px solid var(--ink); }
+.hours-card__head h3 { font-family: var(--display); font-weight: 400; font-size: 1.7rem; margin: 0; }
+.open-pill { display: inline-flex; align-items: center; gap: 8px; margin: 0; font-weight: 800; font-size: .95rem; background: var(--crust); border: 2px solid var(--ink); border-radius: 999px; padding: 5px 14px; box-shadow: 2px 2px 0 var(--ink); }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: var(--cheese-deep); box-shadow: 0 0 0 4px rgba(227,163,15,.25); flex: none; }
+.dot.is-open { background: #2E9E5B; box-shadow: 0 0 0 4px rgba(46,158,91,.22); }
+
+.hours { width: 100%; border-collapse: separate; border-spacing: 0 4px; margin-top: 12px; font-variant-numeric: tabular-nums; }
+.hours th, .hours td { padding: 9px 12px; text-align: left; font-size: 1.05rem; }
+.hours th { font-weight: 600; }
+.hours td { text-align: right; color: rgba(28,37,65,.55); font-weight: 600; }
+.hours tr:not(.is-open-day) th { color: rgba(28,37,65,.6); }
+.hours tr.is-open-day th { font-weight: 800; color: var(--ink); }
+.time-chip { display: inline-block; background: var(--cheese); color: var(--ink); font-weight: 800; border: 2px solid var(--ink); border-radius: 999px; padding: 3px 12px; box-shadow: 2px 2px 0 var(--ink); }
+.today-tag { display: none; margin-left: 10px; font-size: .72rem; font-weight: 800; vertical-align: 2px; color: var(--white); background: var(--lagoon); border-radius: 6px; padding: 2px 7px; }
+.hours tr.is-today th, .hours tr.is-today td { background: var(--crust); }
+.hours tr.is-today th { border-radius: 12px 0 0 12px; }
+.hours tr.is-today td { border-radius: 0 12px 12px 0; }
+.hours tr.is-today .today-tag { display: inline-block; }
+.hours-card__note { margin-top: 12px; padding-top: 14px; border-top: 2px dashed rgba(28,37,65,.25); font-size: .95rem; opacity: .8; }
+.hours-card__cta { margin-top: 16px; width: 100%; }
+
+@media (max-width: 860px) {
+  .find__grid { grid-template-columns: 1fr; }
+  .find__info { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; }
+  .find__info > h2, .find__info > address, .find__info > .find__directions { grid-column: 1 / -1; justify-self: start; }
+  .find__contact, .find__social { margin-top: 30px; }
+}
+@media (max-width: 520px) {
+  .find__info { grid-template-columns: 1fr; }
+  .find__social { margin-top: 24px; }
+  .hours th, .hours td { padding: 8px 8px; font-size: 1rem; }
+}
 
 /* ---------- Footer ---------- */
 .footer {
@@ -611,19 +654,6 @@ main { margin-top: calc(-1 * (var(--nav-h) + var(--nav-gap))); }
   .founder__photo { max-width: 440px; margin: 20px 22px 0 0; }
   .founder__sticker { right: -14px; top: -30px; }
 }
-
-/* ---------- Hours ---------- */
-.open-pill { display: inline-flex; align-items: center; gap: 8px; margin: 2px 0 12px; font-weight: 800; background: var(--white); border: 2px solid var(--ink); border-radius: 999px; padding: 5px 14px; box-shadow: 3px 3px 0 var(--ink); }
-.is-open .dot, .dot.is-open { background: #2E9E5B; box-shadow: 0 0 0 4px rgba(46,158,91,.22); }
-.hours { border-collapse: collapse; width: 100%; max-width: 300px; font-variant-numeric: tabular-nums; }
-.hours th, .hours td { text-align: left; padding: 6px 10px; border-bottom: 1.5px dashed rgba(28,37,65,.25); }
-.hours th { font-weight: 600; }
-.hours td { font-weight: 700; }
-.hours tr.is-today { background: var(--cheese); }
-.hours tr.is-today th, .hours tr.is-today td { font-weight: 800; border-bottom-color: transparent; }
-.hours tr.is-today th { border-radius: 10px 0 0 10px; }
-.hours tr.is-today td { border-radius: 0 10px 10px 0; }
-.hours + .fine { margin-bottom: 22px; }
 
 /* ---------- Newsletter ---------- */
 .news {
