@@ -595,7 +595,7 @@ a { color: inherit; }
 /* Catering: overlapping photos and a floating chip */
 .catering__photo { position: relative; padding: 0 12% 12% 0; }
 .catering__photo > img:not(.catering__inset) { transform: rotate(-2deg); border: 8px solid var(--paper); }
-.catering__inset {
+.catering__photo .catering__inset {
   position: absolute; z-index: 2; right: 0; bottom: 0; width: 46%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 30%;
   border-radius: var(--r-md); border: 6px solid var(--paper); transform: rotate(5deg);
   box-shadow: 0 30px 60px -20px rgba(0,0,0,.7);
