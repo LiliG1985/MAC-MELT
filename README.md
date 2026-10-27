@@ -50,7 +50,7 @@ Photos and the logo currently load from her Square accounts (the logo is the bad
 - Opening hours are Friday and Saturday, 2pm to 8pm (from the old site). To change them, edit the hours table in `index.html` and `OPEN_DAYS`, `OPEN` and `CLOSE` near the bottom of `script.js`.
 - Dish descriptions for the pies and the catering bullet points were written fresh. Have her check them.
 - The WhatsApp link in "Get in touch" uses +44 7546 009465 (search `wa.me` in `index.html` to change it). Check that number is on WhatsApp.
-- Instagram: instagram.com/mac_and_melt (confirmed).
+- Instagram: instagram.com/mac_and_melt_ (confirmed, with underscore at the end).
 
 ## Dish banner photos
 
