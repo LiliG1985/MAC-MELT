@@ -1071,3 +1071,29 @@ h1, h2, .dish h3, .bowl__intro h3, .hours-card__head h3, .nav__word, .footer__wo
   .best--slice .best__poster img { clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%); }
   .best--slice .best__poster::after { display: none; }
 }
+
+/* Reviews: tighter, especially on phones */
+.reviews { padding: clamp(48px, 6vw, 80px) 0; }
+.reviews__head { margin-bottom: clamp(18px, 3vw, 32px); }
+.reviews__head h2 { font-size: clamp(1.9rem, 3.8vw, 2.8rem); }
+.review { padding: clamp(18px, 2vw, 24px); gap: 12px; }
+.review blockquote { padding-top: 22px; }
+.review blockquote::before { font-size: 3rem; top: -10px; }
+.review blockquote p { font-size: clamp(1.05rem, 1.5vw, 1.25rem); }
+.review--cta h3 { font-size: 1.5rem; }
+@media (max-width: 900px) {
+  .reviews { padding: 40px 0; }
+  .reviews__grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .review--cta { grid-column: 1 / -1; }
+  .review { padding: 14px; gap: 8px; box-shadow: 4px 4px 0 var(--ink); }
+  .review__dish { font-size: .72rem; padding: 2px 9px; }
+  .review blockquote { padding-top: 16px; }
+  .review blockquote::before { font-size: 2.2rem; top: -8px; }
+  .review blockquote p { font-size: 1rem; }
+  .review figcaption { padding-top: 10px; gap: 8px; }
+  .review__avatar { width: 30px; height: 30px; font-size: .8rem; }
+  .review figcaption strong { font-size: .8rem; }
+  .review--cta h3 { font-size: 1.25rem; }
+  .review--cta p { font-size: .92rem; }
+  .reviews__head .section-lede { font-size: 1rem; margin-top: 6px; }
+}
