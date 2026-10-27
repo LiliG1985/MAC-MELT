@@ -1097,3 +1097,4 @@ h1, h2, .dish h3, .bowl__intro h3, .hours-card__head h3, .nav__word, .footer__wo
   .review--cta p { font-size: .92rem; }
   .reviews__head .section-lede { font-size: 1rem; margin-top: 6px; }
 }
+.mk__follow { margin: 22px 0 18px; font-size: 1.15rem; font-weight: 700; max-width: 40ch; }

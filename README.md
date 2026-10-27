@@ -73,8 +73,8 @@ To collect sign-ups properly, create a free form at formspree.io (or a Mailchimp
 
 ## Markets board
 
-The "Find us at a market" section on the home page has a small news board. Each month, edit the "Up next" card in `index.html` (search for `MARKETS`) with the date, place and times, and update the "Last time" card if you like.
+The "Find us at a market" section on the home page has a small news board. Market dates and locations are announced on Instagram; the site just points people there.
 
 ## Notice board (What's on)
 
-`whats-on.html` is the notice board: markets, what's new, coming soon and customer favourites. Edit the cards there (search for `NOTICE BOARD`). When there's a market date, also update the one-line "Next market" text in the markets strip on `index.html`.
+`whats-on.html` is the notice board: markets, what's new, coming soon and customer favourites. Edit the cards there (search for `NOTICE BOARD`).
