@@ -910,3 +910,39 @@ h1, h2, .dish h3, .bowl__intro h3, .hours-card__head h3, .nav__word, .footer__wo
 .best__text > p:not(.eyebrow) { margin-top: 12px; font-size: 1.1rem; }
 .best__row { display: flex; align-items: center; gap: 20px; margin-top: 22px; flex-wrap: wrap; }
 .best__price { font-family: "Bagel Fat One", system-ui, sans-serif; font-size: 2.2rem; color: var(--ink); }
+
+/* Home: compact markets strip */
+.markets--compact { padding: clamp(36px, 4.5vw, 56px) 0; }
+.markets__strip { display: flex; align-items: center; gap: clamp(20px, 3vw, 40px); flex-wrap: wrap; }
+.markets__thumb { width: clamp(110px, 12vw, 150px); aspect-ratio: 1; object-fit: cover; object-position: 50% 30%; border: 3px solid var(--ink); border-radius: 12px; box-shadow: 5px 5px 0 var(--ink); flex: none; }
+.markets--compact .markets__text { flex: 1 1 320px; }
+.markets--compact h2 { font-size: clamp(1.8rem, 3.2vw, 2.5rem); }
+.markets--compact .markets__text > p:not(.eyebrow) { margin-top: 8px; font-size: 1.05rem; }
+.markets--compact .eyebrow { margin-bottom: 8px; }
+
+/* What's on: notice board page */
+.notices { padding: clamp(48px, 6vw, 88px) 0 clamp(64px, 8vw, 110px); background: var(--crust); }
+.nb + .nb { margin-top: clamp(48px, 6vw, 80px); padding-top: clamp(40px, 5vw, 64px); border-top: 2px dashed rgba(28,37,65,.3); }
+.nb__head { display: flex; align-items: baseline; gap: 8px 20px; flex-wrap: wrap; margin-bottom: 22px; }
+.nb__head h2 { font-size: clamp(1.9rem, 3.6vw, 2.8rem); }
+.nb__head p { font-size: 1.05rem; opacity: .85; }
+.nb__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(14px, 2vw, 24px); }
+.nb__grid--3 { grid-template-columns: repeat(3, 1fr); }
+.note { background: var(--white); border: 2.5px solid var(--ink); border-radius: 10px; box-shadow: 6px 6px 0 var(--ink); padding: 20px 22px; }
+.note h3 { font-weight: 800; font-size: 1.2rem; margin: 10px 0 6px; }
+.note p:not(.board__tag) { opacity: .9; }
+.note .link { display: inline-block; margin-top: 12px; }
+.note--ink { background: var(--ink); color: var(--crust); box-shadow: 6px 6px 0 var(--cheese-deep); }
+.note--ink .link { color: var(--cheese); }
+.note--cheese { background: var(--cheese); }
+.note--photo { display: grid; grid-template-columns: 120px 1fr; gap: 18px; align-items: center; }
+.note--photo img { width: 120px; aspect-ratio: 1; object-fit: cover; object-position: 50% 30%; border-radius: 8px; border: 2px solid var(--ink); }
+.note--fav { padding: 0 0 20px; overflow: hidden; }
+.note--fav img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-bottom: 2.5px solid var(--ink); margin-bottom: 16px; }
+.note--fav > :not(img) { margin-left: 22px; margin-right: 22px; }
+.board__tag--ink { background: var(--ink); color: var(--cheese); }
+.nb__cta { margin-top: 28px; }
+@media (max-width: 900px) { .nb__grid--3 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 620px) { .nb__grid, .nb__grid--3 { grid-template-columns: 1fr; } .note--photo { grid-template-columns: 90px 1fr; } .note--photo img { width: 90px; } }
+.nav__links a { white-space: nowrap; }
+@media (min-width: 761px) and (max-width: 1180px) { .nav__links a:not(.btn) { padding: 0 8px; font-size: .95rem; } .nav__links { gap: 2px; } }
