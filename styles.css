@@ -823,3 +823,15 @@ h1, h2, .dish h3, .bowl__intro h3, .hours-card__head h3, .nav__word, .footer__wo
 .catering--compact .catering__text > p { margin-top: 10px; font-size: 1.05rem; }
 .catering__btns { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 6px; margin-top: 22px; }
 @media (max-width: 640px) { .catering--compact .catering__grid { grid-template-columns: 1fr; } .catering--compact .catering__photo { max-width: 240px; } }
+
+/* Contact page header */
+.page-head { position: relative; overflow: hidden; isolation: isolate; padding: calc(var(--nav-h) + var(--nav-gap) + clamp(32px, 5vw, 64px)) 0 clamp(40px, 5vw, 64px); background: radial-gradient(120% 90% at 18% 20%, var(--cheese-hi) 0%, rgba(255,217,92,0) 55%), var(--cheese); border-bottom: 3px solid var(--ink); }
+.page-head h1 { font-size: clamp(2.6rem, 6vw, 4.6rem); line-height: 1; text-shadow: 3px 3px 0 var(--crust), 6px 6px 0 rgba(28,37,65,.18); }
+.page-head .hero__ghost { left: auto; right: -8%; width: clamp(360px, 40vw, 620px); }
+
+/* Home page: short "Collect from Sale" strip */
+.find--compact { padding: clamp(40px, 5vw, 60px) 0; }
+.find__strip { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 40px; }
+.find--compact h2 { font-size: clamp(1.9rem, 3.4vw, 2.7rem); }
+.find__line { margin: 8px 0 14px; font-size: 1.15rem; font-weight: 700; }
+.find__btns { display: flex; flex-wrap: wrap; gap: 14px; }
