@@ -172,4 +172,26 @@ tabs.forEach((tab, i) => {
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') popup.hidden = true; });
 })();
 
+// Parallax: anything with data-depth drifts at its own speed as you scroll
+(() => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const els = [...document.querySelectorAll('[data-depth]')];
+  if (!els.length) return;
+  let ticking = false;
+  const update = () => {
+    const vh = window.innerHeight;
+    els.forEach((el) => {
+      const r = el.parentElement.getBoundingClientRect();
+      if (r.bottom < -200 || r.top > vh + 200) return;
+      const offset = (r.top + r.height / 2) - vh / 2;
+      el.style.setProperty('--py', (offset * -Number(el.dataset.depth)).toFixed(1) + 'px');
+    });
+    ticking = false;
+  };
+  const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
+})();
+
 document.getElementById('year').textContent = new Date().getFullYear();
