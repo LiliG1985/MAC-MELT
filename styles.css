@@ -1011,3 +1011,23 @@ h1, h2, .dish h3, .bowl__intro h3, .hours-card__head h3, .nav__word, .footer__wo
 .goat::after { -webkit-mask-image: linear-gradient(90deg, #000, transparent 60%); mask-image: linear-gradient(90deg, #000, transparent 60%); }
 .goat { box-shadow: inset 0 -12px 0 0 #1E8F4E; }
 .goat__kicker { transform: none; }
+
+/* Home markets strip: navy banner with the stall photo on the right */
+.markets--compact { position: relative; overflow: hidden; isolation: isolate; background: var(--ink); color: var(--crust); border-top: 3px solid var(--ink); border-bottom: 3px solid var(--ink); padding: clamp(56px, 7vw, 96px) 0; }
+.markets__bg { position: absolute; inset: 0 0 0 auto; width: 60%; z-index: -1; background: url(images/market-stall.jpg) 50% 28% / cover no-repeat;
+  -webkit-mask-image: linear-gradient(270deg, #000 45%, transparent 100%); mask-image: linear-gradient(270deg, #000 45%, transparent 100%); }
+.markets--compact h2 { color: var(--cheese); text-shadow: 3px 3px 0 var(--ink-deep); }
+.markets--compact .eyebrow { background: var(--cheese); color: var(--ink); }
+.markets--compact .markets__text { flex: 0 1 520px; }
+.markets--compact .markets__strip { justify-content: flex-start; }
+.markets--compact .btn--ink { background: linear-gradient(180deg, var(--cheese-hi), var(--cheese)); color: var(--ink); }
+@media (max-width: 760px) {
+  .markets__bg { width: 100%; opacity: .35; -webkit-mask-image: none; mask-image: none; }
+}
+@media (min-width: 861px) {
+  .mk__photo { width: 50%; }
+  .mk__photo img { object-position: 38% 30%; -webkit-mask-image: linear-gradient(90deg, #000 62%, rgba(0,0,0,.5) 84%, transparent 100%); mask-image: linear-gradient(90deg, #000 62%, rgba(0,0,0,.5) 84%, transparent 100%); }
+  .mk__body { margin-left: 54%; }
+  .mk__next dl { grid-template-columns: 1fr; }
+  .mk__next dl > div { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+}
