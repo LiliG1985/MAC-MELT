@@ -835,3 +835,13 @@ h1, h2, .dish h3, .bowl__intro h3, .hours-card__head h3, .nav__word, .footer__wo
 .find--compact h2 { font-size: clamp(1.9rem, 3.4vw, 2.7rem); }
 .find__line { margin: 8px 0 14px; font-size: 1.15rem; font-weight: 700; }
 .find__btns { display: flex; flex-wrap: wrap; gap: 14px; }
+
+/* Catering band: event spread photo faded in behind the text */
+.catering--compact { padding: clamp(64px, 8vw, 110px) 0; }
+.catering--compact .catering__grid { grid-template-columns: 1fr; }
+.catering--compact .catering__text { max-width: 620px; }
+.catering__bg { position: absolute; inset: 0; z-index: -1; background: url(images/catering-spread.jpg) center 60% / cover no-repeat; opacity: .55; }
+.catering__bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--ink-deep) 0%, rgba(18,26,51,.88) 35%, rgba(18,26,51,.45) 70%, rgba(18,26,51,.25) 100%); }
+.catering--compact::before { z-index: 0; opacity: .25; }
+.catering--compact .wrap { z-index: 1; }
+@media (max-width: 640px) { .catering__bg::after { background: linear-gradient(180deg, rgba(18,26,51,.6), rgba(18,26,51,.9)); } }
