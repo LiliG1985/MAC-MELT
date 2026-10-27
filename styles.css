@@ -946,3 +946,30 @@ h1, h2, .dish h3, .bowl__intro h3, .hours-card__head h3, .nav__word, .footer__wo
 @media (max-width: 620px) { .nb__grid, .nb__grid--3 { grid-template-columns: 1fr; } .note--photo { grid-template-columns: 90px 1fr; } .note--photo img { width: 90px; } }
 .nav__links a { white-space: nowrap; }
 @media (min-width: 761px) and (max-width: 1180px) { .nav__links a:not(.btn) { padding: 0 8px; font-size: .95rem; } .nav__links { gap: 2px; } }
+
+/* Best seller: the whole poster, with a sticker */
+.best__poster { position: relative; width: clamp(220px, 26vw, 330px); flex: none; }
+.best__poster img { width: 100%; height: auto; border: 4px solid var(--ink); border-radius: 16px; box-shadow: 8px 8px 0 var(--cheese), 8px 8px 0 4px var(--ink); display: block; }
+.best__sticker { position: absolute; left: 4px; bottom: 4px; width: 48%; height: 31%; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 2px; padding: 0 6%; background: var(--bonnet); color: var(--white); border-top: 4px solid var(--ink); border-right: 4px solid var(--ink); border-radius: 0 16px 0 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; font-size: clamp(.7rem, 1vw, .9rem); line-height: 1.1; }
+.best__sticker b { font-family: "Bagel Fat One", system-ui, sans-serif; font-weight: 400; font-size: clamp(1.6rem, 2.6vw, 2.3rem); letter-spacing: 0; color: var(--cheese); text-shadow: 2px 2px 0 var(--ink); }
+.note--fav .note__poster { object-position: 50% 22%; }
+
+/* What's on: bigger markets feature */
+.nb--markets { margin: 0 0 clamp(16px, 2vw, 24px); }
+.mk { display: grid; grid-template-columns: minmax(260px, 440px) 1fr; gap: clamp(28px, 5vw, 64px); align-items: start; background: var(--ink); color: var(--crust); border: 3px solid var(--ink); border-radius: 18px; box-shadow: 10px 10px 0 var(--cheese-deep); padding: clamp(20px, 3.5vw, 44px); }
+.mk > * { min-width: 0; }
+.mk__photo { margin: 0; }
+.mk__photo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 30%; border-radius: 12px; border: 3px solid var(--cheese); }
+.mk__photo figcaption { margin-top: 10px; font-size: .95rem; opacity: .85; }
+.mk h2 { color: var(--cheese); font-size: clamp(2.2rem, 4.6vw, 3.6rem); text-shadow: 3px 3px 0 var(--ink-deep); }
+.mk__lede { margin-top: 12px; font-size: 1.12rem; max-width: 46ch; }
+.mk__next { margin-top: 24px; background: var(--white); color: var(--ink); border: 3px solid var(--cheese); border-radius: 12px; padding: clamp(18px, 2.4vw, 26px); }
+.mk__next dl { margin: 14px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.mk__next dl > div { background: var(--crust); border: 2px solid var(--ink); border-radius: 8px; padding: 10px 12px; }
+.mk__next dt { font-size: .78rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; opacity: .7; }
+.mk__next dd { margin: 4px 0 0; font-family: "Bagel Fat One", system-ui, sans-serif; font-size: clamp(1.05rem, 1.6vw, 1.3rem); text-transform: uppercase; line-height: 1.1; }
+.mk__note { margin: 14px 0 16px; font-size: .95rem; }
+.mk__tips { margin-top: 20px; display: grid; gap: 6px; }
+.mk__tips .link { color: var(--cheese); }
+@media (max-width: 860px) { .mk { grid-template-columns: 1fr; } .mk__photo { max-width: 380px; } }
+@media (max-width: 520px) { .mk__next dl { grid-template-columns: 1fr; } }

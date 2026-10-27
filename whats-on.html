@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Figtree:wght@400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=39">
+  <link rel="stylesheet" href="styles.css?v=40">
 
   <script type="application/ld+json">
   {
@@ -78,24 +78,32 @@
     <section class="notices">
       <div class="wrap">
 
-        <!-- MARKETS -->
-        <div class="nb" id="markets">
-          <div class="nb__head"><h2>Markets &amp; pop-ups</h2><p>Once a month we pop up at a market somewhere new.</p></div>
-          <div class="nb__grid">
-            <article class="note note--ink">
-              <p class="board__tag">Up next</p>
-              <h3>Date and location coming soon</h3>
-              <p>We announce every market on Instagram first.</p>
-              <a class="link" href="https://www.instagram.com/mac_and_melt_" target="_blank" rel="noopener">Follow for dates</a>
-            </article>
-            <article class="note note--photo">
-              <img src="images/market-stall.jpg" alt="Raya at the Mac and Melt market stall" loading="lazy" width="1125" height="1356">
-              <div>
-                <p class="board__tag board__tag--past">Last time</p>
-                <h3>We sold out!</h3>
-                <p>Thank you to everyone who came down. Get there early next time.</p>
+        <!-- MARKETS: update "Up next" each month (date, where, times) -->
+        <div class="nb nb--markets" id="markets">
+          <div class="mk">
+            <figure class="mk__photo">
+              <img src="images/market-stall.jpg" alt="Raya at the Mac and Melt market stall with trays of pepperoni, classic and truffle mac" loading="lazy" width="1125" height="1356">
+              <figcaption>Raya at our last market. We sold out!</figcaption>
+            </figure>
+            <div class="mk__body">
+              <p class="eyebrow">Markets &amp; pop-ups</p>
+              <h2>Come and find us</h2>
+              <p class="mk__lede">Once a month we take the trays on the road and pop up at a market somewhere new. Grab a tray, try a new flavour and say hello.</p>
+              <article class="mk__next">
+                <p class="board__tag">Up next</p>
+                <dl>
+                  <div><dt>Date</dt><dd>Coming soon</dd></div>
+                  <div><dt>Where</dt><dd>To be announced</dd></div>
+                  <div><dt>Time</dt><dd>To be announced</dd></div>
+                </dl>
+                <p class="mk__note">Every market is announced on Instagram first.</p>
+                <a class="btn btn--cheese" href="https://www.instagram.com/mac_and_melt_" target="_blank" rel="noopener">Follow for market dates</a>
+              </article>
+              <div class="mk__tips">
+                <p><strong>Tip:</strong> we sold out last time, so come early.</p>
+                <p><strong>Can't make it?</strong> <a class="link" href="https://book.squareup.com/appointments/wcd63i6rsgu1ch/location/LYRM016FMPTPK/services">Pre-order for collection</a> instead.</p>
               </div>
-            </article>
+            </div>
           </div>
         </div>
 
@@ -138,7 +146,7 @@
           <div class="nb__head"><h2>Customer favourites</h2><p>The ones people keep coming back for.</p></div>
           <div class="nb__grid nb__grid--3">
             <article class="note note--fav">
-              <img src="images/best-seller.jpg?v=2" alt="Curry goat mac and cheese pie" loading="lazy" width="640" height="640">
+              <img class="note__poster" src="images/best-seller-poster.jpg" alt="Curry goat mac and cheese pie with a long cheese pull" loading="lazy" width="700" height="906">
               <p class="board__tag">No.1</p>
               <h3>Curry goat pie</h3>
               <p>&ldquo;The Curry Goat Pies are unreal.&rdquo; £12.</p>
