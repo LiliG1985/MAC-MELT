@@ -869,3 +869,15 @@ h1, h2, .dish h3, .bowl__intro h3, .hours-card__head h3, .nav__word, .footer__wo
 .hero--cater .hero__photo::after { mix-blend-mode: normal; opacity: 1;
   background: linear-gradient(90deg, rgba(245,192,46,.97) 0%, rgba(245,192,46,.88) 34%, rgba(245,192,46,.35) 58%, rgba(245,192,46,0) 80%); }
 @media (max-width: 760px) { .hero--cater .hero__photo::after { background: linear-gradient(180deg, rgba(245,192,46,.85), rgba(245,192,46,.6)); } }
+
+/* Catering page: real event photos */
+.events { padding: clamp(64px, 8vw, 110px) 0; background: var(--crust); border-top: 3px solid var(--ink); }
+.events__head { margin-bottom: clamp(24px, 4vw, 40px); }
+.events__head h2 { font-size: clamp(2.2rem, 4.6vw, 3.4rem); }
+.events__grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: clamp(150px, 17vw, 240px); gap: clamp(10px, 1.4vw, 18px); }
+.events__grid img { width: 100%; height: 100%; object-fit: cover; border: 2.5px solid var(--ink); border-radius: 10px; box-shadow: 5px 5px 0 var(--ink); }
+.events__grid .events__big { grid-column: span 2; grid-row: span 2; }
+.events__more { margin-top: 26px; }
+@media (max-width: 700px) { .events__grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 150px; } }
+.events__grid .events__wide { grid-column: span 2; }
+@media (max-width: 700px) { .events__grid .events__wide { grid-column: span 1; } }
