@@ -855,3 +855,9 @@ h1, h2, .dish h3, .bowl__intro h3, .hours-card__head h3, .nav__word, .footer__wo
 .footer__links { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; margin-bottom: 8px; }
 .footer__links .link { color: var(--cheese); }
 .find__contact .btn--wa { margin: 4px 0 6px; }
+/* Catering band: text on the right, photo clearer on the left */
+.catering--compact .catering__text { margin-left: auto; }
+.catering__bg { opacity: .9; background-position: center 55%; }
+.catering__bg::after { background: linear-gradient(270deg, rgba(18,26,51,.92) 0%, rgba(18,26,51,.75) 32%, rgba(18,26,51,.2) 62%, rgba(18,26,51,0) 100%); }
+@media (max-width: 760px) { .catering--compact .catering__text { margin-left: 0; } .catering__bg::after { background: linear-gradient(180deg, rgba(18,26,51,.35), rgba(18,26,51,.85) 60%); } .catering--compact { padding-top: 180px; } }
+@media (min-width: 761px) { .catering--compact .catering__text { max-width: 440px; } .catering__bg::after { background: linear-gradient(270deg, rgba(18,26,51,.9) 0%, rgba(18,26,51,.7) 28%, rgba(18,26,51,0) 52%); } }
