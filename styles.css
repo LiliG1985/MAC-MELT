@@ -173,15 +173,17 @@ main { margin-top: calc(-1 * (var(--nav-h) + var(--nav-gap))); }
   padding: calc(var(--nav-h) + var(--nav-gap) + clamp(36px, 6vw, 80px)) var(--gutter) clamp(90px, 10vw, 140px);
   background:
     radial-gradient(120% 90% at 18% 20%, var(--cheese-hi) 0%, rgba(255,217,92,0) 55%),
-    radial-gradient(90% 80% at 100% 100%, var(--cheese-deep) 0%, rgba(227,163,15,0) 60%),
+    radial-gradient(70% 60% at 100% 30%, var(--cheese-deep) 0%, rgba(227,163,15,0) 60%),
     var(--cheese);
 }
 /* Halftone dots, fading out towards the text */
 .hero::before {
   content: ""; position: absolute; inset: 0; z-index: -1;
   background: var(--dots); background-size: 18px 18px;
-  -webkit-mask-image: linear-gradient(115deg, transparent 30%, #000 85%);
-          mask-image: linear-gradient(115deg, transparent 30%, #000 85%);
+  -webkit-mask-image: linear-gradient(115deg, transparent 30%, #000 85%), linear-gradient(to bottom, #000 60%, transparent 92%);
+  -webkit-mask-composite: source-in;
+          mask-image: linear-gradient(115deg, transparent 30%, #000 85%), linear-gradient(to bottom, #000 60%, transparent 92%);
+          mask-composite: intersect;
 }
 /* Giant ghost logo behind the headline */
 .hero__ghost {
@@ -214,9 +216,9 @@ main { margin-top: calc(-1 * (var(--nav-h) + var(--nav-gap))); }
 }
 .hero__photo img {
   width: 100%; height: 100%; object-fit: cover; object-position: 45% 55%;
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.35) 18%, rgba(0,0,0,.85) 38%, #000 55%), linear-gradient(to bottom, #000 72%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.35) 18%, rgba(0,0,0,.85) 38%, #000 55%), linear-gradient(to bottom, #000 55%, transparent 94%);
   -webkit-mask-composite: source-in;
-          mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.35) 18%, rgba(0,0,0,.85) 38%, #000 55%), linear-gradient(to bottom, #000 72%, transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.35) 18%, rgba(0,0,0,.85) 38%, #000 55%), linear-gradient(to bottom, #000 55%, transparent 94%);
           mask-composite: intersect;
 }
 /* Warm the photo so it sits in the brand colours */
@@ -260,8 +262,8 @@ main { margin-top: calc(-1 * (var(--nav-h) + var(--nav-gap))); }
 }
 .drip {
   position: absolute; top: -1px; left: 0; z-index: 2;
-  width: 100%; height: clamp(60px, 8vw, 120px); fill: var(--cheese-deep);
-  filter: drop-shadow(0 8px 6px rgba(18,26,51,.3));
+  width: 100%; height: clamp(60px, 8vw, 120px); fill: var(--cheese);
+  filter: drop-shadow(0 6px 8px rgba(18,26,51,.18));
 }
 .watermark--how {
   width: clamp(520px, 56vw, 860px); right: -12%; top: 54%;
@@ -718,3 +720,6 @@ main { margin-top: calc(-1 * (var(--nav-h) + var(--nav-gap))); }
 /* Headings in capitals, to match the logo lettering */
 h1, h2, .dish h3, .bowl__intro h3, .hours-card__head h3, .nav__word, .footer__word, .ticker__word { text-transform: uppercase; letter-spacing: .01em; }
 .hero h1 { font-size: clamp(2.4rem, 4.8vw, 4.1rem); line-height: 1.02; }
+
+/* Blend the bottom of the hero into the cheese drip, with no visible line */
+.hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: clamp(80px, 10vw, 120px); z-index: 1; pointer-events: none; background: linear-gradient(to top, var(--cheese) 0%, var(--cheese) 25%, rgba(245,192,46,0) 100%); }
