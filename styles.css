@@ -760,10 +760,9 @@ h1, h2, .dish h3, .bowl__intro h3, .hours-card__head h3, .nav__word, .footer__wo
   .how__photo { margin-top: 0; }
 }
 
-/* Instagram photo strip under "Follow the melt" */
-.insta-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 18px; max-width: 420px; }
-.insta-strip img { width: 100%; aspect-ratio: 1; object-fit: cover; border: 2.5px solid var(--ink); border-radius: 6px; box-shadow: 4px 4px 0 var(--ink); transition: transform .2s ease; }
-.insta-strip:hover img { transform: translateY(-3px); }
+/* Bowl photos under the bowl price */
+.bowl__photos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 22px; max-width: 460px; }
+.bowl__photos img { width: 100%; aspect-ratio: 1; object-fit: cover; border: 2.5px solid var(--ink); border-radius: 6px; box-shadow: 4px 4px 0 var(--ink); transition: transform .2s ease; }
 
 /* How ordering works: cut-out bowl, no frame, sits on the drip below the logo */
 .how__photo { width: clamp(240px, 28vw, 380px); transform: rotate(-6deg); margin-top: clamp(-120px, -8vw, -70px); }
