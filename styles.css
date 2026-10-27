@@ -881,3 +881,20 @@ h1, h2, .dish h3, .bowl__intro h3, .hours-card__head h3, .nav__word, .footer__wo
 @media (max-width: 700px) { .events__grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 150px; } }
 .events__grid .events__wide { grid-column: span 2; }
 @media (max-width: 700px) { .events__grid .events__wide { grid-column: span 1; } }
+
+/* Markets & pop-ups news board */
+.markets { padding: clamp(64px, 8vw, 110px) 0; background: radial-gradient(70% 90% at 0% 50%, var(--cheese-hi) 0%, rgba(255,217,92,0) 60%), var(--cheese); border-top: 3px solid var(--ink); }
+.markets__grid { display: grid; grid-template-columns: minmax(240px, 420px) 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+.markets__grid > * { min-width: 0; }
+.markets__photo { margin: 0; }
+.markets__photo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 30%; border: 3px solid var(--ink); border-radius: 14px; box-shadow: 8px 8px 0 var(--ink); }
+.markets h2 { font-size: clamp(2.2rem, 4.6vw, 3.4rem); }
+.markets__text > p:not(.eyebrow) { margin-top: 14px; font-size: 1.1rem; max-width: 48ch; }
+.board { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 26px 0 28px; }
+.board__item { background: var(--white); border: 2.5px solid var(--ink); border-radius: 10px; box-shadow: 5px 5px 0 var(--ink); padding: 18px 20px; }
+.board__item--next { background: var(--ink); color: var(--crust); box-shadow: 5px 5px 0 var(--cheese-deep); }
+.board__item h3 { font-weight: 800; font-size: 1.15rem; margin: 8px 0 6px; }
+.board__item p:not(.board__tag) { font-size: .95rem; opacity: .9; }
+.board__tag { display: inline-block; margin: 0; font-weight: 800; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; background: var(--bonnet); color: var(--white); padding: 3px 9px; border-radius: 5px; }
+.board__tag--past { background: var(--lagoon); }
+@media (max-width: 760px) { .markets__grid, .board { grid-template-columns: 1fr; } .markets__photo { max-width: 340px; } }
