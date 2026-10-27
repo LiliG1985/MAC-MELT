@@ -845,3 +845,13 @@ h1, h2, .dish h3, .bowl__intro h3, .hours-card__head h3, .nav__word, .footer__wo
 .catering--compact::before { z-index: 0; opacity: .25; }
 .catering--compact .wrap { z-index: 1; }
 @media (max-width: 640px) { .catering__bg::after { background: linear-gradient(180deg, rgba(18,26,51,.6), rgba(18,26,51,.9)); } }
+
+/* WhatsApp buttons (brand colours, not WhatsApp green) */
+.btn--wa { gap: 8px; }
+.wa-icon { width: 20px; height: 20px; flex: none; }
+.nav__links .nav__wa { min-height: 50px; box-shadow: 3px 3px 0 var(--ink); }
+.nav__word, .nav__links .btn { white-space: nowrap; }
+@media (min-width: 761px) and (max-width: 1180px) { .nav__wa-text { display: none; } .nav__links .nav__wa { padding-inline: 14px; } .nav__links a:not(.btn) { padding: 0 11px; } }
+.footer__links { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; margin-bottom: 8px; }
+.footer__links .link { color: var(--cheese); }
+.find__contact .btn--wa { margin: 4px 0 6px; }

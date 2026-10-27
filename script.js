@@ -207,7 +207,7 @@ document.querySelectorAll('.cform').forEach((form) => {
         form.reset();
         msg.textContent = 'Thanks! Your message has been sent. Raya will be in touch soon.';
       } catch (err) {
-        msg.textContent = 'Sorry, that didn’t send. Please call 07546 009465 or email ' + TO + '.';
+        msg.textContent = 'Sorry, that didn’t send. Please WhatsApp 07546 009465 or email ' + TO + '.';
       }
       return;
     }
