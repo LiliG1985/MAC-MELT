@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Figtree:wght@400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=25">
+  <link rel="stylesheet" href="styles.css?v=26">
 
   <script type="application/ld+json">
   {
@@ -177,7 +177,7 @@
         </div>
 
         <!-- ENQUIRY FORM: set data-endpoint to a Formspree form URL so enquiries arrive by email without opening the visitor's mail app (see README) -->
-        <form class="cform" data-endpoint="" novalidate>
+        <form class="cform" data-endpoint="" data-kind="catering" novalidate>
           <div class="cform__row">
             <label>Your name<input name="name" type="text" autocomplete="name" required></label>
             <label>Phone<input name="phone" type="tel" autocomplete="tel" required></label>
@@ -214,7 +214,7 @@
             <label><input type="checkbox" name="food" value="Bowls"> Bowls</label>
             <label><input type="checkbox" name="food" value="Sides"> Sides</label>
           </fieldset>
-          <label>Anything else? <span class="cform__opt">(dietary needs, venue, budget)</span><textarea name="message" rows="4"></textarea></label>
+          <label><span>Anything else? <span class="cform__opt">(dietary needs, venue, budget)</span></span><textarea name="message" rows="4"></textarea></label>
           <button class="btn btn--cheese" type="submit">Send enquiry</button>
           <p class="cform__msg" role="status" aria-live="polite"></p>
         </form>
@@ -230,6 +230,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=16"></script>
+  <script src="script.js?v=17"></script>
 </body>
 </html>

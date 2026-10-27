@@ -812,3 +812,5 @@ h1, h2, .dish h3, .bowl__intro h3, .hours-card__head h3, .nav__word, .footer__wo
 .cform__msg { margin: 0; font-weight: 700; min-height: 1.4em; }
 @media (max-width: 860px) { .enquire__grid { grid-template-columns: 1fr; } }
 @media (max-width: 520px) { .cform__row { grid-template-columns: 1fr; } }
+.enquire__alt + .enquire__alt { margin-top: 14px; }
+.catering.enquire .catering__text > p:first-of-type { margin-top: 18px; }
