@@ -173,3 +173,45 @@ tabs.forEach((tab, i) => {
 })();
 
 document.getElementById('year').textContent = new Date().getFullYear();
+
+// Catering enquiry form: posts to a form service if data-endpoint is set, otherwise opens a pre-filled email
+(() => {
+  const form = document.querySelector('.cform');
+  if (!form) return;
+  const msg = form.querySelector('.cform__msg');
+  const TO = 'macandmelt2024@outlook.com';
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    form.querySelectorAll('.is-invalid').forEach((el) => el.classList.remove('is-invalid'));
+    const bad = [...form.querySelectorAll('[required]')].filter((el) => !el.checkValidity());
+    if (bad.length) {
+      bad.forEach((el) => el.classList.add('is-invalid'));
+      msg.textContent = 'Please fill in the highlighted fields.';
+      bad[0].focus();
+      return;
+    }
+    const d = new FormData(form);
+    const food = d.getAll('food').join(', ') || 'Not sure yet';
+    const lines = [
+      'Name: ' + d.get('name'), 'Phone: ' + d.get('phone'), 'Email: ' + d.get('email'),
+      'Event: ' + d.get('event'), 'Date: ' + d.get('date'), 'Guests: ' + d.get('guests'),
+      'Service: ' + d.get('service'), 'Food: ' + food, '', d.get('message') || ''
+    ];
+    const endpoint = form.dataset.endpoint;
+    if (endpoint) {
+      msg.textContent = 'Sending...';
+      try {
+        const r = await fetch(endpoint, { method: 'POST', body: d, headers: { Accept: 'application/json' } });
+        if (!r.ok) throw new Error();
+        form.reset();
+        msg.textContent = "Thanks! Your enquiry has been sent. Raya will be in touch soon.";
+      } catch (err) {
+        msg.textContent = 'Sorry, that didn’t send. Please call 07546 009465 or email ' + TO + '.';
+      }
+      return;
+    }
+    const subject = 'Catering enquiry: ' + d.get('event') + ' on ' + d.get('date');
+    window.location.href = 'mailto:' + TO + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
+    msg.textContent = 'Your email app should open with your enquiry ready to send.';
+  });
+})();

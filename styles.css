@@ -773,3 +773,42 @@ h1, h2, .dish h3, .bowl__intro h3, .hours-card__head h3, .nav__word, .footer__wo
 .hero__text, .hero__stage { z-index: 2; }
 /* Drip shadow only falls downwards, so no dark line where the hero meets the drip */
 .drip { filter: drop-shadow(0 9px 5px rgba(18,26,51,.16)); }
+
+/* ---------- Catering page ---------- */
+.eyebrow { display: inline-block; margin: 0 0 14px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; font-size: .9rem; background: var(--ink); color: var(--cheese); padding: 5px 12px; border-radius: 6px; }
+.nav__links a[aria-current="page"]:not(.btn) { text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 6px; }
+.catering__more { display: inline-block; margin-left: 18px; color: var(--cheese); }
+.cmenu { position: relative; overflow: hidden; isolation: isolate; padding: clamp(72px, 9vw, 120px) 0; }
+.cmenu__head { margin-bottom: clamp(28px, 4vw, 44px); }
+.cmenu__head h2 { font-size: clamp(2.2rem, 4.6vw, 3.4rem); }
+.cmenu__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(16px, 2vw, 24px); }
+.ccard { background: var(--white); border: 2.5px solid var(--ink); border-radius: 10px; box-shadow: 6px 6px 0 var(--ink); overflow: hidden; display: flex; flex-direction: column; }
+.ccard > img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-bottom: 2.5px solid var(--ink); }
+.ccard__body { padding: 18px 18px 22px; }
+.ccard h3 { font-family: "Bagel Fat One", system-ui, sans-serif; font-weight: 400; text-transform: uppercase; font-size: 1.5rem; margin-bottom: 12px; }
+.ccard .chips li { font-size: .9rem; padding: 4px 10px; }
+.occasions { margin-top: clamp(36px, 5vw, 56px); display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; }
+.occasions h3 { font-weight: 800; font-size: 1.2rem; }
+@media (max-width: 1000px) { .cmenu__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .cmenu__grid { grid-template-columns: 1fr; } }
+
+.enquire__grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
+.enquire__grid > * { min-width: 0; }
+.enquire__alt { margin-top: 8px; opacity: .9; }
+.enquire__alt a { color: var(--cheese); font-weight: 700; }
+.cform { background: var(--white); color: var(--ink); border: 3px solid var(--ink-deep); border-radius: 12px; box-shadow: 8px 8px 0 var(--cheese); padding: clamp(20px, 3vw, 32px); display: grid; gap: 16px; }
+.cform__row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.cform label { display: grid; gap: 6px; font-weight: 700; font-size: .95rem; }
+.cform input:not([type="checkbox"]), .cform select, .cform textarea { font: inherit; font-weight: 500; width: 100%; padding: 11px 13px; border: 2px solid var(--ink); border-radius: 8px; background: #FFFDF6; color: var(--ink); }
+.cform textarea { resize: vertical; }
+.cform :focus-visible { outline: 3px solid var(--lagoon); outline-offset: 2px; }
+.cform .is-invalid { border-color: var(--bonnet) !important; box-shadow: 0 0 0 3px rgba(217,65,42,.18); }
+.cform__opt { font-weight: 500; opacity: .7; }
+.cform__checks { border: 0; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 10px 18px; }
+.cform__checks legend { font-weight: 700; font-size: .95rem; margin-bottom: 8px; padding: 0; }
+.cform__checks label { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; }
+.cform__checks input { width: 18px; height: 18px; accent-color: var(--ink); }
+.cform .btn { justify-self: start; }
+.cform__msg { margin: 0; font-weight: 700; min-height: 1.4em; }
+@media (max-width: 860px) { .enquire__grid { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .cform__row { grid-template-columns: 1fr; } }

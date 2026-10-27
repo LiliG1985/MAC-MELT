@@ -31,7 +31,7 @@ https://book.squareup.com/appointments/wcd63i6rsgu1ch/location/LYRM016FMPTPK/ser
 
 If she switches to a Square Online ordering page later, swap that URL in those places.
 
-The catering button goes to her existing Jotform enquiry form.
+Catering has its own page (`catering.html`) with an enquiry form. Until it's connected, sending the form opens an email to macandmelt2024@outlook.com with all the details filled in. To have enquiries arrive straight in her inbox, create a free form at formspree.io and paste its form URL into `data-endpoint=""` on the form in `catering.html` (search for `ENQUIRY FORM`).
 
 ## Domain (do this last)
 
