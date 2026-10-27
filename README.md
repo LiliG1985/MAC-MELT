@@ -31,7 +31,7 @@ https://book.squareup.com/appointments/wcd63i6rsgu1ch/location/LYRM016FMPTPK/ser
 
 If she switches to a Square Online ordering page later, swap that URL in those places.
 
-Catering has its own page (`catering.html`) with an enquiry form. Until it's connected, sending the form opens an email to macandmelt2024@outlook.com with all the details filled in. To have enquiries arrive straight in her inbox, create a free form at formspree.io and paste its form URL into `data-endpoint=""` on the form in `catering.html` (search for `ENQUIRY FORM`). The contact page (`contact.html`) has a general "Send us a message" form that works the same way (search for `CONTACT FORM`); the same Formspree URL can go in both.
+Catering has its own page (`catering.html`) with an enquiry form. Until it's connected, sending the form opens an email to macandmelt2024@outlook.com with all the details filled in. To have enquiries arrive straight in her inbox, create a free form at formspree.io and paste its form URL into `data-endpoint=""` on the form in `catering.html` (search for `ENQUIRY FORM`).
 
 ## Domain (do this last)
 
@@ -47,7 +47,7 @@ Photos and the logo currently load from her Square accounts (the logo is the bad
 
 ## Check before launch
 
-- Opening hours are Friday and Saturday, 2pm to 8pm (from the old site). To change them, edit the hours table in `contact.html`, the short "Collect from Sale" line in `index.html` and `OPEN_DAYS`, `OPEN` and `CLOSE` near the bottom of `script.js`.
+- Opening hours are Friday and Saturday, 2pm to 8pm (from the old site). To change them, edit the hours table in `index.html` and `OPEN_DAYS`, `OPEN` and `CLOSE` near the bottom of `script.js`.
 - Dish descriptions for the pies and the catering bullet points were written fresh. Have her check them.
 - The WhatsApp link in "Get in touch" uses +44 7546 009465 (search `wa.me` in `index.html` to change it). Check that number is on WhatsApp.
 - Her Instagram link is `instagram.com/mac_amd_melt_` (with "amd"). That's what the old site uses; confirm it's correct.
