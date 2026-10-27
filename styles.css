@@ -723,3 +723,27 @@ h1, h2, .dish h3, .bowl__intro h3, .hours-card__head h3, .nav__word, .footer__wo
 
 /* Blend the bottom of the hero into the cheese drip, with no visible line */
 .hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: clamp(80px, 10vw, 120px); z-index: 1; pointer-events: none; background: linear-gradient(to top, var(--cheese) 0%, var(--cheese) 25%, rgba(245,192,46,0) 100%); }
+
+/* ---------- Reviews: proper review cards ---------- */
+.reviews .wrap { display: block; }
+.reviews__head { margin-bottom: clamp(28px, 4vw, 44px); }
+.reviews__head h2 { font-size: clamp(2.2rem, 4.6vw, 3.4rem); text-shadow: none; }
+.reviews__head .section-lede { color: var(--ink); opacity: .8; }
+.reviews__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2.4vw, 28px); align-items: stretch; }
+.review {
+  margin: 0; display: flex; flex-direction: column; gap: 18px;
+  background: var(--white); border: 2.5px solid var(--ink); border-radius: var(--radius-lg);
+  padding: clamp(22px, 3vw, 32px); box-shadow: 6px 6px 0 var(--ink);
+}
+.review__dish { align-self: flex-start; font-weight: 800; font-size: .85rem; background: var(--cheese); border: 2px solid var(--ink); border-radius: 999px; padding: 3px 12px; }
+.review blockquote { margin: 0; position: relative; padding-top: 34px; }
+.review blockquote::before { content: "\201C"; position: absolute; top: -14px; left: -4px; font-family: var(--display); font-size: 4.2rem; line-height: 1; color: var(--bonnet); }
+.review blockquote p { font-size: clamp(1.25rem, 1.8vw, 1.45rem); font-weight: 700; line-height: 1.35; }
+.review figcaption { margin-top: auto; display: flex; align-items: center; gap: 12px; padding-top: 16px; border-top: 2px dashed rgba(28,37,65,.2); }
+.review__avatar { flex: none; width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; background: var(--lagoon); color: var(--white); font-weight: 800; border: 2px solid var(--ink); }
+.review figcaption strong { display: block; font-size: .98rem; }
+.review figcaption small { display: block; font-size: .85rem; opacity: .7; }
+.review--cta { background: var(--ink); color: var(--crust); box-shadow: 6px 6px 0 var(--lagoon); justify-content: center; }
+.review--cta h3 { font-family: var(--display); font-weight: 400; font-size: 1.8rem; color: var(--cheese); text-transform: uppercase; letter-spacing: .01em; }
+.review--cta .btn { align-self: flex-start; background: var(--cheese); color: var(--ink); border-color: var(--cheese); }
+@media (max-width: 900px) { .reviews__grid { grid-template-columns: 1fr; } }
