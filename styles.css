@@ -1061,3 +1061,7 @@ h1, h2, .dish h3, .bowl__intro h3, .hours-card__head h3, .nav__word, .footer__wo
   .best--slice .best__poster { height: auto; }
   .best--slice .best__poster img { height: auto; clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%); }
 }
+@media (min-width: 761px) {
+  .best--slice .best__inner { max-width: 1180px; margin: 0 auto; padding: 0 var(--gutter); justify-content: center; }
+  .best--slice .best__text { max-width: 460px; }
+}
