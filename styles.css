@@ -714,3 +714,7 @@ main { margin-top: calc(-1 * (var(--nav-h) + var(--nav-gap))); }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
 .signup__msg:empty { display: none; }
+
+/* Headings in capitals, to match the logo lettering */
+h1, h2, .dish h3, .bowl__intro h3, .hours-card__head h3, .nav__word, .footer__word, .ticker__word { text-transform: uppercase; letter-spacing: .01em; }
+.hero h1 { font-size: clamp(2.4rem, 4.8vw, 4.1rem); line-height: 1.02; }
