@@ -112,8 +112,8 @@ a { color: inherit; }
     linear-gradient(90deg, rgba(12,16,30,.88) 0%, rgba(12,16,30,.7) 38%, rgba(12,16,30,.2) 72%, rgba(12,16,30,.05) 100%),
     linear-gradient(0deg, rgba(12,16,30,.55) 0%, rgba(12,16,30,0) 35%);
 }
-.hero__text { position: relative; max-width: 640px; }
-.hero h1 { font-size: clamp(3.2rem, 8vw, 6.6rem); color: var(--paper); }
+.hero__text { position: relative; max-width: 720px; }
+.hero h1 { font-size: clamp(2.8rem, 6vw, 5.2rem); color: var(--paper); }
 .hero__lede { margin-top: 22px; font-size: clamp(1.1rem, 1.6vw, 1.3rem); max-width: 44ch; color: rgba(255,255,255,.88); }
 .hero__ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
 .hero .btn--ink { background: var(--cheese); color: var(--ink); }
