@@ -1048,3 +1048,16 @@ h1, h2, .dish h3, .bowl__intro h3, .hours-card__head h3, .nav__word, .footer__wo
 }
 .best--slice .best__inner { position: static; }
 @media (min-width: 761px) { .best--slice .best__poster img { object-position: 50% 4%; } }
+/* Show the whole poster (goat + pie), still cut on a diagonal */
+@media (min-width: 761px) {
+  .best--slice { padding: 0; min-height: 0; }
+  .best--slice .best__inner { max-width: none; padding: 0; display: flex; align-items: center; justify-content: flex-start; gap: clamp(28px, 5vw, 72px); }
+  .best--slice .best__poster { position: relative; inset: auto; width: clamp(300px, 34vw, 460px); z-index: 0; flex: none; }
+  .best--slice .best__poster img { height: auto; object-fit: initial; clip-path: polygon(0 0, 100% 0, 80% 100%, 0 100%); }
+  .best--slice .best__poster::after { clip-path: polygon(calc(100% - 10px) 0, 100% 0, 80% 100%, calc(80% - 10px) 100%); }
+  .best--slice .best__text { padding: 32px clamp(16px, 4vw, 48px) 32px 0; }
+}
+@media (max-width: 760px) {
+  .best--slice .best__poster { height: auto; }
+  .best--slice .best__poster img { height: auto; clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%); }
+}
