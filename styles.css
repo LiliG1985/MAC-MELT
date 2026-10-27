@@ -1031,3 +1031,20 @@ h1, h2, .dish h3, .bowl__intro h3, .hours-card__head h3, .nav__word, .footer__wo
   .mk__next dl { grid-template-columns: 1fr; }
   .mk__next dl > div { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
 }
+
+/* Home best seller: compact band, poster on the left cut on a diagonal */
+.best--slice { position: relative; overflow: hidden; isolation: isolate; padding: clamp(40px, 5vw, 64px) 0; min-height: clamp(300px, 30vw, 400px); display: flex; align-items: center; }
+.best--slice .best__inner { justify-content: flex-end; width: 100%; }
+.best--slice .best__poster { position: absolute; inset: 0 auto 0 0; width: 46%; z-index: -1; }
+.best--slice .best__poster img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; border: 0; border-radius: 0; box-shadow: none; clip-path: polygon(0 0, 100% 0, 78% 100%, 0 100%); }
+.best--slice .best__poster::after { content: ""; position: absolute; inset: 0; background: var(--cheese); clip-path: polygon(100% 0, calc(100% + 0px) 0, 78% 100%, calc(78% - 10px) 100%, calc(100% - 10px) 0); }
+.best--slice .best__text { max-width: 500px; margin-right: clamp(0px, 3vw, 40px); }
+@media (max-width: 760px) {
+  .best--slice { display: block; padding: 0 0 36px; }
+  .best--slice .best__poster { position: relative; width: 100%; height: 260px; }
+  .best--slice .best__poster img { clip-path: polygon(0 0, 100% 0, 100% 82%, 0 100%); object-position: 50% 25%; }
+  .best--slice .best__poster::after { display: none; }
+  .best--slice .best__text { margin: 18px 0 0; }
+}
+.best--slice .best__inner { position: static; }
+@media (min-width: 761px) { .best--slice .best__poster img { object-position: 50% 4%; } }
