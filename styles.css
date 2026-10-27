@@ -764,4 +764,8 @@ h1, h2, .dish h3, .bowl__intro h3, .hours-card__head h3, .nav__word, .footer__wo
 .insta-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 18px; max-width: 420px; }
 .insta-strip img { width: 100%; aspect-ratio: 1; object-fit: cover; border: 2.5px solid var(--ink); border-radius: 6px; box-shadow: 4px 4px 0 var(--ink); transition: transform .2s ease; }
 .insta-strip:hover img { transform: translateY(-3px); }
-.how__photo img { aspect-ratio: 4 / 5; object-fit: cover; }
+
+/* How ordering works: cut-out bowl, no frame, sits on the drip below the logo */
+.how__photo { width: clamp(240px, 28vw, 380px); transform: rotate(-6deg); margin-top: clamp(-120px, -8vw, -70px); }
+.how__photo img { aspect-ratio: auto; object-fit: contain; border: 0; border-radius: 0; box-shadow: none; filter: drop-shadow(0 22px 22px rgba(10,20,40,.45)); }
+@media (max-width: 760px) { .how__photo { margin-top: 0; width: min(80%, 320px); } }
