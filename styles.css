@@ -988,3 +988,7 @@ h1, h2, .dish h3, .bowl__intro h3, .hours-card__head h3, .nav__word, .footer__wo
   .mk__photo figcaption { bottom: 40px; }
   .mk__body { margin: -20px 0 0; padding: 0 20px 28px; }
 }
+@media (min-width: 861px) {
+  .mk__photo { width: 54%; }
+  .mk__photo img { -webkit-mask-image: linear-gradient(90deg, #000 55%, rgba(0,0,0,.5) 78%, transparent 96%); mask-image: linear-gradient(90deg, #000 55%, rgba(0,0,0,.5) 78%, transparent 96%); }
+}
