@@ -769,3 +769,8 @@ h1, h2, .dish h3, .bowl__intro h3, .hours-card__head h3, .nav__word, .footer__wo
 .how__photo { width: clamp(240px, 28vw, 380px); transform: rotate(-6deg); margin-top: clamp(-120px, -8vw, -70px); }
 .how__photo img { aspect-ratio: auto; object-fit: contain; border: 0; border-radius: 0; box-shadow: none; filter: drop-shadow(0 22px 22px rgba(10,20,40,.45)); }
 @media (max-width: 760px) { .how__photo { margin-top: 0; width: min(80%, 320px); } }
+
+/* Keep hero text and buttons above the bottom cheese fade */
+.hero__text, .hero__stage { z-index: 2; }
+/* Drip shadow only falls downwards, so no dark line where the hero meets the drip */
+.drip { filter: drop-shadow(0 9px 5px rgba(18,26,51,.16)); }
