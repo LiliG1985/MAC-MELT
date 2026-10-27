@@ -747,3 +747,15 @@ h1, h2, .dish h3, .bowl__intro h3, .hours-card__head h3, .nav__word, .footer__wo
 .review--cta h3 { font-family: var(--display); font-weight: 400; font-size: 1.8rem; color: var(--cheese); text-transform: uppercase; letter-spacing: .01em; }
 .review--cta .btn { align-self: flex-start; background: var(--cheese); color: var(--ink); border-color: var(--cheese); }
 @media (max-width: 900px) { .reviews__grid { grid-template-columns: 1fr; } }
+
+/* Tighter join between hero and "How ordering works"; the photo overlaps the cheese drip */
+.hero { padding-bottom: clamp(36px, 4vw, 56px); }
+.how { overflow-x: clip; overflow-y: visible; padding-top: clamp(84px, 9vw, 124px); }
+.how .wrap { z-index: 3; }
+.how__head { align-items: start; }
+.how__head > div:first-child { padding-top: clamp(40px, 5vw, 80px); }
+.how__photo { position: relative; z-index: 3; margin-top: clamp(-200px, -15vw, -110px); }
+@media (max-width: 760px) {
+  .how__head > div:first-child { padding-top: 0; }
+  .how__photo { margin-top: 0; }
+}
