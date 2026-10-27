@@ -814,3 +814,12 @@ h1, h2, .dish h3, .bowl__intro h3, .hours-card__head h3, .nav__word, .footer__wo
 @media (max-width: 520px) { .cform__row { grid-template-columns: 1fr; } }
 .enquire__alt + .enquire__alt { margin-top: 14px; }
 .catering.enquire .catering__text > p:first-of-type { margin-top: 18px; }
+
+/* Home page: compact catering band that points to the catering page */
+.catering--compact { padding: clamp(44px, 5vw, 64px) 0; }
+.catering--compact .catering__grid { grid-template-columns: minmax(180px, 300px) 1fr; gap: clamp(28px, 4vw, 56px); }
+.catering--compact .catering__photo > img { aspect-ratio: 4 / 3; border-radius: 14px; box-shadow: 6px 6px 0 var(--cheese-deep), 0 20px 40px -18px rgba(0,0,0,.6); }
+.catering--compact h2 { font-size: clamp(1.9rem, 3.4vw, 2.7rem); }
+.catering--compact .catering__text > p { margin-top: 10px; font-size: 1.05rem; }
+.catering__btns { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 6px; margin-top: 22px; }
+@media (max-width: 640px) { .catering--compact .catering__grid { grid-template-columns: 1fr; } .catering--compact .catering__photo { max-width: 240px; } }
