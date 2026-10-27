@@ -861,3 +861,11 @@ h1, h2, .dish h3, .bowl__intro h3, .hours-card__head h3, .nav__word, .footer__wo
 .catering__bg::after { background: linear-gradient(270deg, rgba(18,26,51,.92) 0%, rgba(18,26,51,.75) 32%, rgba(18,26,51,.2) 62%, rgba(18,26,51,0) 100%); }
 @media (max-width: 760px) { .catering--compact .catering__text { margin-left: 0; } .catering__bg::after { background: linear-gradient(180deg, rgba(18,26,51,.35), rgba(18,26,51,.85) 60%); } .catering--compact { padding-top: 180px; } }
 @media (min-width: 761px) { .catering--compact .catering__text { max-width: 440px; } .catering__bg::after { background: linear-gradient(270deg, rgba(18,26,51,.9) 0%, rgba(18,26,51,.7) 28%, rgba(18,26,51,0) 52%); } }
+
+/* Catering page header: buffet photo across the back */
+.hero--cater .hero__photo { width: 100%; }
+.hero--cater .hero__photo img { object-position: 30% 60%;
+  -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 100%); mask-image: linear-gradient(to bottom, #000 70%, transparent 100%); }
+.hero--cater .hero__photo::after { mix-blend-mode: normal; opacity: 1;
+  background: linear-gradient(90deg, rgba(245,192,46,.97) 0%, rgba(245,192,46,.88) 34%, rgba(245,192,46,.35) 58%, rgba(245,192,46,0) 80%); }
+@media (max-width: 760px) { .hero--cater .hero__photo::after { background: linear-gradient(180deg, rgba(245,192,46,.85), rgba(245,192,46,.6)); } }
