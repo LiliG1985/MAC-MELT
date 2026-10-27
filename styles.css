@@ -759,3 +759,9 @@ h1, h2, .dish h3, .bowl__intro h3, .hours-card__head h3, .nav__word, .footer__wo
   .how__head > div:first-child { padding-top: 0; }
   .how__photo { margin-top: 0; }
 }
+
+/* Instagram photo strip under "Follow the melt" */
+.insta-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 18px; max-width: 420px; }
+.insta-strip img { width: 100%; aspect-ratio: 1; object-fit: cover; border: 2.5px solid var(--ink); border-radius: 6px; box-shadow: 4px 4px 0 var(--ink); transition: transform .2s ease; }
+.insta-strip:hover img { transform: translateY(-3px); }
+.how__photo img { aspect-ratio: 4 / 5; object-fit: cover; }
