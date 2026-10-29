@@ -1100,3 +1100,32 @@ h1, h2, .dish h3, .bowl__intro h3, .hours-card__head h3, .nav__word, .footer__wo
 .mk__follow { margin: 22px 0 18px; font-size: 1.15rem; font-weight: 700; max-width: 40ch; }
 /* Home markets strip: different photo from the What's on page */
 .markets__bg { background-image: url(images/event-buffet.jpg); background-position: 50% 45%; }
+
+/* ---------- Reviews: navy rotating banner of speech bubbles ---------- */
+.reviews--rail { background: var(--ink); color: var(--crust); padding: clamp(48px, 6vw, 80px) 0 clamp(56px, 7vw, 90px); border-top: 3px solid var(--ink); }
+.reviews--rail::before { background: var(--dots); background-size: 20px 20px; opacity: .08; filter: invert(1); mix-blend-mode: normal; }
+.reviews--rail::after { display: none; }
+.reviews__top { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-bottom: clamp(28px, 4vw, 44px); }
+.reviews--rail h2 { color: var(--cheese); font-size: clamp(2rem, 4.2vw, 3.2rem); text-shadow: 3px 3px 0 var(--ink-deep); }
+.reviews--rail .section-lede { color: var(--crust); opacity: .85; }
+.rail { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); padding: 8px 0 26px; }
+.rail__track { display: flex; gap: clamp(16px, 2vw, 26px); width: max-content; animation: rail 38s linear infinite; }
+.rail:hover .rail__track, .rail:focus-within .rail__track { animation-play-state: paused; }
+@keyframes rail { to { transform: translateX(calc(-50% - clamp(8px, 1vw, 13px))); } }
+.rv { position: relative; margin: 0; width: clamp(240px, 26vw, 320px); flex: none; display: flex; flex-direction: column; gap: 10px; background: var(--white); color: var(--ink); border: 3px solid var(--cheese); border-radius: 18px; padding: 22px 22px 18px; box-shadow: 6px 6px 0 var(--cheese-deep); }
+.rv:nth-child(even) { background: var(--cheese); border-color: var(--white); box-shadow: 6px 6px 0 var(--lagoon); transform: rotate(1.2deg); }
+.rv:nth-child(odd) { transform: rotate(-1deg); }
+.rv::after { content: ""; position: absolute; left: 28px; bottom: -14px; width: 22px; height: 22px; background: inherit; border-right: 3px solid; border-bottom: 3px solid; border-color: inherit; transform: rotate(45deg); }
+.rv blockquote { margin: 0; font-family: "Bagel Fat One", system-ui, sans-serif; font-weight: 400; font-size: clamp(1.15rem, 1.6vw, 1.4rem); line-height: 1.2; }
+.rv figcaption { margin-top: auto; font-size: .8rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; opacity: .7; }
+.rv__dish { align-self: flex-start; font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; background: var(--ink); color: var(--cheese); padding: 3px 9px; border-radius: 5px; }
+@media (max-width: 760px) {
+  .reviews__top .btn { width: 100%; justify-content: center; }
+  .rv { width: 220px; padding: 18px 16px 14px; }
+  .rail__track { animation-duration: 30s; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rail { overflow-x: auto; }
+  .rail__track { animation: none; }
+}
+.rv { justify-content: center; min-height: 130px; }

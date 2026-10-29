@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Figtree:wght@400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=52">
+  <link rel="stylesheet" href="styles.css?v=53">
 
   <script type="application/ld+json">
   {
@@ -392,29 +392,27 @@
       </div>
     </section>
 
-    <!-- REVIEWS -->
-    <section class="reviews" aria-labelledby="reviews-title">
-      <div class="wrap">
-        <div class="reviews__head">
+    <!-- REVIEWS: rotating banner. Add Google reviews by copying a <figure class="rv"> (add it to both halves of the list) -->
+    <section class="reviews reviews--rail" aria-labelledby="reviews-title">
+      <div class="wrap reviews__top">
+        <div>
           <h2 id="reviews-title">What customers say</h2>
           <p class="section-lede">Straight from the people who've tried it.</p>
         </div>
-        <div class="reviews__grid">
-          <figure class="review">
-            <span class="review__dish">Curry goat pie</span>
-            <blockquote><p>The Curry Goat Pies are unreal.</p></blockquote>
-            <figcaption><span class="review__avatar" aria-hidden="true">M</span><span><strong>Mac and Melt customer</strong></span></figcaption>
-          </figure>
-          <figure class="review">
-            <span class="review__dish">Jerk honey salmon bowl</span>
-            <blockquote><p>Jerk honey salmon? Yes please!</p></blockquote>
-            <figcaption><span class="review__avatar" aria-hidden="true">M</span><span><strong>Mac and Melt customer</strong></span></figcaption>
-          </figure>
-          <div class="review review--cta">
-            <h3>Tried Mac and Melt?</h3>
-            <p>We'd love to hear what you thought. Tag us or send us a message on Instagram.</p>
-            <a class="btn btn--ink" href="https://www.instagram.com/mac_and_melt_">Leave a review</a>
-          </div>
+        <a class="btn btn--cheese" href="https://www.instagram.com/mac_and_melt_" target="_blank" rel="noopener">Tried it? Leave a review</a>
+      </div>
+      <div class="rail" tabindex="0" aria-label="Customer reviews">
+        <div class="rail__track">
+            <figure class="rv"><span class="rv__dish">Curry goat pie</span><blockquote>The Curry Goat Pies are unreal.</blockquote></figure>
+            <figure class="rv"><blockquote>Gwarnnn girl, Mac and Melt is maccingggg ❤️</blockquote></figure>
+            <figure class="rv"><span class="rv__dish">Jerk honey salmon bowl</span><blockquote>Jerk honey salmon? Yes please!</blockquote></figure>
+            <figure class="rv"><blockquote>We need more goat mascot!!! 🐐🔥🔥</blockquote></figure>
+            <figure class="rv"><blockquote>Greatness ✨</blockquote></figure>
+            <figure class="rv" aria-hidden="true"><span class="rv__dish">Curry goat pie</span><blockquote>The Curry Goat Pies are unreal.</blockquote></figure>
+            <figure class="rv" aria-hidden="true"><blockquote>Gwarnnn girl, Mac and Melt is maccingggg ❤️</blockquote></figure>
+            <figure class="rv" aria-hidden="true"><span class="rv__dish">Jerk honey salmon bowl</span><blockquote>Jerk honey salmon? Yes please!</blockquote></figure>
+            <figure class="rv" aria-hidden="true"><blockquote>We need more goat mascot!!! 🐐🔥🔥</blockquote></figure>
+            <figure class="rv" aria-hidden="true"><blockquote>Greatness ✨</blockquote></figure>
         </div>
       </div>
     </section>
