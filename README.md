@@ -65,12 +65,6 @@ The rotating dish banner under "The food" has one slide per dish. Slides with a 
 
 The "Meet Raya" section uses the photo of her at a catering event from the old homepage. The two short paragraphs about her were written fresh, so have her check them. The quote is the mission statement from the old site.
 
-## Newsletter
-
-There is a "Stay in the loop" section near the bottom and a sign-up card that slides in once per visitor. Until it's connected to a mailing list, signing up opens an email to macandmelt2024@outlook.com.
-
-To collect sign-ups properly, create a free form at formspree.io (or a Mailchimp embedded form), then paste its form URL into both `data-endpoint=""` attributes in `index.html` (search for `NEWSLETTER`).
-
 ## Markets board
 
 The "Find us at a market" section on the home page has a small news board. Market dates and locations are announced on Instagram; the site just points people there.
