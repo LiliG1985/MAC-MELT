@@ -71,4 +71,4 @@ The "Find us at a market" section on the home page has a small news board. Marke
 
 ## Notice board (What's on)
 
-`whats-on.html` is the notice board: markets, what's new, coming soon and customer favourites. Edit the cards there (search for `NOTICE BOARD`).
+`whats-on.html` is the What's on page: markets, what's new, coming soon and customer favourites. Edit the cards there (search for `WHAT'S ON`).
