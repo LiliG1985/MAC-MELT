@@ -1129,3 +1129,6 @@ h1, h2, .dish h3, .bowl__intro h3, .hours-card__head h3, .nav__word, .footer__wo
   .rail__track { animation: none; }
 }
 .rv { justify-content: center; min-height: 130px; }
+.rv { width: auto; max-width: clamp(260px, 30vw, 380px); min-width: 180px; }
+.rail__track { align-items: center; animation-duration: 55s; }
+@media (max-width: 760px) { .rv { max-width: 260px; min-width: 150px; } .rail__track { animation-duration: 42s; } }
