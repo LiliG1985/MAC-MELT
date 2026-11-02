@@ -1154,3 +1154,7 @@ h1, h2, .dish h3, .bowl__intro h3, .hours-card__head h3, .nav__word, .footer__wo
 .rv { box-shadow: 6px 6px 0 var(--cheese-deep), 0 18px 30px -12px rgba(0,0,0,.55); }
 .rv:nth-child(even) { box-shadow: 6px 6px 0 var(--lagoon), 0 18px 30px -12px rgba(0,0,0,.55); }
 @media (max-width: 760px) { .reviews--rail::before { background: linear-gradient(180deg, rgba(28,37,65,.9), rgba(28,37,65,.75)), url(images/curry-goat-pie.jpg) center / cover no-repeat; } }
+/* Reviews: fade the bottom into the footer blue, no hard line */
+.reviews--rail { border-bottom: 0; padding-bottom: clamp(80px, 9vw, 120px); }
+.reviews--rail::after { background: radial-gradient(60% 80% at 80% 40%, rgba(245,192,46,.12), transparent 70%), linear-gradient(180deg, transparent 55%, var(--lagoon-deep) 100%); }
+.footer { border-top: 0; }
