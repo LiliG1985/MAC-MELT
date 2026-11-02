@@ -1145,3 +1145,5 @@ h1, h2, .dish h3, .bowl__intro h3, .hours-card__head h3, .nav__word, .footer__wo
   .best--slice .best__row { clear: both; padding-top: 12px; margin-top: 0; }
   .best--slice .best__price { font-size: 1.8rem; }
 }
+/* Meet Raya: new square event photo */
+.founder__photo > img { aspect-ratio: 1 / 1; object-position: 50% 40%; }
