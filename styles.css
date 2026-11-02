@@ -1147,3 +1147,10 @@ h1, h2, .dish h3, .bowl__intro h3, .hours-card__head h3, .nav__word, .footer__wo
 }
 /* Meet Raya: new square event photo */
 .founder__photo > img { aspect-ratio: 1 / 1; object-position: 50% 40%; }
+
+/* Reviews: faint dish photo behind for depth */
+.reviews--rail::before { background: linear-gradient(90deg, rgba(28,37,65,.97) 0%, rgba(28,37,65,.86) 45%, rgba(28,37,65,.68) 100%), url(images/curry-goat-pie.jpg) 75% 45% / cover no-repeat; opacity: 1; filter: none; mix-blend-mode: normal; }
+.reviews--rail::after { display: block; content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(60% 80% at 80% 40%, rgba(245,192,46,.14), transparent 70%), linear-gradient(180deg, transparent 60%, rgba(18,26,51,.6)); }
+.rv { box-shadow: 6px 6px 0 var(--cheese-deep), 0 18px 30px -12px rgba(0,0,0,.55); }
+.rv:nth-child(even) { box-shadow: 6px 6px 0 var(--lagoon), 0 18px 30px -12px rgba(0,0,0,.55); }
+@media (max-width: 760px) { .reviews--rail::before { background: linear-gradient(180deg, rgba(28,37,65,.9), rgba(28,37,65,.75)), url(images/curry-goat-pie.jpg) center / cover no-repeat; } }
