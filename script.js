@@ -95,9 +95,9 @@ tabs.forEach((tab, i) => {
   restart();
 })();
 
-// Opening hours: Friday and Saturday, 2pm to 8pm (UK time)
+// Opening hours: Friday and Saturday, 3pm to 8pm (UK time)
 (() => {
-  const OPEN_DAYS = [5, 6], OPEN = 14, CLOSE = 20;
+  const OPEN_DAYS = [5, 6], OPEN = 15, CLOSE = 20;
   const names = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   let day, hour;
   try {
@@ -109,11 +109,11 @@ tabs.forEach((tab, i) => {
   const openNow = OPEN_DAYS.includes(day) && hour >= OPEN && hour < CLOSE;
   let text;
   if (openNow) text = 'Open now until 8pm';
-  else if (OPEN_DAYS.includes(day) && hour < OPEN) text = 'Opens today at 2pm';
+  else if (OPEN_DAYS.includes(day) && hour < OPEN) text = 'Opens today at 3pm';
   else {
     let d = day;
     for (let i = 1; i <= 7; i++) { d = (day + i) % 7; if (OPEN_DAYS.includes(d)) break; }
-    text = (d === (day + 1) % 7 ? 'Opens tomorrow' : 'Opens ' + names[d]) + ' at 2pm';
+    text = (d === (day + 1) % 7 ? 'Opens tomorrow' : 'Opens ' + names[d]) + ' at 3pm';
   }
   document.querySelectorAll('[data-open-status]').forEach((el) => {
     el.textContent = text;
