@@ -1390,3 +1390,14 @@ html.v2 .hero--cater .hero__ctas .btn--ink { background: var(--cheese) !importan
 .occ__list li::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--cheese); margin-right: 10px; vertical-align: middle; }
 .occ .btn--cheese { margin-top: 36px; background: var(--cheese); color: var(--ink-deep); border-color: var(--cheese); text-transform: none; letter-spacing: .01em; font-size: 1rem; }
 .occ .btn--cheese:hover { background: var(--cheese-hi); color: var(--ink-deep); }
+
+/* Events banner: slim, refined scrolling strip */
+.ev-band { background: #0B4A54; border-top: 1px solid rgba(245,192,46,.55); border-bottom: 1px solid rgba(245,192,46,.55); overflow: hidden; }
+.ev-band__rail { display: flex; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.ev-band__track { list-style: none; margin: 0; padding: 22px 0; display: flex; flex: none; animation: evband 60s linear infinite; }
+.ev-band__track li { white-space: nowrap; display: flex; align-items: center; padding: 0 28px; color: #fff; font-family: var(--body); font-weight: 600; font-size: .9rem; letter-spacing: .22em; text-transform: uppercase; }
+.ev-band__track li::after { content: ""; width: 6px; height: 6px; margin-left: 56px; background: var(--cheese); transform: rotate(45deg); }
+.ev-band:hover .ev-band__track { animation-play-state: paused; }
+@keyframes evband { to { transform: translateX(-100%); } }
+@media (prefers-reduced-motion: reduce) { .ev-band__rail { overflow-x: auto; } .ev-band__track { animation: none; } }
+@media (max-width: 600px) { .ev-band__track { padding: 16px 0; } .ev-band__track li { font-size: .78rem; padding: 0 18px; } .ev-band__track li::after { margin-left: 36px; } }
