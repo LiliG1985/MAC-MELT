@@ -1675,3 +1675,13 @@ html.leaving main { opacity: 0; transform: translateY(-30px); transition: opacit
     linear-gradient(225deg, rgba(245,192,46,0) 0%, rgba(245,192,46,.35) 20%, rgba(245,192,46,.92) 42%, rgba(245,192,46,.96) 100%) !important; }
 }
 .hero:not(.hero--cater) + .how .drip { top: -2px; filter: none; }
+/* Catering: clean diagonal join under the header (same angle as the photo's bottom edge) */
+.hero--cater::after { height: 70px !important; background: linear-gradient(to top, #0B4A54 0%, #0B4A54 25%, rgba(11,74,84,0) 100%) !important; }
+.hero--cater + .how { position: relative; }
+.hero--cater + .how::before { content: ""; position: absolute; z-index: 6; left: 0; right: 0; top: -1px; height: clamp(40px, 5vw, 80px); background: #0B4A54; clip-path: polygon(0 0, 100% 0, 0 100%); pointer-events: none; }
+.hero--cater + .how .how__photo--tray img { -webkit-mask-image: none !important; mask-image: none !important; }
+.hero--cater + .how { padding-top: clamp(90px, 9vw, 130px); }
+@media (max-width: 860px) {
+  .hero--cater + .how::before { height: 40px; }
+  .hero--cater + .how { padding-top: 0 !important; }
+}
