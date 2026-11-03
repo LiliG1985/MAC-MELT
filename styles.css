@@ -1362,3 +1362,7 @@ html.v2 .hero--cater .hero__ctas .btn--ink { background: var(--cheese) !importan
   .occ__list li:nth-child(5n) { border-right: 1px solid rgba(15,95,107,.15); }
   .occ__list li:nth-child(2n) { border-right: 0; }
 }
+/* Reviews into footer: one seamless deep teal, no second photo */
+.reviews--rail::after { background: radial-gradient(60% 80% at 80% 40%, rgba(245,192,46,.1), transparent 70%), linear-gradient(180deg, transparent 50%, #0B4A54 100%); }
+.footer { background: #0B4A54; border-top: 0; }
+.footer::before { display: none; }
