@@ -1263,3 +1263,12 @@ main section h2::after { content: ""; display: block; width: 56px; height: 4px; 
 }
 /* Enquiry section: clean turquoise, no yellow glow (it turned green) */
 .catering { background: linear-gradient(180deg, var(--ink), var(--ink-deep)); }
+/* Real photos */
+.hero__photo img { object-position: 50% 60%; }
+.bespoke__bg { background-image: linear-gradient(90deg, rgba(11,74,84,.96) 0%, rgba(11,74,84,.88) 40%, rgba(11,74,84,.3) 100%), url(images/table-spread-2.jpg); background-position: center 55%; }
+@media (max-width: 560px) { .bespoke__bg { background-image: linear-gradient(180deg, rgba(11,74,84,.9), rgba(11,74,84,.9)), url(images/table-spread-2.jpg); } }
+.wn__photo img { object-position: 50% 45%; }
+/* Eco band: warm cream like the rest of the site, no pale blue wash */
+.eco-band { background: #FFFBF1; border-top: 1px solid rgba(15,95,107,.15); border-bottom: 1px solid rgba(15,95,107,.15); }
+.eco-band::before { display: none; }
+.eco-band__points li { border-color: rgba(15,95,107,.18); }
