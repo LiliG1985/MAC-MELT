@@ -1348,3 +1348,17 @@ html.v2 .hero--cater .hero__ctas .btn--ink { background: var(--cheese) !importan
 @keyframes evstrip { to { transform: translateX(-100%); } }
 @media (prefers-reduced-motion: reduce) { .ev-strip__rail { overflow-x: auto; } .ev-strip__track { animation: none; } }
 @media (max-width: 600px) { .ev-strip__label { font-size: .72rem; padding: 0 12px; } }
+
+/* Events we cater for: quiet, luxe list */
+.occ { background: #fff; padding: clamp(64px, 8vw, 104px) 0; text-align: center; border-top: 1px solid rgba(15,95,107,.12); }
+.occ__label { margin: 0 0 10px; font-size: .78rem; font-weight: 700; letter-spacing: .32em; text-transform: uppercase; color: #B8892A; }
+.occ h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 500; color: var(--ink-deep); letter-spacing: -.01em; }
+.occ h2::after { display: block; content: ""; width: 48px; height: 1px; margin: 22px auto 0; background: #B8892A; border-radius: 0; }
+.occ__list { list-style: none; padding: 0; margin: clamp(32px, 4vw, 48px) auto 0; max-width: 1000px; display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid rgba(15,95,107,.15); }
+.occ__list li { padding: 22px 12px; font-family: var(--display); font-size: clamp(1.05rem, 1.5vw, 1.25rem); color: var(--ink-deep); border-bottom: 1px solid rgba(15,95,107,.15); border-right: 1px solid rgba(15,95,107,.15); }
+.occ__list li:nth-child(5n) { border-right: 0; }
+@media (max-width: 760px) {
+  .occ__list { grid-template-columns: 1fr 1fr; }
+  .occ__list li:nth-child(5n) { border-right: 1px solid rgba(15,95,107,.15); }
+  .occ__list li:nth-child(2n) { border-right: 0; }
+}
