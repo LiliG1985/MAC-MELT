@@ -1420,3 +1420,7 @@ html.v2 .hero--cater .hero__ctas .btn--ink { background: var(--cheese) !importan
 .hero__stage { animation: heroIn 1.1s .25s cubic-bezier(.2,.7,.2,1) both; }
 html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { .hero__text > *, .page-head .wrap > *, .hero__stage { animation: none; } }
+/* The food: faint photo behind the heading area */
+.menu::after { content: ""; position: absolute; z-index: -1; left: 0; right: 0; top: 0; height: clamp(420px, 42vw, 560px); pointer-events: none;
+  background: url(images/classic-tray.jpg) center 60% / cover no-repeat; opacity: .14; filter: saturate(.8);
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 45%, transparent 100%); mask-image: linear-gradient(180deg, #000 0%, #000 45%, transparent 100%); }
