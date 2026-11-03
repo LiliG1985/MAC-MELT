@@ -1494,3 +1494,31 @@ html.leaving main { opacity: 0; transform: translateY(-30px); transition: opacit
 /* Bespoke banner: event buffet photo */
 .bespoke__bg { background-image: linear-gradient(90deg, rgba(11,74,84,.96) 0%, rgba(11,74,84,.86) 40%, rgba(11,74,84,.3) 100%), url(images/event-chicken-trays.jpg); background-position: center 50%; }
 @media (max-width: 560px) { .bespoke__bg { background-image: linear-gradient(180deg, rgba(11,74,84,.9), rgba(11,74,84,.9)), url(images/event-chicken-trays.jpg); } }
+
+/* ---------- Phone: cleaner opening sections ---------- */
+@media (max-width: 760px) {
+  .hero { display: flex; flex-direction: column; align-items: flex-start; gap: 0; padding: calc(var(--nav-h) + var(--nav-gap) + 18px) var(--gutter) 64px; min-height: 0; }
+  .hero__stage { order: -1; width: 128px; aspect-ratio: 1; align-self: flex-start; margin: 0 0 18px; justify-self: auto; }
+  .hero__logo { position: static; width: 100%; animation: none; }
+  .hero__text { justify-self: auto; max-width: none; }
+  .hero h1 { font-size: 2.35rem; line-height: 1.08; }
+  .hero__lede { font-size: 1.02rem; line-height: 1.55; margin-top: 14px; }
+  .hero__sub { display: none; }
+  .hero__ctas { margin-top: 22px; gap: 10px; }
+  .hero__ctas .btn { flex: 1 1 140px; }
+  .hero__open { margin-top: 16px; }
+  /* photo: whole background, evenly tinted, no hard edges */
+  .hero .hero__photo { inset: 0; width: 100%; }
+  .hero .hero__photo img { -webkit-mask-image: none !important; mask-image: none !important; object-position: 60% 50%; }
+  .hero:not(.hero--cater) .hero__photo::after { display: block; content: ""; position: absolute; inset: 0; mix-blend-mode: normal; opacity: 1; background: linear-gradient(180deg, rgba(245,192,46,.94) 0%, rgba(245,192,46,.9) 60%, rgba(245,192,46,.78) 100%); }
+  .hero--cater .hero__photo::after { background: linear-gradient(180deg, rgba(11,74,84,.93), rgba(11,74,84,.86)) !important; }
+  .hero::after { display: none; }
+  .hero--cater .eyebrow { margin-bottom: 12px; }
+  .page-head--photo { background: linear-gradient(180deg, rgba(11,74,84,.92), rgba(11,74,84,.82)), url(images/buffet-curry-goat.jpg) center 45% / cover no-repeat; }
+  .page-head h1 { font-size: 2.6rem; }
+}
+@media (max-width: 760px) {
+  .hero .hero__photo { top: 0 !important; bottom: 0 !important; height: auto !important; }
+  .hero h1 { font-size: 2.2rem; text-wrap: balance; }
+}
+@media (max-width: 760px) { .hero__ctas .btn { padding: 0 14px; } .hero--cater .hero__ctas .btn { flex-basis: 100%; } }
