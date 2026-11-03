@@ -1547,3 +1547,10 @@ html.leaving main { opacity: 0; transform: translateY(-30px); transition: opacit
 /* Catering: drip matches the turquoise header above it */
 .hero--cater + .how .drip { fill: #0B4A54; }
 .hero--cater::after { display: none !important; }
+/* Phone: bigger drips with a shadow so they read on top of the photo */
+@media (max-width: 860px) {
+  .how--cater .drip { height: 72px; filter: drop-shadow(0 6px 6px rgba(0,0,0,.28)); }
+  .how--cater .how__photo--tray { height: 320px; }
+  .how--cater .how__photo--tray img { object-position: 50% 65%; }
+  .hero:not(.hero--cater) { padding-bottom: 40px; }
+}
