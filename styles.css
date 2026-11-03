@@ -1533,3 +1533,5 @@ html.leaving main { opacity: 0; transform: translateY(-30px); transition: opacit
   .menu__head .section-lede { margin-top: 10px; font-size: 1rem; }
   .menu::after { height: 300px; }
 }
+.markets__btns { display: flex; flex-wrap: wrap; gap: 12px; }
+.markets--compact .markets__btns .btn--line { background: transparent; color: #fff; border-color: rgba(255,255,255,.7); }
