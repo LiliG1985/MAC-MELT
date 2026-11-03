@@ -1302,3 +1302,10 @@ html.v2 .hero .hero__ctas .btn--ink { background: var(--cheese) !important; colo
 .hero .hero__open { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.5); color: #fff; box-shadow: none; }
 @media (max-width: 760px) { .hero .hero__photo::after { background: linear-gradient(180deg, rgba(11,74,84,.9), rgba(11,74,84,.82)); } }
 .how__photo--tray { margin-top: 0 !important; align-self: center; }
+/* Home header: back to the warm cheese colour, white writing (deeper golden tint so white reads) */
+.hero:not(.hero--cater) { background: var(--cheese-deep); }
+.hero:not(.hero--cater) .hero__photo::after { background: linear-gradient(90deg, rgba(196,128,8,.95) 0%, rgba(214,148,14,.86) 42%, rgba(227,163,15,.35) 75%, rgba(227,163,15,.1) 100%); }
+.hero:not(.hero--cater) :is(h1, .hero__lede, .hero__sub) { color: #fff; text-shadow: 0 2px 12px rgba(90,50,0,.35) !important; }
+html.v2 .hero:not(.hero--cater) .hero__ctas .btn--ink { background: var(--ink) !important; color: #fff !important; border-color: var(--ink) !important; }
+.hero:not(.hero--cater) .hero__open { background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.7); }
+@media (max-width: 760px) { .hero:not(.hero--cater) .hero__photo::after { background: linear-gradient(180deg, rgba(196,128,8,.92), rgba(214,148,14,.85)); } }
