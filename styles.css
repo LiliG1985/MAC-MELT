@@ -1687,3 +1687,48 @@ html.leaving main { opacity: 0; transform: translateY(-30px); transition: opacit
 }
 /* Reviews: no faded edges on the sliding bubbles */
 .rail { -webkit-mask-image: none; mask-image: none; }
+/* Catering: photo and diagonal tuck up under the header buttons */
+.hero--cater { position: relative; z-index: 2; overflow: visible; }
+.hero--cater .hero__photo { overflow: hidden; }
+.hero--cater::after { display: none !important; }
+.hero--cater + .how::before { display: none; }
+@media (max-width: 860px) {
+  .hero--cater { padding-bottom: 28px; }
+  .hero--cater + .how { margin-top: -54px; z-index: 1; }
+  .how--cater .how__photo--tray img { clip-path: polygon(0 22%, 100% 0, 100% 88%, 0 100%) !important; }
+}
+@media (min-width: 861px) {
+  .hero--cater + .how { margin-top: -70px; z-index: 1; }
+  .hero--cater + .how .how__photo--tray img { clip-path: polygon(22% 9%, 100% 0, 100% 100%, 0 100%) !important; }
+  .hero--cater + .how .how__photo--tray::before { clip-path: polygon(22% 9%, 23.2% 9%, 1.2% 100%, 0 100%); }
+  .hero--cater + .how .how__photo--tray::after { clip-path: polygon(22% 9%, 100% 0, 100% 100%, 0 100%); }
+}
+/* Header itself ends on a diagonal; the photo below shows through underneath the buttons */
+.hero--cater { clip-path: polygon(0 0, 100% 0, 100% calc(100% - 90px), 0 100%); }
+@media (max-width: 860px) {
+  .hero--cater { clip-path: polygon(0 0, 100% 0, 100% calc(100% - 110px), 0 100%); padding-bottom: 40px; }
+  .hero--cater + .how { margin-top: -110px; }
+  .how--cater .how__photo--tray { height: 400px; }
+  .how--cater .how__photo--tray img { clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%) !important; }
+}
+@media (min-width: 861px) {
+  .hero--cater + .how { margin-top: -90px; }
+  .hero--cater + .how .how__photo--tray img { clip-path: polygon(22% 0, 100% 0, 100% 100%, 0 100%) !important; }
+  .hero--cater + .how .how__photo--tray::before { clip-path: polygon(22% 0, 23.2% 0, 1.2% 100%, 0 100%); }
+  .hero--cater + .how .how__photo--tray::after { clip-path: polygon(22% 0, 100% 0, 100% 100%, 0 100%); }
+}
+/* Only the header background is cut diagonally; buttons sit on top of the photo */
+.hero--cater { clip-path: none !important; background: transparent !important; }
+.hero--cater .hero__photo { clip-path: polygon(0 0, 100% 0, 100% calc(100% - 90px), 0 100%); background: #0B4A54; }
+@media (max-width: 860px) { .hero--cater .hero__photo { clip-path: polygon(0 0, 100% 0, 100% calc(100% - 110px), 0 100%); } }
+.hero--cater .hero__ctas .btn { position: relative; z-index: 3; box-shadow: 0 10px 24px -10px rgba(0,0,0,.5); }
+
+/* Catering "Perfect for": clean list instead of pills */
+.occasions { display: block; }
+.occasions h3 { font-family: var(--display); font-weight: 600; font-size: clamp(1.4rem, 2.4vw, 1.8rem); margin-bottom: 16px; }
+.occasions .chips { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; border-top: 1px solid rgba(15,95,107,.2); }
+.occasions .chips li { background: none; border: 0; border-bottom: 1px solid rgba(15,95,107,.2); border-radius: 0; box-shadow: none; padding: 16px 12px 16px 0; font-weight: 700; font-size: 1rem; display: flex; align-items: center; gap: 10px; }
+.occasions .chips li::before { content: ""; width: 7px; height: 7px; flex: none; background: var(--cheese-deep); transform: rotate(45deg); }
+@media (max-width: 900px) { .occasions .chips { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 560px) { .occasions .chips { grid-template-columns: 1fr 1fr; } .occasions .chips li { padding: 14px 8px 14px 0; font-size: .95rem; } }
+html.v2 .occasions .chips li { background: none !important; box-shadow: none !important; border-width: 0 0 1px !important; }
