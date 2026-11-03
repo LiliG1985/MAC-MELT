@@ -1804,3 +1804,6 @@ html.v2 .occasions .chips li { background: none !important; box-shadow: none !im
   .cmenu .occasions .chips li { display: inline-flex; white-space: nowrap; }
   .cmenu .occasions .chips li:last-child::after { content: none; }
 }
+/* Close hairline gap above the footer (sub-pixel seam on phones) */
+.footer { margin-top: -2px; box-shadow: 0 -2px 0 #0B4A54; position: relative; z-index: 1; }
+main > section:last-child { margin-bottom: 0; }
