@@ -1772,3 +1772,9 @@ html.v2 .occasions .chips li { background: none !important; box-shadow: none !im
 .bespoke2__steps strong { font-weight: 800; font-size: 1.08rem; }
 .bespoke2__steps span { opacity: .9; }
 @media (max-width: 860px) { .bespoke2__grid { grid-template-columns: 1fr; } .bespoke2__photo img { aspect-ratio: 4 / 3; } .bespoke2__photo::before { inset: 14px -10px -14px 10px; } }
+/* Laptop: How catering works sits higher (logo overlaps less, smaller gap) */
+@media (min-width: 861px) {
+  .hero--cater + .how { padding-top: clamp(40px, 4vw, 64px); }
+  .hero--cater .hero__stage { margin-bottom: -200px; }
+  .hero--cater { padding-bottom: clamp(40px, 5vw, 70px); }
+}
