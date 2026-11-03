@@ -1,0 +1,142 @@
+/* Preview of Raya's design notes. Only loads with ?v2 (see head of each page). */
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap");
+html.v2 {
+  --ink: #0F5F6B;
+  --ink-deep: #0B4A54;
+  --lagoon: #2AA3B4;
+  --lagoon-hi: #49BBCB;
+  --lagoon-deep: #1A8292;
+  --display: "Fraunces", Georgia, serif;
+  --dots: none;
+  --grain: none;
+  --lift: 0 14px 34px -14px rgba(10,57,64,.35);
+  --lift-sm: 0 8px 20px -10px rgba(10,57,64,.3);
+}
+html.v2 body::after { display: none !important; }
+/* Refined headings: serif, sentence case, no cartoon shadows */
+html.v2 h1, html.v2 h2, html.v2 .dish h3, html.v2 .bowl__intro h3, html.v2 .hours-card__head h3, html.v2 .ccard h3, html.v2 .rv blockquote, html.v2 .best__price, html.v2 .mk__next dd, html.v2 .review--cta h3 { font-family: var(--display); font-weight: 600; text-transform: none; letter-spacing: -.01em; text-shadow: none !important; }
+html.v2 .hero h1 { font-size: clamp(2.5rem, 5.2vw, 4.4rem); line-height: 1.04; font-weight: 600; }
+html.v2 h2 { font-weight: 600; }
+/* Logo wordmarks keep the fun logo font */
+html.v2 .nav__word, html.v2 .footer__word, html.v2 .ticker__word { font-family: "Bagel Fat One", system-ui, sans-serif; }
+html.v2 .rv blockquote { font-weight: 500; font-style: italic; }
+/* Calmer buttons and cards */
+html.v2 .btn { border-width: 1.5px; font-weight: 700; letter-spacing: .01em; }
+html.v2 .btn:hover { transform: translateY(-2px); }
+html.v2 .btn--ink { background: var(--ink); }
+html.v2 .chips li { box-shadow: none; border-width: 1px; background: #FFFDF6; }
+html.v2 .rv, html.v2 .rv:nth-child(even), html.v2 .rv:nth-child(odd) { transform: none; }
+/* Turquoise sections, no dots */
+html.v2 .hero::before, html.v2 .catering::before, html.v2 .news::before, html.v2 .find::before, html.v2 .menu::before, html.v2 .reviews--rail::before { background-image: none; }
+html.v2 .reviews--rail::before { background: linear-gradient(90deg, rgba(9,54,61,.97) 0%, rgba(9,54,61,.86) 45%, rgba(9,54,61,.68) 100%), url(images/curry-goat-pie.jpg) 75% 45% / cover no-repeat; }
+html.v2 .watermark, html.v2 .hero__ghost, html.v2 .find__logo { opacity: .06; }
+/* Automatic: soften every hard offset shadow and thick outline */
+html.v2 :focus-visible { border-width: 1.5px }
+html.v2 .btn { border-width: 1.5px }
+html.v2 .btn:hover { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08) }
+html.v2 .btn:active { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08) }
+html.v2 .catering .btn--cheese { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08) }
+html.v2 .nav { border-width: 1.5px }
+html.v2 .nav__badge { filter: drop-shadow(0 12px 18px rgba(10,57,64,.25)) }
+html.v2 .nav__word { text-shadow: none }
+html.v2 .nav__links a:not(.btn):hover { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08) }
+html.v2 .nav__links .btn { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08) }
+html.v2 .nav__toggle { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08); border-width: 1.5px }
+html.v2 .nav__links { border-width: 1.5px }
+html.v2 .hero h1 { text-shadow: none }
+html.v2 .hero__open { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08) }
+html.v2 .hero__logo { filter: drop-shadow(0 12px 18px rgba(10,57,64,.25)) }
+html.v2 .how h2 { text-shadow: none }
+html.v2 .steps li::before { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08); border-width: 1.5px }
+html.v2 .ticker { border-width: 1.5px }
+html.v2 .ticker__word { text-shadow: none }
+html.v2 .ticker .badge { filter: drop-shadow(0 12px 18px rgba(10,57,64,.25)) }
+html.v2 .menu__head h2 { text-shadow: none }
+html.v2 .dishes__track { border-width: 1.5px }
+html.v2 .dish__badge { filter: drop-shadow(0 12px 18px rgba(10,57,64,.25)) }
+html.v2 .dish__kind { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08) }
+html.v2 .dish h3 { text-shadow: none }
+html.v2 .dish--cheese h3 { text-shadow: none }
+html.v2 .dish__price { text-shadow: none }
+html.v2 .dish--cheese .dish__price { text-shadow: none }
+html.v2 .dishes__btn, html.v2 .dishes__pause { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08); border-width: 1.5px }
+html.v2 .dishes__btn:active, html.v2 .dishes__pause:active { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08) }
+html.v2 .tabs [role="tab"] { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08); border-width: 1.5px }
+html.v2 .tabs [aria-selected="true"] { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08) }
+html.v2 .panel { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08); border-width: 1.5px }
+html.v2 .bowl__price strong { text-shadow: none }
+html.v2 .chips li { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08) }
+html.v2 .panel { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08) }
+html.v2 .catering__photo > img:not(.catering__sticker) { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08); border-width: 1.5px }
+html.v2 .catering__sticker { filter: drop-shadow(0 12px 18px rgba(10,57,64,.25)) }
+html.v2 .catering h2 { text-shadow: none }
+html.v2 .ticks li::before { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08) }
+html.v2 .reviews { border-width: 1.5px }
+html.v2 .quote blockquote { text-shadow: none }
+html.v2 .quote figcaption { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08) }
+html.v2 .find h2 { text-shadow: none }
+html.v2 .socials a { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08); border-width: 1.5px }
+html.v2 .hours-card { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08); border-width: 1.5px }
+html.v2 .hours-card__head { border-width: 1.5px }
+html.v2 .open-pill { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08) }
+html.v2 .time-chip { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08) }
+html.v2 .footer__brand .badge { filter: drop-shadow(0 12px 18px rgba(10,57,64,.25)) }
+html.v2 .footer__word { text-shadow: none }
+html.v2 .how__photo img { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08); border-width: 1.5px }
+html.v2 .founder__photo > img { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08); border-width: 1.5px }
+html.v2 .founder__sticker { filter: drop-shadow(0 12px 18px rgba(10,57,64,.25)) }
+html.v2 .founder__photo figcaption { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08) }
+html.v2 .founder h2 { text-shadow: none }
+html.v2 .founder__quote { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08); border-width: 1.5px }
+html.v2 .founder__quote::before { text-shadow: none }
+html.v2 .news { border-width: 1.5px }
+html.v2 .news h2 { text-shadow: none }
+html.v2 .signup input { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08); border-width: 1.5px }
+html.v2 .popup { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08); border-width: 1.5px }
+html.v2 .popup__badge { filter: drop-shadow(0 12px 18px rgba(10,57,64,.25)) }
+html.v2 .popup__close { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08) }
+html.v2 .review { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08); border-width: 1.5px }
+html.v2 .review--cta { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08) }
+html.v2 .bowl__photos img { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08); border-width: 1.5px }
+html.v2 .ccard { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08); border-width: 1.5px }
+html.v2 .ccard > img { border-width: 1.5px }
+html.v2 .cform { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08); border-width: 1.5px }
+html.v2 .catering--compact .catering__photo > img { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08) }
+html.v2 .page-head { border-width: 1.5px }
+html.v2 .page-head h1 { text-shadow: none }
+html.v2 .nav__links .nav__wa { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08) }
+html.v2 .events { border-width: 1.5px }
+html.v2 .events__grid img { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08); border-width: 1.5px }
+html.v2 .markets { border-width: 1.5px }
+html.v2 .markets__photo img { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08); border-width: 1.5px }
+html.v2 .board__item { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08); border-width: 1.5px }
+html.v2 .board__item--next { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08) }
+html.v2 .best { border-width: 1.5px }
+html.v2 .best__circle img { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08); border-width: 1.5px }
+html.v2 .best__badge { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08); border-width: 1.5px }
+html.v2 .markets__thumb { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08); border-width: 1.5px }
+html.v2 .note { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08); border-width: 1.5px }
+html.v2 .note--ink { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08) }
+html.v2 .note--fav img { border-width: 1.5px }
+html.v2 .best__poster img { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08); border-width: 1.5px }
+html.v2 .best__sticker { border-width: 1.5px }
+html.v2 .best__sticker b { text-shadow: none }
+html.v2 .mk { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08); border-width: 1.5px }
+html.v2 .mk__photo img { border-width: 1.5px }
+html.v2 .mk h2 { text-shadow: none }
+html.v2 .mk__next { border-width: 1.5px }
+html.v2 .goat { border-width: 1.5px }
+html.v2 .goat h2 { text-shadow: none }
+html.v2 .markets--compact { border-width: 1.5px }
+html.v2 .markets--compact h2 { text-shadow: none }
+html.v2 .review { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08) }
+html.v2 .reviews--rail { border-width: 1.5px }
+html.v2 .reviews--rail h2 { text-shadow: none }
+html.v2 .rv { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08); border-width: 1.5px }
+html.v2 .rv:nth-child(even) { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08) }
+html.v2 .rv::after { border-width: 1.5px }
+html.v2 .best--slice .best__poster img { border-width: 1.5px }
+html.v2 .rv { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08) }
+html.v2 .rv:nth-child(even) { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08) }
+html.v2 .markets--compact .btn--ink, html.v2 .reviews--rail .btn--cheese { background: var(--cheese); color: var(--ink-deep); }
+html.v2 .reviews--rail::before { background: linear-gradient(90deg, rgba(11,74,84,.96) 0%, rgba(11,74,84,.84) 45%, rgba(11,74,84,.62) 100%), url(images/curry-goat-pie.jpg) 75% 45% / cover no-repeat; }
