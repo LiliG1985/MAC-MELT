@@ -1,5 +1,4 @@
-/* Preview of Raya's design notes. Only loads with ?v2 (see head of each page). */
-@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap");
+/* Refined design from Raya's notes: turquoise, serif headings, no dots, soft shadows. Loaded on every page. */
 html.v2 {
   --ink: #0F5F6B;
   --ink-deep: #0B4A54;
@@ -140,3 +139,32 @@ html.v2 .rv { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(1
 html.v2 .rv:nth-child(even) { box-shadow: 0 10px 30px -12px rgba(10,57,64,.28), 0 2px 6px rgba(10,57,64,.08) }
 html.v2 .markets--compact .btn--ink, html.v2 .reviews--rail .btn--cheese { background: var(--cheese); color: var(--ink-deep); }
 html.v2 .reviews--rail::before { background: linear-gradient(90deg, rgba(11,74,84,.96) 0%, rgba(11,74,84,.84) 45%, rgba(11,74,84,.62) 100%), url(images/curry-goat-pie.jpg) 75% 45% / cover no-repeat; }
+
+/* ---------- Corporate polish (live) ---------- */
+html.v2 { --radius-sm: 10px; --radius-lg: 16px; }
+/* Straighten everything: no tilts, wobbles or bobbing */
+html.v2 :is(.hero__logo, .how__photo, .catering__photo > img, .founder__photo > img, .ticker, .footer__brand .badge, .dish__badge, .nav__badge, .best--slice .best__poster, .goat__kicker) { transform: none !important; animation: none !important; }
+html.v2 .nav__brand:hover .nav__badge { transform: scale(1.04) !important; }
+/* Ghost logos and watermarks off: the real logo stays in the nav, hero and footer */
+html.v2 :is(.hero__ghost, .watermark, .find__logo) { display: none; }
+/* Calm headings */
+html.v2 h2 { letter-spacing: -.015em; }
+html.v2 .section-lede { font-size: 1.1rem; line-height: 1.6; }
+/* Buttons: neat rounded rectangles */
+html.v2 .btn { border-radius: 10px; min-height: 48px; padding: 0 22px; box-shadow: 0 6px 16px -8px rgba(10,57,64,.4); }
+html.v2 .btn:active { transform: none; }
+html.v2 .nav__links a:not(.btn) { border-radius: 8px; }
+html.v2 .nav__links a:not(.btn):hover { box-shadow: none; transform: none; border-color: transparent; background: rgba(255,255,255,.5); }
+/* Ticker: flat, straight band */
+html.v2 .ticker { border-block-width: 2px; box-shadow: none; margin: 0; background: var(--ink); }
+html.v2 .ticker-wrap { margin-top: 0; padding: 0; }
+html.v2 .ticker__word { font-size: .95em; letter-spacing: .06em; }
+/* Cards and chips: lighter outlines */
+html.v2 .chips li { padding: 5px 12px; font-weight: 600; }
+html.v2 :is(.review, .rv, .ccard, .note, .hours-card, .bowl, .cform, .steps li, .eco-band__points li) { border-radius: 14px; }
+html.v2 .rv { border-width: 1.5px; }
+html.v2 .steps li::before { box-shadow: none; }
+/* Photos: clean frames */
+html.v2 :is(.founder__photo > img, .catering__photo > img, .markets__photo img, .mk__photo img, .best__poster img, .bowl__photos img, .events__grid img) { border-width: 0; border-radius: 14px; box-shadow: 0 18px 40px -18px rgba(10,57,64,.45); }
+html.v2 .founder__sticker, html.v2 .catering__sticker { transform: none; width: 26%; right: -14px; top: -18px; }
+html.v2 .hero__logo { filter: drop-shadow(0 18px 30px rgba(10,57,64,.3)); }
