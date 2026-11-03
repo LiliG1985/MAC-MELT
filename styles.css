@@ -1732,3 +1732,15 @@ html.leaving main { opacity: 0; transform: translateY(-30px); transition: opacit
 @media (max-width: 900px) { .occasions .chips { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 560px) { .occasions .chips { grid-template-columns: 1fr 1fr; } .occasions .chips li { padding: 14px 8px 14px 0; font-size: .95rem; } }
 html.v2 .occasions .chips li { background: none !important; box-shadow: none !important; border-width: 0 0 1px !important; }
+/* "Perfect for" lives inside the dark band under the cards, so it feels part of the section */
+.cmenu { padding-bottom: 0; }
+.cmenu .cmenu__grid::before { bottom: -1px; }
+.cmenu .occasions { position: relative; isolation: isolate; margin: 0; padding: 44px 0 64px; color: #fff; }
+.cmenu .occasions::before { content: ""; position: absolute; z-index: -1; top: 0; bottom: 0; left: calc(50% - 50vw); right: calc(50% - 50vw); background: linear-gradient(180deg, rgba(11,74,84,.97), #0B4A54); }
+.cmenu .occasions h3 { color: var(--cheese); font-size: .8rem; font-family: var(--body); font-weight: 800; letter-spacing: .22em; text-transform: uppercase; margin-bottom: 18px; }
+.cmenu .occasions .chips { border-top-color: rgba(255,255,255,.18); }
+.cmenu .occasions .chips li { color: #fff; border-bottom-color: rgba(255,255,255,.18) !important; font-family: var(--display); font-weight: 600; font-size: 1.15rem; padding: 18px 12px 18px 0; }
+.cmenu .occasions .chips li::before { background: var(--cheese); }
+.cmenu + * { margin-top: 0; }
+@media (max-width: 560px) { .cmenu .occasions { padding: 32px 0 48px; } .cmenu .occasions .chips li { font-size: 1.02rem; padding: 15px 8px 15px 0; } }
+.bespoke, .catering--compact { background-color: #0B4A54; }
