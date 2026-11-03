@@ -1571,3 +1571,10 @@ html.leaving main { opacity: 0; transform: translateY(-30px); transition: opacit
   .hero:not(.hero--cater) .hero__photo img { -webkit-mask-image: none; mask-image: none; }
   .hero:not(.hero--cater) .hero__photo::after { display: block; background: linear-gradient(180deg, rgba(245,192,46,.9) 0%, rgba(245,192,46,.82) 70%, rgba(245,192,46,.6) 100%); }
 }
+/* Phone: hero fades into solid cheese at the bottom so the drip carries on from it seamlessly */
+@media (max-width: 760px) {
+  .hero:not(.hero--cater)::after { display: block !important; opacity: 1 !important; content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 90px; z-index: 1; pointer-events: none; background: linear-gradient(to top, var(--cheese) 0%, var(--cheese) 30%, rgba(245,192,46,0) 100%); }
+  .hero--cater::after { display: block !important; content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 90px; z-index: 1; pointer-events: none; background: linear-gradient(to top, #0B4A54 0%, #0B4A54 30%, rgba(11,74,84,0) 100%); }
+  .hero__text, .hero__stage { position: relative; z-index: 2; }
+  .how--cater .drip { top: -2px; }
+}
