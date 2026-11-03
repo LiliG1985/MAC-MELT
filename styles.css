@@ -1749,3 +1749,9 @@ html.v2 .occasions .chips li { background: none !important; box-shadow: none !im
   .hero--cater .hero__photo { clip-path: none; }
   .hero--cater + .how { margin-top: 0; padding-top: clamp(80px, 8vw, 120px); }
 }
+/* Laptop catering: bigger logo sitting over the join */
+@media (min-width: 861px) {
+  .hero--cater .hero__stage { width: min(100%, 560px); align-self: end; margin-bottom: -170px; z-index: 4; }
+  .hero--cater .hero__logo { left: 4%; top: 0; width: 92%; filter: drop-shadow(0 20px 34px rgba(0,0,0,.45)); }
+}
+@media (min-width: 861px) { .hero--cater .hero__stage { margin-bottom: -300px; } }
