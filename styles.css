@@ -1578,3 +1578,20 @@ html.leaving main { opacity: 0; transform: translateY(-30px); transition: opacit
   .hero__text, .hero__stage { position: relative; z-index: 2; }
   .how--cater .drip { top: -2px; }
 }
+/* Home header: whole bowls collage, not zoomed */
+.hero__collage { display: none; }
+@media (min-width: 761px) {
+  .hero:not(.hero--cater) .hero__photo { width: 58%; top: calc(var(--nav-h) + var(--nav-gap) + 10px); bottom: 40px; right: 0; }
+  .hero:not(.hero--cater) .hero__photo img { object-fit: contain; object-position: right center; -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 14%); mask-image: linear-gradient(to right, transparent 0%, #000 14%); }
+  .hero:not(.hero--cater) .hero__stage { width: min(100%, 300px); justify-self: start; }
+}
+@media (max-width: 760px) {
+  .hero:not(.hero--cater) .hero__photo { display: none; }
+  .hero__collage { display: block; width: calc(100% + 2 * var(--gutter)); max-width: none; margin: 22px calc(-1 * var(--gutter)) 0; height: auto; }
+  .hero:not(.hero--cater) .hero__open { margin-top: 18px; }
+}
+@media (min-width: 761px) {
+  .hero:not(.hero--cater) .hero__stage { position: absolute; right: clamp(16px, 3vw, 40px); bottom: 24px; width: clamp(130px, 13vw, 180px); z-index: 3; }
+  .hero:not(.hero--cater) .hero__logo { position: static; width: 100%; filter: drop-shadow(0 10px 20px rgba(0,0,0,.35)); }
+  .hero:not(.hero--cater) { grid-template-columns: 1fr 1.2fr; }
+}
