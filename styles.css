@@ -1445,3 +1445,7 @@ html.leaving main { opacity: 0; transform: translateY(-30px); transition: opacit
   main { animation: none; }
   ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
 }
+/* Home markets strip: market photo, and keep the button under the text */
+.markets__bg { background-image: url(images/curry-goat-bowl-market.jpg); background-position: 50% 50%; }
+.markets--compact .markets__strip { flex-direction: column; align-items: flex-start; gap: 20px; }
+.markets--compact .markets__text { flex: none; max-width: 520px; }
