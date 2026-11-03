@@ -1646,3 +1646,21 @@ html.leaving main { opacity: 0; transform: translateY(-30px); transition: opacit
 .cmenu .occasions { margin-top: 96px; }
 @media (max-width: 1100px) { .cmenu .cmenu__grid::before { top: 22%; } }
 @media (max-width: 560px) { .cmenu .cmenu__grid::before { top: 8%; } }
+/* Catering: no cheese drip (header is turquoise). Header melts straight into the How section instead */
+.hero--cater + .how .drip { display: none; }
+.hero--cater::after { display: block !important; content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 140px; z-index: 1; pointer-events: none;
+  background: linear-gradient(to top, var(--lagoon) 0%, rgba(63,161,185,.6) 45%, rgba(63,161,185,0) 100%) !important; }
+.hero--cater + .how { padding-top: clamp(72px, 8vw, 110px); }
+.hero--cater + .how .how__photo--tray img { -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%); mask-image: linear-gradient(to bottom, transparent 0%, #000 22%); }
+@media (max-width: 860px) {
+  .hero--cater + .how { padding-top: 0 !important; }
+  .hero--cater + .how .how__photo--tray img { -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 30%); mask-image: linear-gradient(to bottom, transparent 0%, #000 30%); }
+}
+/* Phone: small header writing easier to read */
+@media (max-width: 760px) {
+  .hero:not(.hero--cater) .hero__lede { color: #0B3F47; font-weight: 600; text-shadow: 0 0 10px rgba(255,236,170,.9), 0 0 2px rgba(255,236,170,.9); }
+  .hero:not(.hero--cater) .hero__photo::after { background:
+    linear-gradient(to top, var(--cheese) 0%, var(--cheese) 6%, rgba(245,192,46,0) 30%),
+    linear-gradient(225deg, rgba(245,192,46,0) 0%, rgba(245,192,46,.35) 20%, rgba(245,192,46,.92) 42%, rgba(245,192,46,.96) 100%) !important; }
+  .hero--cater .hero__lede { font-weight: 500; text-shadow: 0 1px 8px rgba(0,0,0,.45); }
+}
