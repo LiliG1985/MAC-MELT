@@ -266,3 +266,43 @@ document.querySelectorAll('.cform').forEach((form) => {
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
   els.forEach((el) => io.observe(el));
 })();
+
+// More movement: parallax backgrounds, and a slide-out before moving to another page
+(() => {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Slide the page out before following a link to another page (only where page transitions aren't built in)
+  if (!reduce && !('onpagereveal' in window)) {
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a[href]');
+      if (!a || a.target === '_blank' || e.metaKey || e.ctrlKey || e.shiftKey) return;
+      const url = new URL(a.href, location.href);
+      if (url.origin !== location.origin || url.pathname === location.pathname) return;
+      e.preventDefault();
+      document.documentElement.classList.add('leaving');
+      setTimeout(() => { location.href = a.href; }, 280);
+    });
+    window.addEventListener('pageshow', () => document.documentElement.classList.remove('leaving'));
+  }
+  if (reduce) return;
+  // Parallax: photos inside these drift slower than the page
+  const layers = [
+    ...document.querySelectorAll('.hero__photo img, .catering__bg, .bespoke__bg, .how__photo img, .founder__photo > img')
+  ];
+  layers.forEach((el) => el.classList.add('parallax'));
+  let ticking = false;
+  const run = () => {
+    const vh = window.innerHeight;
+    layers.forEach((el) => {
+      const r = el.parentElement.getBoundingClientRect();
+      if (r.bottom < -100 || r.top > vh + 100) return;
+      const p = (r.top + r.height / 2 - vh / 2) / vh;
+      const amt = el.matches('.hero__photo img, .catering__bg, .bespoke__bg') ? 60 : 18;
+      const big = amt === 60;
+      el.style.transform = `translate3d(0, ${(p * amt).toFixed(1)}px, 0)${big ? ' scale(1.08)' : ''}`;
+    });
+    ticking = false;
+  };
+  window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(run); } }, { passive: true });
+  window.addEventListener('resize', run);
+  run();
+})();
