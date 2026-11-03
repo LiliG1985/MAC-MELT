@@ -221,7 +221,7 @@ document.querySelectorAll('.cform').forEach((form) => {
   const rail = document.querySelector('.dish-rail');
   if (!rail) return;
   const list = rail.querySelector('.dish-grid__list');
-  const [prev, next] = rail.querySelectorAll('.dish-rail__btn');
+  const [prev, next] = document.querySelectorAll('.dish-rail__btn');
   const step = () => { const c = list.querySelector('.dish'); return c ? c.getBoundingClientRect().width + 24 : list.clientWidth; };
   const atEnd = () => list.scrollLeft + list.clientWidth >= list.scrollWidth - 4;
   const update = () => { prev.disabled = list.scrollLeft <= 4; next.disabled = atEnd(); };

@@ -1522,3 +1522,14 @@ html.leaving main { opacity: 0; transform: translateY(-30px); transition: opacit
   .hero h1 { font-size: 2.2rem; text-wrap: balance; }
 }
 @media (max-width: 760px) { .hero__ctas .btn { padding: 0 14px; } .hero--cater .hero__ctas .btn { flex-basis: 100%; } }
+/* Arrows sit beside "The food" heading */
+.menu__title { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.menu__title .dish-rail__nav { position: static; margin: 0; flex: none; }
+.dish-grid { margin-top: 28px; }
+@media (max-width: 600px) {
+  .menu { padding-top: 48px; }
+  .menu__title h2 { font-size: 2.6rem; }
+  .menu__title .dish-rail__btn { width: 44px; height: 44px; font-size: 1.1rem; }
+  .menu__head .section-lede { margin-top: 10px; font-size: 1rem; }
+  .menu::after { height: 300px; }
+}
