@@ -1685,3 +1685,5 @@ html.leaving main { opacity: 0; transform: translateY(-30px); transition: opacit
   .hero--cater + .how::before { height: 40px; }
   .hero--cater + .how { padding-top: 0 !important; }
 }
+/* Reviews: no faded edges on the sliding bubbles */
+.rail { -webkit-mask-image: none; mask-image: none; }
