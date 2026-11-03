@@ -1535,3 +1535,4 @@ html.leaving main { opacity: 0; transform: translateY(-30px); transition: opacit
 }
 .markets__btns { display: flex; flex-wrap: wrap; gap: 12px; }
 .markets--compact .markets__btns .btn--line { background: transparent; color: #fff; border-color: rgba(255,255,255,.7); }
+.hero:not(.hero--cater) .hero__photo img { object-position: 35% 55%; }
