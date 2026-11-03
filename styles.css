@@ -1404,3 +1404,19 @@ html.v2 .hero--cater .hero__ctas .btn--ink { background: var(--cheese) !importan
 .menu { padding-bottom: clamp(56px, 7vw, 96px); }
 /* What's on header: sharper buffet photo */
 .page-head--photo { background: linear-gradient(90deg, rgba(11,74,84,.94) 0%, rgba(11,74,84,.78) 45%, rgba(11,74,84,.25) 100%), url(images/buffet-curry-goat.jpg) center 45% / cover no-repeat; }
+
+/* Scroll reveal (only when JavaScript is running) */
+.reveal-on .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
+.reveal-on .reveal.is-in { opacity: 1; transform: none; }
+.reveal-on .how__photo.reveal, .reveal-on .best__poster.reveal, .reveal-on .goat__poster.reveal, .reveal-on .founder__photo.reveal { transform: translateY(28px) scale(.97); }
+.reveal-on .how__photo.reveal.is-in, .reveal-on .best__poster.reveal.is-in, .reveal-on .goat__poster.reveal.is-in, .reveal-on .founder__photo.reveal.is-in { transform: none; }
+/* Header content eases in on load */
+@keyframes heroIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+.hero__text > *, .page-head .wrap > * { animation: heroIn .9s cubic-bezier(.2,.7,.2,1) both; }
+.hero__text > :nth-child(2), .page-head .wrap > :nth-child(2) { animation-delay: .1s; }
+.hero__text > :nth-child(3), .page-head .wrap > :nth-child(3) { animation-delay: .2s; }
+.hero__text > :nth-child(4) { animation-delay: .3s; }
+.hero__text > :nth-child(5) { animation-delay: .4s; }
+.hero__stage { animation: heroIn 1.1s .25s cubic-bezier(.2,.7,.2,1) both; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { .hero__text > *, .page-head .wrap > *, .hero__stage { animation: none; } }

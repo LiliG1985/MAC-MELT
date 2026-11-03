@@ -241,3 +241,28 @@ document.querySelectorAll('.cform').forEach((form) => {
     if (atEnd()) list.scrollTo({ left: 0, behavior: 'smooth' }); else go(1);
   }, 4500);
 })();
+
+// Gentle reveal: sections and cards fade and slide up as they come into view
+(() => {
+  if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const sel = [
+    'main section h2', 'main .section-lede', 'main .eyebrow',
+    '.steps li', '.eco-band__points li', '.dish-rail', '.tabs',
+    '.catering__text', '.founder__photo', '.founder__text', '.markets__strip', '.find__info', '.hours-card',
+    '.ccard', '.events__grid img', '.bespoke__inner > *', '.cform', '.enquire__grid .catering__text',
+    '.mk', '.wn', '.promo', '.soon', '.goat__poster', '.goat__text', '.note', '.how__photo', '.best__poster', '.best__text',
+    '.reviews__top', '.nb__head'
+  ].join(',');
+  const els = [...document.querySelectorAll(sel)].filter((el) => !el.closest('.hero, .page-head'));
+  document.documentElement.classList.add('reveal-on');
+  els.forEach((el) => {
+    el.classList.add('reveal');
+    const sibs = el.parentElement ? [...el.parentElement.children].filter((c) => c.classList.contains('reveal') || c.matches(sel)) : [];
+    const i = sibs.indexOf(el);
+    if (i > 0) el.style.transitionDelay = Math.min(i, 5) * 90 + 'ms';
+  });
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  els.forEach((el) => io.observe(el));
+})();
