@@ -1366,3 +1366,17 @@ html.v2 .hero--cater .hero__ctas .btn--ink { background: var(--cheese) !importan
 .reviews--rail::after { background: radial-gradient(60% 80% at 80% 40%, rgba(245,192,46,.1), transparent 70%), linear-gradient(180deg, transparent 50%, #0B4A54 100%); }
 .footer { background: #0B4A54; border-top: 0; }
 .footer::before { display: none; }
+
+/* For every occasion: luxe photo banner */
+.occ { position: relative; isolation: isolate; overflow: hidden; background: #0B4A54; color: #fff; padding: clamp(80px, 10vw, 130px) 0; border-top: 0; }
+.occ::before { content: ""; position: absolute; inset: 0; z-index: -2; background: url(images/buffet-curry-goat.jpg) center 40% / cover no-repeat; }
+.occ::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(9,54,61,.88), rgba(9,54,61,.8) 50%, rgba(9,54,61,.92)); }
+.occ__label { color: #E3B65A; }
+.occ h2 { color: #fff; }
+.occ h2::after { background: #E3B65A; }
+.occ__list { border-top-color: rgba(227,182,90,.45); max-width: 1080px; }
+.occ__list li { color: #fff; border-color: rgba(227,182,90,.35) !important; padding: 24px 12px; }
+.occ__list li:nth-child(5n) { border-right-color: transparent !important; }
+@media (max-width: 760px) { .occ__list li:nth-child(5n) { border-right-color: rgba(227,182,90,.35) !important; } .occ__list li:nth-child(2n) { border-right-color: transparent !important; } }
+.occ .btn { margin-top: 40px; background: transparent; color: #fff; border: 1px solid #E3B65A; box-shadow: none; letter-spacing: .12em; text-transform: uppercase; font-size: .85rem; }
+.occ .btn:hover { background: #E3B65A; color: #0B4A54; }
