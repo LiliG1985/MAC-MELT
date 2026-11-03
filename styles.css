@@ -1634,3 +1634,6 @@ html.leaving main { opacity: 0; transform: translateY(-30px); transition: opacit
     linear-gradient(225deg, rgba(245,192,46,0) 0%, rgba(245,192,46,.3) 22%, rgba(245,192,46,.85) 48%, rgba(245,192,46,.93) 100%) !important; }
   .hero:not(.hero--cater)::after { display: none !important; }
 }
+/* Catering: cheese drips are yellow again */
+.hero--cater + .how .drip { fill: var(--cheese); }
+@media (max-width: 760px) { .hero--cater::after { display: none !important; } }
