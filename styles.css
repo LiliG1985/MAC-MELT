@@ -1554,3 +1554,7 @@ html.leaving main { opacity: 0; transform: translateY(-30px); transition: opacit
   .how--cater .how__photo--tray img { object-position: 50% 65%; }
   .hero:not(.hero--cater) { padding-bottom: 40px; }
 }
+/* Tighter join between reviews and footer */
+.reviews--rail { padding-bottom: clamp(36px, 4vw, 56px); }
+.footer { padding-top: 24px; }
+.footer__brand { margin-bottom: 12px; }
