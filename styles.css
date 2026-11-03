@@ -1623,3 +1623,14 @@ html.leaving main { opacity: 0; transform: translateY(-30px); transition: opacit
 @media (max-width: 760px) { .hero:not(.hero--cater)::after { height: 36px !important; } }
 /* Phone: catering strip writing sits near the top */
 @media (max-width: 760px) { .catering--compact { padding-top: 40px !important; padding-bottom: 48px; } }
+@media (max-width: 760px) {
+  .hero:not(.hero--cater)::after { height: 80px !important; background: linear-gradient(to top, var(--cheese) 0%, rgba(245,192,46,.85) 35%, rgba(245,192,46,0) 100%) !important; }
+}
+/* Phone: photo shows top right, solid yellow at the bottom so it melts into the drip */
+@media (max-width: 760px) {
+  .hero:not(.hero--cater) .hero__photo img { object-position: 85% 15%; }
+  .hero:not(.hero--cater) .hero__photo::after { background:
+    linear-gradient(to top, var(--cheese) 0%, var(--cheese) 6%, rgba(245,192,46,0) 30%),
+    linear-gradient(225deg, rgba(245,192,46,0) 0%, rgba(245,192,46,.3) 22%, rgba(245,192,46,.85) 48%, rgba(245,192,46,.93) 100%) !important; }
+  .hero:not(.hero--cater)::after { display: none !important; }
+}
