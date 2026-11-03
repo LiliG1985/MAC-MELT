@@ -1612,3 +1612,12 @@ html.leaving main { opacity: 0; transform: translateY(-30px); transition: opacit
   .hero:not(.hero--cater) .hero__photo img { object-fit: cover; object-position: 50% 50%; }
   .hero:not(.hero--cater) .hero__photo::after { display: block; content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(245,192,46,.88) 0%, rgba(245,192,46,.8) 60%, rgba(245,192,46,.7) 100%); }
 }
+/* Header: less yellow, photo clearly shows in a corner */
+@media (max-width: 760px) {
+  .hero:not(.hero--cater) .hero__photo::after { background: linear-gradient(160deg, rgba(245,192,46,.92) 0%, rgba(245,192,46,.82) 45%, rgba(245,192,46,.35) 75%, rgba(245,192,46,0) 100%); }
+  .hero:not(.hero--cater) .hero__photo img { object-position: 70% 60%; }
+}
+@media (min-width: 761px) {
+  .hero:not(.hero--cater) .hero__photo::after { background: linear-gradient(90deg, rgba(245,192,46,.94) 0%, rgba(245,192,46,.8) 34%, rgba(245,192,46,.15) 58%, rgba(245,192,46,0) 100%); }
+}
+@media (max-width: 760px) { .hero:not(.hero--cater)::after { height: 36px !important; } }
