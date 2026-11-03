@@ -1402,3 +1402,5 @@ html.v2 .hero--cater .hero__ctas .btn--ink { background: var(--cheese) !importan
 @media (prefers-reduced-motion: reduce) { .ev-band__rail { overflow-x: auto; } .ev-band__track { animation: none; } }
 @media (max-width: 600px) { .ev-band__track { padding: 16px 0; } .ev-band__track li { font-size: .78rem; padding: 0 18px; } .ev-band__track li::after { margin-left: 36px; } }
 .menu { padding-bottom: clamp(56px, 7vw, 96px); }
+/* What's on header: sharper buffet photo */
+.page-head--photo { background: linear-gradient(90deg, rgba(11,74,84,.94) 0%, rgba(11,74,84,.78) 45%, rgba(11,74,84,.25) 100%), url(images/buffet-curry-goat.jpg) center 45% / cover no-repeat; }
