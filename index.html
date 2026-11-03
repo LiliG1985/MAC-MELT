@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Figtree:wght@400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=75">
+  <link rel="stylesheet" href="styles.css?v=76">
   <link rel="stylesheet" href="v2.css?v=4">
 
   <script type="application/ld+json">
@@ -167,9 +167,9 @@
 
         <!-- Rotating dish banner. Photo slides use crops of the catering photo; swap in a real photo per dish by
              replacing the dish__media background (see README). -->
-        <section class="dishes" aria-roledescription="carousel" aria-label="Our dishes">
-          <div class="dishes__track" tabindex="0">
-          <article class="dish dish--photo" style="--img: url(images/classic-tray.jpg); --pos: 40% 60%" aria-roledescription="slide" aria-label="1 of 9: The Classic">
+        <section class="dish-grid" aria-label="Our dishes">
+          <div class="dish-grid__list">
+          <article class="dish dish--photo" style="--img: url(images/classic-tray.jpg); --pos: 40% 60%" aria-label="The Classic">
             <div class="dish__media" role="img" aria-label="A tray of baked macaroni cheese with a golden top"></div>
             <div class="dish__body">
               <p class="dish__kind">Mac tray</p>
@@ -178,7 +178,7 @@
               <p class="dish__price">from £10</p>
             </div>
           </article>
-          <article class="dish dish--photo" style="--pos: 52% 18%; --size: 240%" aria-roledescription="slide" aria-label="2 of 9: Jerk chicken pie">
+          <article class="dish dish--photo" style="--img: url(images/jerk-chicken-event.jpg); --pos: 50% 55%" aria-label="Jerk chicken pie">
             <div class="dish__media" role="img" aria-label="Jerk chicken legs in a serving dish"></div>
             <div class="dish__body">
               <p class="dish__kind">Macaroni pie</p>
@@ -187,7 +187,7 @@
               <p class="dish__price">£12</p>
             </div>
           </article>
-          <article class="dish dish--photo" style="--img: url(images/curry-goat-pie.jpg); --pos: 50% 50%" aria-roledescription="slide" aria-label="3 of 9: Curry goat pie">
+          <article class="dish dish--photo" style="--img: url(images/curry-goat-pie.jpg); --pos: 50% 50%" aria-label="Curry goat pie">
             <div class="dish__media" role="img" aria-label="A curry goat macaroni pie with a forkful lifted out"></div>
             <div class="dish__body">
               <p class="dish__kind">Macaroni pie</p>
@@ -196,16 +196,16 @@
               <p class="dish__price">£12</p>
             </div>
           </article>
-          <article class="dish dish--photo" style="--img: url(images/jerk-chicken-bowl-2.jpg?v=2); --pos: 50% 50%" aria-roledescription="slide" aria-label="4 of 9: Build your bowl">
+          <article class="dish dish--photo" style="--img: url(images/jerk-chicken-bowl-2.jpg?v=2); --pos: 50% 50%" aria-label="Build your bowl">
             <div class="dish__media" role="img" aria-label="A bowl of baked mac with a jerk chicken leg, coleslaw and mango salsa"></div>
             <div class="dish__body">
               <p class="dish__kind">Bowl</p>
               <h3>Build your bowl</h3>
-              <p class="dish__desc">Classic mac with jerk chicken, curried goat, salmon, steak or chickpea curry, plus two sides.</p>
-              <p class="dish__price">£14, or £17 doubled</p>
+              <p class="dish__desc">Classic mac with jerk chicken, curried goat, salmon, steak or chickpea curry, plus your choice of sides.</p>
+              <p class="dish__price">£14 regular, £17 large</p>
             </div>
           </article>
-          <article class="dish dish--photo" style="--img: url(images/salmon-bowl.jpg); --pos: 50% 40%" aria-roledescription="slide" aria-label="5 of 9: Jerk honey salmon">
+          <article class="dish dish--photo" style="--img: url(images/salmon-bowl.jpg); --pos: 50% 40%" aria-label="Jerk honey salmon">
             <div class="dish__media" role="img" aria-label="Jerk honey salmon bowl with mac and cheese, salad and coleslaw"></div>
             <div class="dish__body">
               <p class="dish__kind">Bowl</p>
@@ -214,7 +214,7 @@
               <p class="dish__price">£14</p>
             </div>
           </article>
-          <article class="dish dish--brand dish--cheese" aria-roledescription="slide" aria-label="6 of 9: Peppered steak pie">
+          <article class="dish dish--brand dish--cheese" aria-label="Peppered steak pie">
             <div class="dish__media" aria-hidden="true"><span class="badge dish__badge"><img src="https://seller-brand-assets-f.squarecdn.com/MLRKM3H93083R/f348321a9f1e37078d53d77e28effff7.jpeg?height=600" alt="" width="800" height="800" loading="lazy"></span></div>
             <div class="dish__body">
               <p class="dish__kind">Macaroni pie</p>
@@ -223,7 +223,7 @@
               <p class="dish__price">£12</p>
             </div>
           </article>
-          <article class="dish dish--photo" style="--img: url(images/truffle-tray.jpg); --pos: 50% 50%" aria-roledescription="slide" aria-label="7 of 9: Truffle Lover">
+          <article class="dish dish--photo" style="--img: url(images/truffle-tray.jpg); --pos: 50% 50%" aria-label="Truffle Lover">
             <div class="dish__media" role="img" aria-label="A tray of truffle and mushroom mac and cheese"></div>
             <div class="dish__body">
               <p class="dish__kind">Mac tray</p>
@@ -232,7 +232,7 @@
               <p class="dish__price">from £15</p>
             </div>
           </article>
-          <article class="dish dish--photo" style="--img: url(images/veggie-tray.jpg); --pos: 50% 50%" aria-roledescription="slide" aria-label="8 of 9: The Veggie">
+          <article class="dish dish--photo" style="--img: url(images/veggie-tray.jpg); --pos: 50% 50%" aria-label="The Veggie">
             <div class="dish__media" role="img" aria-label="A tray of mac and cheese topped with peppers and red onion"></div>
             <div class="dish__body">
               <p class="dish__kind">Mac tray</p>
@@ -241,7 +241,7 @@
               <p class="dish__price">from £10</p>
             </div>
           </article>
-          <article class="dish dish--photo" style="--img: url(images/rice-and-peas.jpg); --pos: 50% 50%" aria-roledescription="slide" aria-label="9 of 9: Plantain, sweet potato &amp; more">
+          <article class="dish dish--photo" style="--img: url(images/rice-and-peas.jpg); --pos: 50% 50%" aria-label="Plantain, sweet potato &amp; more">
             <div class="dish__media" role="img" aria-label="A tray of rice and peas"></div>
             <div class="dish__body">
               <p class="dish__kind">Sides</p>
@@ -250,12 +250,6 @@
               <p class="dish__price">from £2</p>
             </div>
           </article>
-          </div>
-          <div class="dishes__controls">
-            <button class="dishes__btn" data-dir="-1" aria-label="Previous dish">&larr;</button>
-            <div class="dishes__dots" role="group" aria-label="Choose a dish"></div>
-            <button class="dishes__btn" data-dir="1" aria-label="Next dish">&rarr;</button>
-            <button class="dishes__pause" aria-pressed="false">Pause</button>
           </div>
         </section>
 
