@@ -286,7 +286,7 @@ document.querySelectorAll('.cform').forEach((form) => {
   if (reduce) return;
   // Parallax: photos inside these drift slower than the page
   const layers = [
-    ...document.querySelectorAll('.hero__photo img, .catering__bg, .bespoke__bg, .how__photo img, .founder__photo > img')
+    ...document.querySelectorAll('.hero__photo img, .catering__bg, .bespoke__bg, .founder__photo > img')
   ];
   layers.forEach((el) => el.classList.add('parallax'));
   let ticking = false;
