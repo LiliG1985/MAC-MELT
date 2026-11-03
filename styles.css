@@ -1401,3 +1401,4 @@ html.v2 .hero--cater .hero__ctas .btn--ink { background: var(--cheese) !importan
 @keyframes evband { to { transform: translateX(-100%); } }
 @media (prefers-reduced-motion: reduce) { .ev-band__rail { overflow-x: auto; } .ev-band__track { animation: none; } }
 @media (max-width: 600px) { .ev-band__track { padding: 16px 0; } .ev-band__track li { font-size: .78rem; padding: 0 18px; } .ev-band__track li::after { margin-left: 36px; } }
+.menu { padding-bottom: clamp(56px, 7vw, 96px); }
