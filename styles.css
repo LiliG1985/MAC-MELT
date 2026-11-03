@@ -1538,3 +1538,12 @@ html.leaving main { opacity: 0; transform: translateY(-30px); transition: opacit
 .hero:not(.hero--cater) .hero__photo img { object-position: 35% 55%; }
 .hero:not(.hero--cater) .hero__photo img { object-position: 60% 50%; }
 .hero:not(.hero--cater) .hero__photo img { object-position: 30% 50%; }
+/* Phone: drip melts straight onto the photo, no teal gap */
+@media (max-width: 860px) {
+  .how--cater { padding-top: 0 !important; }
+  .how--cater .drip { height: 56px; }
+  .how--cater .how__photo--tray { height: 300px; margin-top: 0 !important; }
+}
+/* Catering: drip matches the turquoise header above it */
+.hero--cater + .how .drip { fill: #0B4A54; }
+.hero--cater::after { display: none !important; }
