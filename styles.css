@@ -5,7 +5,7 @@
   --cheese: #F5C02E;
   --cheese-hi: #FFD95C;
   --cheese-deep: #E3A30F;
-  --lagoon: #2AA3B4;
+  --lagoon: #3FA1B9;
   --lagoon-hi: #49BBCB;
   --lagoon-deep: #1A8292;
   --ink: #0F5F6B;
@@ -1188,3 +1188,9 @@ body::after { display: none; }
 .eco-band__points p { font-size: .98rem; opacity: .9; }
 @media (max-width: 860px) { .eco-band__grid { grid-template-columns: 1fr; } }
 @media (max-width: 520px) { .eco-band__points li { grid-template-columns: 40px 1fr; padding: 14px; } .eco-band__icon { width: 40px; height: 40px; } }
+/* Eco band in her original site colours (turquoise and pale blue), no green */
+.eco-band { background: #EAF4F7; color: #1D2930; }
+.eco-band::before { background: radial-gradient(circle, rgba(146,197,212,.45), rgba(146,197,212,0) 70%); }
+.eco-band__kicker, .eco-band__icon { background: #3FA1B9; }
+.eco-band h2 { color: #1D2930; }
+.eco-band__points li { border-color: #B0D4DF; box-shadow: 0 10px 24px -14px rgba(29,41,48,.3); }
