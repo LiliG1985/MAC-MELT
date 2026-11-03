@@ -1778,3 +1778,9 @@ html.v2 .occasions .chips li { background: none !important; box-shadow: none !im
   .hero--cater .hero__stage { margin-bottom: -200px; }
   .hero--cater { padding-bottom: clamp(40px, 5vw, 70px); }
 }
+/* Enquiry section: faint giant logo at an angle behind */
+.enquire { position: relative; overflow: hidden; isolation: isolate; }
+.enquire::after { content: ""; position: absolute; z-index: -1; width: clamp(520px, 52vw, 820px); aspect-ratio: 1; left: -10%; bottom: -22%; pointer-events: none;
+  background: url("https://seller-brand-assets-f.squarecdn.com/MLRKM3H93083R/f348321a9f1e37078d53d77e28effff7.jpeg?height=1200") center / 128% no-repeat;
+  border-radius: 50%; transform: rotate(-14deg); opacity: .07; filter: grayscale(1) brightness(2.2); }
+@media (max-width: 860px) { .enquire::after { width: 520px; left: -30%; bottom: -10%; } }
