@@ -1621,3 +1621,5 @@ html.leaving main { opacity: 0; transform: translateY(-30px); transition: opacit
   .hero:not(.hero--cater) .hero__photo::after { background: linear-gradient(90deg, rgba(245,192,46,.94) 0%, rgba(245,192,46,.8) 34%, rgba(245,192,46,.15) 58%, rgba(245,192,46,0) 100%); }
 }
 @media (max-width: 760px) { .hero:not(.hero--cater)::after { height: 36px !important; } }
+/* Phone: catering strip writing sits near the top */
+@media (max-width: 760px) { .catering--compact { padding-top: 40px !important; padding-bottom: 48px; } }
