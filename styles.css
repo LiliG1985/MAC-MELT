@@ -1289,3 +1289,15 @@ html.v2 .how__photo:not(.how__photo--tray) img { box-shadow: none !important; }
 .hero--cater .btn--ink { background: var(--cheese); color: var(--ink-deep); border-color: var(--cheese); }
 @media (max-width: 760px) { .hero--cater .hero__photo::after { background: linear-gradient(180deg, rgba(11,74,84,.9), rgba(11,74,84,.82)); } }
 html.v2 .hero--cater .hero__ctas .btn--ink { background: var(--cheese) !important; color: #0B4A54 !important; border-color: var(--cheese) !important; }
+
+/* Home header: same as catering page, white writing on a turquoise tinted photo */
+.hero { background: var(--ink-deep); }
+.hero::before { display: none; }
+.hero .hero__photo { width: 100%; }
+.hero .hero__photo img { -webkit-mask-image: none; mask-image: none; object-position: 50% 55%; filter: none; }
+.hero .hero__photo::after { display: block; content: ""; position: absolute; inset: 0; mix-blend-mode: normal; opacity: 1;
+  background: linear-gradient(90deg, rgba(11,74,84,.96) 0%, rgba(11,74,84,.88) 42%, rgba(11,74,84,.35) 75%, rgba(11,74,84,.15) 100%); }
+.hero h1, .hero .hero__lede, .hero .hero__sub { color: #fff; }
+html.v2 .hero .hero__ctas .btn--ink { background: var(--cheese) !important; color: #0B4A54 !important; border-color: var(--cheese) !important; }
+.hero .hero__open { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.5); color: #fff; box-shadow: none; }
+@media (max-width: 760px) { .hero .hero__photo::after { background: linear-gradient(180deg, rgba(11,74,84,.9), rgba(11,74,84,.82)); } }
