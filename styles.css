@@ -1744,3 +1744,8 @@ html.v2 .occasions .chips li { background: none !important; box-shadow: none !im
 .cmenu + * { margin-top: 0; }
 @media (max-width: 560px) { .cmenu .occasions { padding: 32px 0 48px; } .cmenu .occasions .chips li { font-size: 1.02rem; padding: 15px 8px 15px 0; } }
 .bespoke, .catering--compact { background-color: #0B4A54; }
+/* Laptop: straight, clean join between header and How catering works (diagonal kept on phones only) */
+@media (min-width: 861px) {
+  .hero--cater .hero__photo { clip-path: none; }
+  .hero--cater + .how { margin-top: 0; padding-top: clamp(80px, 8vw, 120px); }
+}
