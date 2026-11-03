@@ -1336,3 +1336,15 @@ html.v2 .hero--cater .hero__ctas .btn--ink { background: var(--cheese) !importan
 .menu { padding-bottom: 0; }
 .menu .tabs { margin-top: 48px; }
 @media (max-width: 600px) { .dish-rail::before { top: 38%; } }
+
+/* Events we cater for: scrolling strip above the catering band */
+.ev-strip { display: flex; align-items: stretch; background: var(--ink-deep); color: #fff; border-top: 3px solid var(--cheese); overflow: hidden; }
+.ev-strip__label { flex: none; margin: 0; display: flex; align-items: center; padding: 0 clamp(16px, 3vw, 36px); background: var(--cheese); color: var(--ink-deep); font-weight: 800; letter-spacing: .08em; text-transform: uppercase; font-size: .85rem; white-space: nowrap; }
+.ev-strip__rail { display: flex; overflow: hidden; flex: 1; -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent); mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent); }
+.ev-strip__track { list-style: none; margin: 0; padding: 18px 0; display: flex; flex: none; animation: evstrip 40s linear infinite; }
+.ev-strip__track li { white-space: nowrap; padding: 0 26px; font-family: var(--display); font-size: clamp(1.15rem, 1.8vw, 1.5rem); font-weight: 600; display: flex; align-items: center; gap: 26px; }
+.ev-strip__track li::after { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--cheese); margin-left: 26px; }
+.ev-strip:hover .ev-strip__track { animation-play-state: paused; }
+@keyframes evstrip { to { transform: translateX(-100%); } }
+@media (prefers-reduced-motion: reduce) { .ev-strip__rail { overflow-x: auto; } .ev-strip__track { animation: none; } }
+@media (max-width: 600px) { .ev-strip__label { font-size: .72rem; padding: 0 12px; } }
