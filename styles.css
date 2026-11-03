@@ -1472,3 +1472,10 @@ html.leaving main { opacity: 0; transform: translateY(-30px); transition: opacit
   .how--cater { padding-top: 0; }
 }
 @media (min-width: 861px) { .how--cater .wrap { position: static; } .how--cater { position: relative; } }
+.how--cater .how__photo--tray { align-self: stretch; justify-self: stretch; }
+@media (max-width: 860px) { .how--cater { padding-top: 70px; } .how--cater .how__photo--tray { margin-top: 0 !important; } }
+/* Steps stop before the diagonal photo */
+@media (min-width: 861px) {
+  .how--cater .steps { max-width: none; width: calc(52vw - 36px - max(0px, (100vw - var(--wrap)) / 2) - var(--gutter)); }
+  .how--cater .how__head > div:first-child { max-width: calc(52vw - 36px - max(0px, (100vw - var(--wrap)) / 2) - var(--gutter)); }
+}
