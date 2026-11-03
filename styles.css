@@ -1545,7 +1545,6 @@ html.leaving main { opacity: 0; transform: translateY(-30px); transition: opacit
   .how--cater .how__photo--tray { height: 300px; margin-top: 0 !important; }
 }
 /* Catering: drip matches the turquoise header above it */
-.hero--cater + .how .drip { fill: #0B4A54; }
 .hero--cater::after { display: none !important; }
 /* Phone: bigger drips with a shadow so they read on top of the photo */
 @media (max-width: 860px) {
