@@ -1301,3 +1301,4 @@ html.v2 .hero--cater .hero__ctas .btn--ink { background: var(--cheese) !importan
 html.v2 .hero .hero__ctas .btn--ink { background: var(--cheese) !important; color: #0B4A54 !important; border-color: var(--cheese) !important; }
 .hero .hero__open { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.5); color: #fff; box-shadow: none; }
 @media (max-width: 760px) { .hero .hero__photo::after { background: linear-gradient(180deg, rgba(11,74,84,.9), rgba(11,74,84,.82)); } }
+.how__photo--tray { margin-top: 0 !important; align-self: center; }
