@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Figtree:wght@400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=61">
+  <link rel="stylesheet" href="styles.css?v=64">
   <link rel="stylesheet" href="v2.css?v=4">
 
   <script type="application/ld+json">
@@ -62,7 +62,7 @@
   </header>
 
     <main id="main">
-    <section class="page-head">
+    <section class="page-head page-head--photo">
       <span class="badge hero__ghost" aria-hidden="true"><img src="https://seller-brand-assets-f.squarecdn.com/MLRKM3H93083R/f348321a9f1e37078d53d77e28effff7.jpeg?height=1200" alt="" width="800" height="800"></span>
       <div class="wrap">
         <p class="eyebrow">At Mac and Melt</p>
@@ -97,35 +97,40 @@
 
         <!-- WHAT'S NEW -->
         <div class="nb" id="new">
-          <div class="nb__head"><h2>What's new</h2><p>Fresh on the menu.</p></div>
-          <div class="nb__grid nb__grid--3">
-            <article class="note">
-              <p class="board__tag">New</p>
-              <h3>Jerk honey salmon bowl</h3>
-              <p>Sticky, sweet and smoky salmon on our classic mac. £14.</p>
-            </article>
-            <article class="note">
-              <p class="board__tag">New</p>
-              <h3>Peppered steak bowl</h3>
-              <p>Peppered steak on the classic mac, with your choice of two sides. £14.</p>
-            </article>
-            <article class="note">
-              <p class="board__tag">New sides</p>
-              <h3>Roasted sweet potato &amp; corn on the cob</h3>
-              <p>Two new sides to add to any bowl.</p>
-            </article>
+          <div class="nb__head"><h2>What's new</h2><p>Fresh on the menu and in the kitchen.</p></div>
+          <div class="wn">
+            <figure class="wn__photo"><img src="images/chicken-bowl-2.jpg?v=2" alt="A Mac and Melt bowl with baked mac, slaw and mango salsa" loading="lazy" width="760" height="508"></figure>
+            <ul class="wn__list">
+              <li><span class="board__tag">New</span><div><h3>Jerk honey salmon bowl</h3><p>Sticky, sweet and smoky salmon on our classic mac.</p></div><b>£14</b></li>
+              <li><span class="board__tag">New</span><div><h3>Peppered steak bowl</h3><p>Peppered steak on the classic mac, with your choice of sides.</p></div><b>£14</b></li>
+              <li><span class="board__tag">New sides</span><div><h3>Roasted sweet potato and corn on the cob</h3><p>Two new sides to add to any order.</p></div><b>from £1.50</b></li>
+              <li><span class="board__tag board__tag--past">On request</span><div><h3>Gluten free options</h3><p>Just let us know when you order or enquire.</p></div><b></b></li>
+            </ul>
           </div>
+        </div>
+
+        <!-- NOW BOOKING -->
+        <div class="nb" id="booking">
+          <a class="promo" href="catering.html">
+            <img src="images/raya-event.jpg" alt="Raya serving curry goat, jerk chicken and rice and peas at an event" loading="lazy" width="1030" height="1023">
+            <div class="promo__body">
+              <p class="eyebrow">Now booking</p>
+              <h2>Corporate events and functions</h2>
+              <p>Office lunches, launches, team celebrations and private functions. Trays, macaroni pies and bespoke menus, built around your numbers.</p>
+              <span class="btn btn--cheese">Plan your event</span>
+            </div>
+          </a>
         </div>
 
         <!-- COMING SOON -->
         <div class="nb" id="soon">
-          <div class="nb__head"><h2>Coming soon</h2><p>Things we're cooking up.</p></div>
-          <div class="nb__grid nb__grid--3">
-            <article class="note note--cheese">
-              <p class="board__tag board__tag--ink">Watch this space</p>
-              <h3>A new flavour is on the way</h3>
+          <div class="soon">
+            <div>
+              <p class="eyebrow">Coming soon</p>
+              <h2>A new flavour is on the way</h2>
               <p>Raya's testing something new in the kitchen. Follow us on Instagram to be first to try it.</p>
-            </article>
+            </div>
+            <a class="btn btn--ink" href="https://www.instagram.com/mac_and_melt_" target="_blank" rel="noopener">Follow on Instagram</a>
           </div>
         </div>
 
@@ -165,7 +170,7 @@
               <p>&ldquo;The Curry Goat Pies are unreal.&rdquo; £12.</p>
             </article>
             <article class="note note--fav">
-              <img src="images/mac-tray.jpg" alt="A tray of baked macaroni cheese" loading="lazy" width="1125" height="1361">
+              <img src="images/classic-tray.jpg" alt="A tray of golden baked macaroni cheese" loading="lazy" width="1536" height="1024">
               <p class="board__tag board__tag--past">Fan favourite</p>
               <h3>The Classic</h3>
               <p>Three cheese sauce with a soft, gooey centre. The one that started it all. From £10.</p>

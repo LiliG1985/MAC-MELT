@@ -1194,3 +1194,72 @@ body::after { display: none; }
 .eco-band__kicker, .eco-band__icon { background: #3FA1B9; }
 .eco-band h2 { color: #1D2930; }
 .eco-band__points li { border-color: #B0D4DF; box-shadow: 0 10px 24px -14px rgba(29,41,48,.3); }
+
+/* ---------- Definition: clearer section headings and separation ---------- */
+main section h2::after { content: ""; display: block; width: 56px; height: 4px; border-radius: 2px; background: var(--lagoon); margin-top: 14px; }
+:is(.how, .catering, .markets--compact, .reviews--rail, .bespoke, .mk, .eco-band) h2::after { background: var(--cheese); }
+.eco-band h2::after { background: #3FA1B9; }
+:is(.nb__head, .reviews__top, .events__head, .cmenu__head) h2::after { display: none; }
+.nb__head h2, .events__head h2, .cmenu__head h2 { padding-bottom: 12px; border-bottom: 4px solid var(--lagoon); display: inline-block; }
+.founder, .events { background: #fff; }
+.menu, .find, .notices, .cmenu { border-top: 1px solid rgba(15,95,107,.15); }
+:is(.section-lede, .note p, .ccard p, .eco-band__points p, .steps p) { opacity: 1; }
+
+/* Catering: bespoke menu banner */
+.cmenu__grid { grid-template-columns: repeat(3, 1fr); }
+.bespoke { position: relative; overflow: hidden; isolation: isolate; color: #fff; padding: clamp(72px, 9vw, 120px) 0; }
+.bespoke__bg { position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(11,74,84,.96) 0%, rgba(11,74,84,.88) 40%, rgba(11,74,84,.35) 100%), url(images/event-curry-rice.jpg) center 60% / cover no-repeat; }
+.bespoke__inner { max-width: var(--wrap); }
+.bespoke h2 { color: #fff; font-size: clamp(2.2rem, 4.6vw, 3.6rem); max-width: 16ch; }
+.bespoke__inner > p:not(.eyebrow) { margin-top: 18px; font-size: 1.15rem; max-width: 52ch; }
+.bespoke .eyebrow { background: var(--cheese); color: var(--ink-deep); }
+.bespoke__points { list-style: none; padding: 0; margin: 22px 0 30px; display: grid; gap: 10px; }
+.bespoke__points li { padding-left: 30px; position: relative; font-weight: 700; }
+.bespoke__points li::before { content: ""; position: absolute; left: 0; top: 3px; width: 18px; height: 18px; border-radius: 50%; background: var(--cheese); }
+@media (max-width: 900px) { .cmenu__grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .cmenu__grid { grid-template-columns: 1fr; } .bespoke__bg { background: linear-gradient(180deg, rgba(11,74,84,.92), rgba(11,74,84,.92)), url(images/event-curry-rice.jpg) center / cover; } }
+
+/* What's on: photo header, what's new panel, promo, coming soon */
+.page-head--photo { background: linear-gradient(90deg, rgba(11,74,84,.94) 0%, rgba(11,74,84,.8) 45%, rgba(11,74,84,.35) 100%), url(images/event-buffet.jpg) center 40% / cover no-repeat; color: #fff; border-bottom: 0; padding-bottom: clamp(56px, 7vw, 96px); }
+.page-head--photo h1 { color: #fff; }
+.page-head--photo .eyebrow { background: var(--cheese); color: var(--ink-deep); }
+.wn { display: grid; grid-template-columns: minmax(240px, 420px) 1fr; gap: clamp(20px, 3vw, 40px); align-items: stretch; background: #fff; border: 1.5px solid rgba(15,95,107,.25); border-radius: 16px; padding: clamp(16px, 2vw, 22px); box-shadow: 0 14px 34px -18px rgba(10,57,64,.35); }
+.wn > * { min-width: 0; }
+.wn__photo { margin: 0; }
+.wn__photo img { width: 100%; height: 100%; min-height: 220px; object-fit: cover; border-radius: 12px; }
+.wn__list { list-style: none; margin: 0; padding: 0; display: grid; }
+.wn__list li { display: grid; grid-template-columns: 110px 1fr auto; gap: 14px; align-items: start; padding: 16px 4px; border-bottom: 1px solid rgba(15,95,107,.15); }
+.wn__list li:last-child { border-bottom: 0; }
+.wn__list .board__tag { justify-self: start; margin-top: 3px; }
+.wn__list h3 { font-weight: 800; font-size: 1.08rem; }
+.wn__list p { font-size: .96rem; margin-top: 2px; }
+.wn__list b { font-family: var(--display); font-size: 1.2rem; white-space: nowrap; }
+.promo { display: grid; grid-template-columns: 1fr 1.2fr; border-radius: 16px; overflow: hidden; background: var(--ink); color: #fff; text-decoration: none; box-shadow: 0 18px 40px -18px rgba(10,57,64,.5); }
+.promo img { width: 100%; height: 100%; object-fit: cover; min-height: 260px; }
+.promo__body { padding: clamp(24px, 4vw, 48px); align-self: center; }
+.promo h2 { color: #fff; font-size: clamp(1.9rem, 3.4vw, 2.7rem); }
+.promo .eyebrow { background: var(--cheese); color: var(--ink-deep); }
+.promo__body > p:not(.eyebrow) { margin: 14px 0 22px; font-size: 1.08rem; }
+.promo:hover .btn { transform: translateY(-2px); }
+.soon { display: flex; align-items: center; justify-content: space-between; gap: 20px 40px; flex-wrap: wrap; background: var(--cheese); border-radius: 16px; padding: clamp(24px, 3.5vw, 40px); }
+.soon > div { max-width: 56ch; }
+.soon h2 { font-size: clamp(1.8rem, 3.2vw, 2.5rem); }
+.soon .eyebrow { background: var(--ink); color: var(--cheese); }
+.soon p:not(.eyebrow) { margin-top: 10px; font-size: 1.05rem; }
+@media (max-width: 760px) {
+  .wn, .promo { grid-template-columns: 1fr; }
+  .wn__photo img { min-height: 180px; max-height: 220px; }
+  .wn__list li { grid-template-columns: 1fr auto; }
+  .wn__list li .board__tag { grid-column: 1 / -1; }
+  .promo img { max-height: 240px; }
+}
+/* Hero: remove the seam where the photo starts (the tint layer stopped at a hard edge) */
+.hero__photo { width: 70%; }
+.hero__photo::after { display: none; }
+.hero__photo img {
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.25) 22%, rgba(0,0,0,.75) 45%, #000 65%), linear-gradient(to bottom, #000 55%, transparent 94%);
+          mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.25) 22%, rgba(0,0,0,.75) 45%, #000 65%), linear-gradient(to bottom, #000 55%, transparent 94%);
+  filter: saturate(.9);
+}
+/* Enquiry section: clean turquoise, no yellow glow (it turned green) */
+.catering { background: linear-gradient(180deg, var(--ink), var(--ink-deep)); }
