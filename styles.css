@@ -1479,3 +1479,5 @@ html.leaving main { opacity: 0; transform: translateY(-30px); transition: opacit
   .how--cater .steps { max-width: none; width: calc(52vw - 36px - max(0px, (100vw - var(--wrap)) / 2) - var(--gutter)); }
   .how--cater .how__head > div:first-child { max-width: calc(52vw - 36px - max(0px, (100vw - var(--wrap)) / 2) - var(--gutter)); }
 }
+/* Fix: cards that slide in further must settle back into place */
+.reveal-on .steps li.reveal.is-in, .reveal-on .ccard.reveal.is-in, .reveal-on .note.reveal.is-in, .reveal-on .eco-band__points li.reveal.is-in { transform: none; }
