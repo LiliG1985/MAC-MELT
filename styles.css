@@ -1558,3 +1558,16 @@ html.leaving main { opacity: 0; transform: translateY(-30px); transition: opacit
 .reviews--rail { padding-bottom: clamp(36px, 4vw, 56px); }
 .footer { padding-top: 24px; }
 .footer__brand { margin-bottom: 12px; }
+/* Home header: bowl photo, much lighter yellow fade */
+.hero:not(.hero--cater) .hero__photo { width: 62%; }
+.hero:not(.hero--cater) .hero__photo img { object-position: 50% 45%; filter: none;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.7) 18%, #000 32%), linear-gradient(to bottom, #000 80%, transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.7) 18%, #000 32%), linear-gradient(to bottom, #000 80%, transparent 100%);
+  -webkit-mask-composite: source-in; mask-composite: intersect; }
+.hero:not(.hero--cater) .hero__photo::after { display: none; }
+.hero:not(.hero--cater)::after { opacity: .6; }
+@media (max-width: 760px) {
+  .hero:not(.hero--cater) .hero__photo { width: 100%; }
+  .hero:not(.hero--cater) .hero__photo img { -webkit-mask-image: none; mask-image: none; }
+  .hero:not(.hero--cater) .hero__photo::after { display: block; background: linear-gradient(180deg, rgba(245,192,46,.9) 0%, rgba(245,192,46,.82) 70%, rgba(245,192,46,.6) 100%); }
+}
