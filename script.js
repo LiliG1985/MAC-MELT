@@ -215,3 +215,29 @@ document.querySelectorAll('.cform').forEach((form) => {
     msg.textContent = 'Your email app should open with your message ready to send.';
   });
 });
+
+// The food: sliding row of menu cards (arrows, swipe, slow auto-advance, pauses on hover/touch)
+(() => {
+  const rail = document.querySelector('.dish-rail');
+  if (!rail) return;
+  const list = rail.querySelector('.dish-grid__list');
+  const [prev, next] = rail.querySelectorAll('.dish-rail__btn');
+  const step = () => { const c = list.querySelector('.dish'); return c ? c.getBoundingClientRect().width + 24 : list.clientWidth; };
+  const atEnd = () => list.scrollLeft + list.clientWidth >= list.scrollWidth - 4;
+  const update = () => { prev.disabled = list.scrollLeft <= 4; next.disabled = atEnd(); };
+  const go = (d) => list.scrollBy({ left: d * step(), behavior: 'smooth' });
+  prev.addEventListener('click', () => { go(-1); hold(); });
+  next.addEventListener('click', () => { go(1); hold(); });
+  list.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let paused = false, t;
+  const hold = () => { paused = true; clearTimeout(t); t = setTimeout(() => { paused = false; }, 12000); };
+  ['mouseenter', 'touchstart', 'focusin'].forEach((e) => rail.addEventListener(e, () => { paused = true; }, { passive: true }));
+  ['mouseleave', 'focusout'].forEach((e) => rail.addEventListener(e, () => { paused = false; }));
+  setInterval(() => {
+    if (paused || document.hidden) return;
+    if (atEnd()) list.scrollTo({ left: 0, behavior: 'smooth' }); else go(1);
+  }, 4500);
+})();

@@ -1310,3 +1310,19 @@ html.v2 .hero--cater .hero__ctas .btn--ink { background: var(--cheese) !importan
 @media (max-width: 600px) { .dish-grid__list { grid-template-columns: 1fr; } .dish-grid .dish__media { aspect-ratio: 16 / 10; } }
 /* 10 dishes: 5 across on wide screens */
 @media (min-width: 1200px) { .dish-grid__list { grid-template-columns: repeat(5, minmax(0, 1fr)); } .dish-grid .dish__body { padding: 18px 18px 22px; } .dish-grid .dish h3 { font-size: 1.45rem; } }
+
+/* ---------- The food: sliding row of menu cards ---------- */
+.dish-rail { position: relative; }
+.dish-rail .dish-grid__list { display: flex; gap: 24px; max-width: none; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 6px 2px 26px; scrollbar-width: none; }
+.dish-rail .dish-grid__list::-webkit-scrollbar { display: none; }
+.dish-rail .dish { flex: 0 0 calc((100% - 3 * 24px) / 4); scroll-snap-align: start; }
+.dish-rail .dish:hover { transform: translateY(-4px); }
+.dish-rail .dish__body { padding: 20px 22px 24px; }
+.dish-rail .dish h3 { font-size: 1.55rem; }
+.dish-rail__nav { position: absolute; right: clamp(16px, 3vw, 48px); top: -72px; display: flex; gap: 10px; }
+.dish-rail__btn { width: 52px; height: 52px; border-radius: 50%; border: 1.5px solid var(--ink); background: #fff; color: var(--ink); font-size: 1.3rem; cursor: pointer; transition: background .2s, color .2s; }
+.dish-rail__btn:hover { background: var(--ink); color: #fff; }
+.dish-rail__btn:disabled { opacity: .35; cursor: default; background: #fff; color: var(--ink); }
+@media (max-width: 1100px) { .dish-rail .dish { flex-basis: calc((100% - 2 * 24px) / 3); } }
+@media (max-width: 800px) { .dish-rail .dish { flex-basis: calc((100% - 24px) / 2); } }
+@media (max-width: 600px) { .dish-rail .dish { flex-basis: 82%; } .dish-rail__nav { position: static; justify-content: flex-end; margin-bottom: 14px; } }

@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Figtree:wght@400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=77">
+  <link rel="stylesheet" href="styles.css?v=78">
   <link rel="stylesheet" href="v2.css?v=4">
 
   <script type="application/ld+json">
@@ -167,8 +167,12 @@
 
         <!-- Rotating dish banner. Photo slides use crops of the catering photo; swap in a real photo per dish by
              replacing the dish__media background (see README). -->
-        <section class="dish-grid" aria-label="Our dishes">
-          <div class="dish-grid__list">
+        <section class="dish-grid dish-rail" aria-roledescription="carousel" aria-label="Our dishes">
+          <div class="dish-rail__nav">
+            <button class="dish-rail__btn" data-dir="-1" aria-label="Previous dishes">&larr;</button>
+            <button class="dish-rail__btn" data-dir="1" aria-label="Next dishes">&rarr;</button>
+          </div>
+          <div class="dish-grid__list" tabindex="0">
           <article class="dish dish--photo" style="--img: url(images/classic-tray.jpg); --pos: 40% 60%" aria-label="The Classic">
             <div class="dish__media" role="img" aria-label="A tray of baked macaroni cheese with a golden top"></div>
             <div class="dish__body">
@@ -202,7 +206,7 @@
               <p class="dish__kind">Bowl</p>
               <h3>Build your bowl</h3>
               <p class="dish__desc">Classic mac with jerk chicken, curried goat, salmon, steak or chickpea curry, plus your choice of sides.</p>
-              <p class="dish__price">from £14</p>
+              <p class="dish__price">£14 / £17 large</p>
             </div>
           </article>
           <article class="dish dish--photo" style="--img: url(images/salmon-bowl.jpg); --pos: 50% 40%" aria-label="Jerk honey salmon">
@@ -499,6 +503,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=20"></script>
+  <script src="script.js?v=21"></script>
 </body>
 </html>
