@@ -1811,3 +1811,9 @@ main > section:last-child { margin-bottom: 0; }
 .cmenu { padding-bottom: 64px; background-clip: padding-box; }
 .cmenu .cmenu__grid { margin-bottom: 0; }
 .cmenu::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 64px; background: #0B4A54; z-index: -1; }
+/* The food: less space above the heading */
+.menu { padding-top: clamp(40px, 4.5vw, 64px) !important; }
+.menu__head .section-lede { margin-top: 8px; }
+.menu__head h2::after { margin-top: 10px; }
+.dish-grid { margin-top: 20px; }
+@media (max-width: 600px) { .menu { padding-top: 32px !important; } }
