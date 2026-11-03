@@ -1486,3 +1486,5 @@ html.leaving main { opacity: 0; transform: translateY(-30px); transition: opacit
   .how--cater .how__photo--tray { z-index: 3; }
   .how--cater .steps { position: relative; z-index: 1; width: calc(68vw - max(0px, (100vw - var(--wrap)) / 2) - var(--gutter)); }
 }
+/* Cheese drip sits on top of the diagonal photo */
+.how--cater .drip { z-index: 5; }
