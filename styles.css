@@ -1308,3 +1308,5 @@ html.v2 .hero--cater .hero__ctas .btn--ink { background: var(--cheese) !importan
 .dish-grid .dish__price { margin-top: auto; padding-top: 16px; font-size: 1.5rem; color: var(--ink); text-shadow: none; }
 @media (max-width: 1000px) { .dish-grid__list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) { .dish-grid__list { grid-template-columns: 1fr; } .dish-grid .dish__media { aspect-ratio: 16 / 10; } }
+/* 10 dishes: 5 across on wide screens */
+@media (min-width: 1200px) { .dish-grid__list { grid-template-columns: repeat(5, minmax(0, 1fr)); } .dish-grid .dish__body { padding: 18px 18px 22px; } .dish-grid .dish h3 { font-size: 1.45rem; } }
