@@ -1807,3 +1807,7 @@ html.v2 .occasions .chips li { background: none !important; box-shadow: none !im
 /* Close hairline gap above the footer (sub-pixel seam on phones) */
 .footer { margin-top: -2px; box-shadow: 0 -2px 0 #0B4A54; position: relative; z-index: 1; }
 main > section:last-child { margin-bottom: 0; }
+.cmenu .cmenu__grid::before { bottom: -64px; }
+.cmenu { padding-bottom: 64px; background-clip: padding-box; }
+.cmenu .cmenu__grid { margin-bottom: 0; }
+.cmenu::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 64px; background: #0B4A54; z-index: -1; }
