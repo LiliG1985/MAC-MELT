@@ -1595,3 +1595,13 @@ html.leaving main { opacity: 0; transform: translateY(-30px); transition: opacit
   .hero:not(.hero--cater) .hero__logo { position: static; width: 100%; filter: drop-shadow(0 10px 20px rgba(0,0,0,.35)); }
   .hero:not(.hero--cater) { grid-template-columns: 1fr 1.2fr; }
 }
+/* Home header (computer): giant logo back, whole bowls collage across the back, light yellow fade */
+@media (min-width: 761px) {
+  .hero:not(.hero--cater) { grid-template-columns: 1fr 1fr; }
+  .hero:not(.hero--cater) .hero__photo { display: block; inset: 0; width: 100%; top: 0; bottom: 0; }
+  .hero:not(.hero--cater) .hero__photo img { object-fit: cover; object-position: 50% 50%; -webkit-mask-image: none; mask-image: none; }
+  .hero:not(.hero--cater) .hero__photo::after { display: block; content: ""; position: absolute; inset: 0; mix-blend-mode: normal; opacity: 1;
+    background: linear-gradient(90deg, rgba(245,192,46,.95) 0%, rgba(245,192,46,.85) 38%, rgba(245,192,46,.35) 62%, rgba(245,192,46,.15) 100%); }
+  .hero:not(.hero--cater) .hero__stage { position: relative; right: auto; bottom: auto; justify-self: center; width: min(100%, 520px); z-index: 2; }
+  .hero:not(.hero--cater) .hero__logo { position: absolute; left: 6%; top: 8%; width: 84%; filter: drop-shadow(0 18px 30px rgba(10,57,64,.35)); }
+}
