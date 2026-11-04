@@ -195,8 +195,14 @@ document.querySelectorAll('.cform').forEach((form) => {
       lines.push('Event: ' + d.get('event'), 'Date: ' + d.get('date'), 'Guests: ' + d.get('guests'),
         'Service: ' + d.get('service'), 'Food: ' + (d.getAll('food').join(', ') || 'Not sure yet'));
     }
+    const wholesale = form.dataset.kind === 'wholesale';
+    if (wholesale) {
+      lines.splice(1, 0, 'Business: ' + d.get('business'));
+      lines.push('Type: ' + d.get('type'), 'How often: ' + d.get('frequency'), 'Area: ' + (d.get('area') || '-'),
+        'Interested in: ' + (d.getAll('food').join(', ') || 'Not sure yet'));
+    }
     lines.push('', d.get('message') || '');
-    const subject = catering ? 'Catering enquiry: ' + d.get('event') + ' on ' + d.get('date') : 'Website message from ' + d.get('name');
+    const subject = wholesale ? 'Wholesale enquiry: ' + d.get('business') + ' (' + d.get('type') + ')' : catering ? 'Catering enquiry: ' + d.get('event') + ' on ' + d.get('date') : 'Website message from ' + d.get('name');
     const endpoint = form.dataset.endpoint;
     if (endpoint) {
       d.append('_subject', subject);
@@ -249,7 +255,7 @@ document.querySelectorAll('.cform').forEach((form) => {
     'main section h2', 'main .section-lede', 'main .eyebrow',
     '.steps li', '.eco-band__points li', '.dish-rail', '.tabs',
     '.catering__text', '.founder__photo', '.founder__text', '.markets__strip', '.find__info', '.hours-card',
-    '.ccard', '.events__grid img', '.bespoke__inner > *', '.cform', '.enquire__grid .catering__text',
+    '.ccard', '.ws-card', '.ws-why__list li', '.events__grid img', '.bespoke__inner > *', '.cform', '.enquire__grid .catering__text',
     '.mk', '.wn', '.promo', '.soon', '.goat__poster', '.goat__text', '.note', '.how__photo', '.best__poster', '.best__text',
     '.reviews__top', '.nb__head'
   ].join(',');
