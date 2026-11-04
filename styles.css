@@ -1840,3 +1840,8 @@ main > section:last-child { margin-bottom: 0; }
   .press__body p:not(.eyebrow) { margin-left: auto; margin-right: auto; }
 }
 @media (max-width: 760px) { .press__body h2::after { margin-left: auto; margin-right: auto; } }
+
+.press__head { display: block; font-family: var(--display); font-size: clamp(1.05rem, 1.6vw, 1.3rem); line-height: 1.2; font-weight: 600; margin-bottom: 14px; color: #1b1b1b; }
+.press__body .press__quote { font-family: var(--display); font-style: italic; font-size: clamp(1.15rem, 1.8vw, 1.4rem) !important; color: #fff !important; border-left: 3px solid var(--cheese); padding-left: 16px; }
+.press__quote span { display: block; font-family: var(--body); font-style: normal; font-size: .85rem; color: var(--cheese); margin-top: 6px; letter-spacing: .04em; }
+@media (max-width: 760px) { .press__body .press__quote { border-left: 0; padding-left: 0; } }
