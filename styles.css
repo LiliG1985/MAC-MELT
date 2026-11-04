@@ -1817,3 +1817,26 @@ main > section:last-child { margin-bottom: 0; }
 .menu__head h2::after { margin-top: 10px; }
 .dish-grid { margin-top: 20px; }
 @media (max-width: 600px) { .menu { padding-top: 32px !important; } }
+
+/* In the news */
+.press { background: var(--ink-deep); color: #fff; padding: clamp(48px, 6vw, 84px) 0; position: relative; overflow: hidden; }
+.press::before { content: ""; position: absolute; inset: 0; background: url(images/curry-goat-tray.jpg) center / cover; opacity: .08; pointer-events: none; }
+.press__inner { position: relative; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(32px, 5vw, 72px); align-items: center; }
+.press__clip { display: block; background: #FBF7EE; color: #1b1b1b; padding: 22px 22px 26px; transform: rotate(-2.5deg); box-shadow: 0 24px 50px rgba(0,0,0,.35); border-top: 6px solid var(--cheese); transition: transform .4s ease; text-decoration: none; max-width: 460px; justify-self: center; width: 100%; }
+.press__clip:hover { transform: rotate(0deg) translateY(-4px); }
+.press__mast { display: block; font-family: var(--display); font-size: clamp(1.3rem, 2.2vw, 1.75rem); text-align: center; border-bottom: 2px solid #1b1b1b; padding-bottom: 10px; letter-spacing: -.01em; }
+.press__section { display: block; font-size: .72rem; text-transform: uppercase; letter-spacing: .14em; text-align: center; padding: 8px 0 14px; color: #555; }
+.press__clip img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+.press__lines { display: grid; gap: 9px; margin-top: 16px; }
+.press__lines i { display: block; height: 7px; background: #d9d3c4; border-radius: 2px; }
+.press__lines i:nth-child(2) { width: 92%; } .press__lines i:nth-child(3) { width: 96%; } .press__lines i:nth-child(4) { width: 60%; }
+.press__body h2 { color: #fff; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.08; margin: 14px 0 16px; }
+.press__body p:not(.eyebrow) { color: rgba(255,255,255,.86); font-size: 1.08rem; max-width: 46ch; margin-bottom: 24px; }
+.press .eyebrow { background: var(--cheese); color: var(--ink-deep); }
+@media (max-width: 760px) {
+  .press__inner { grid-template-columns: 1fr; }
+  .press__clip { max-width: 320px; padding: 16px 16px 20px; }
+  .press__body { text-align: center; }
+  .press__body p:not(.eyebrow) { margin-left: auto; margin-right: auto; }
+}
+@media (max-width: 760px) { .press__body h2::after { margin-left: auto; margin-right: auto; } }
