@@ -1845,3 +1845,13 @@ main > section:last-child { margin-bottom: 0; }
 .press__body .press__quote { font-family: var(--display); font-style: italic; font-size: clamp(1.15rem, 1.8vw, 1.4rem) !important; color: #fff !important; border-left: 3px solid var(--cheese); padding-left: 16px; }
 .press__quote span { display: block; font-family: var(--body); font-style: normal; font-size: .85rem; color: var(--cheese); margin-top: 6px; letter-spacing: .04em; }
 @media (max-width: 760px) { .press__body .press__quote { border-left: 0; padding-left: 0; } }
+
+/* Market dates */
+.mk__dates { list-style: none; padding: 0; margin: 22px 0 6px; display: grid; gap: 12px; max-width: 460px; }
+.mk__dates li { display: flex; align-items: center; gap: 16px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); border-left: 4px solid var(--cheese); padding: 12px 16px; border-radius: 6px; }
+.mk__date { flex: none; width: 58px; height: 58px; border-radius: 6px; background: var(--cheese); color: var(--ink-deep); display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; line-height: 1; }
+.mk__date b { font-family: var(--display); font-size: 1.6rem; letter-spacing: 0; margin-bottom: 3px; }
+.mk__dates h3 { font-family: var(--display); font-size: 1.2rem; margin: 0 0 2px; color: inherit; }
+.mk__dates p { margin: 0; opacity: .8; font-size: .95rem; }
+.markets__next { font-weight: 600; }
+.markets__next b { color: var(--cheese); }
