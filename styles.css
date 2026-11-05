@@ -28,7 +28,7 @@
   --lift-sm: 4px 4px 0 var(--ink), 0 12px 24px -10px rgba(11, 74, 84, .4);
   --soft: 0 30px 60px -20px rgba(11, 74, 84, .35), 0 8px 16px -8px rgba(11, 74, 84, .2);
 
-  --spread: url("https://87708882764c4ad6c76a.cdn6.editmysite.com/uploads/b/87708882764c4ad6c76ace49afadb29c00c05c717fd761362091bd6ce9710c5d/2026-03-19_19-45-37_1773949550.jpg?width=1600&optimize=medium");
+  --spread: url("images/event-buffet.jpg");
   --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   --dots: none;
 }
@@ -492,7 +492,7 @@ main { margin-top: calc(-1 * (var(--nav-h) + var(--nav-gap))); }
 .reviews { position: relative; overflow: hidden; isolation: isolate; background: var(--cheese); padding: clamp(72px, 9vw, 120px) 0; border-bottom: 3px solid var(--ink); }
 .reviews::before {
   content: ""; position: absolute; inset: 0; z-index: -1;
-  background: url("https://87708882764c4ad6c76a.cdn6.editmysite.com/uploads/b/87708882764c4ad6c76ace49afadb29c00c05c717fd761362091bd6ce9710c5d/IMG_2454_1772237172.jpeg?width=1600&optimize=medium") center 40% / cover no-repeat;
+  background: url("images/catering-spread.jpg") center 40% / cover no-repeat;
   opacity: .24; mix-blend-mode: multiply; filter: grayscale(.2) blur(1px);
 }
 .reviews::after {
@@ -1781,7 +1781,7 @@ html.v2 .occasions .chips li { background: none !important; box-shadow: none !im
 /* Enquiry section: faint giant logo at an angle behind */
 .enquire { position: relative; overflow: hidden; isolation: isolate; }
 .enquire::after { content: ""; position: absolute; z-index: -1; width: clamp(520px, 52vw, 820px); aspect-ratio: 1; left: -10%; bottom: -22%; pointer-events: none;
-  background: url("https://seller-brand-assets-f.squarecdn.com/MLRKM3H93083R/f348321a9f1e37078d53d77e28effff7.jpeg?height=1200") center / 128% no-repeat;
+  background: url("images/logo.jpg") center / 128% no-repeat;
   border-radius: 50%; transform: rotate(-14deg); opacity: .07; filter: grayscale(1) brightness(2.2); }
 @media (max-width: 860px) { .enquire::after { width: 520px; left: -30%; bottom: -10%; } }
 /* Phone catering header: photo shows top right, turquoise fades in towards the writing */
