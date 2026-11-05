@@ -1920,3 +1920,6 @@ html.v2 .care__card--main h2 { color: var(--cheese) !important; }
   .catering--compact .catering__bg::after { background: linear-gradient(180deg, rgba(11,74,84,0) 0%, rgba(11,74,84,0) 55%, rgba(11,74,84,1) 100%) !important; }
   .catering--compact .wrap { padding-top: 220px; }
 }
+.inapp-note { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 9999; background: var(--ink-deep); color: #fff; border: 2px solid var(--cheese); border-radius: 12px; padding: 12px 40px 12px 14px; font-size: .92rem; line-height: 1.4; box-shadow: 0 10px 30px rgba(0,0,0,.3); }
+.inapp-note b { color: var(--cheese); }
+.inapp-note button { position: absolute; top: 8px; right: 10px; background: none; border: 0; color: #fff; font-size: 1rem; cursor: pointer; }
