@@ -320,13 +320,6 @@ document.querySelectorAll('.cform').forEach((form) => {
   const inApp = /Instagram|FBAN|FBAV|FB_IAB|TikTok|musical_ly|BytedanceWebview|Snapchat|Line\//i.test(ua);
   if (!inApp) return;
   const ios = /iPhone|iPad|iPod/i.test(ua);
-  const android = /Android/i.test(ua);
-  document.querySelectorAll('a[href*="macandmelt.square.site"]').forEach((a) => {
-    const url = new URL(a.href);
-    if (ios) a.href = 'x-safari-https://' + url.host + url.pathname + url.search;
-    else if (android) a.href = 'intent://' + url.host + url.pathname + url.search + '#Intent;scheme=https;S.browser_fallback_url=' + encodeURIComponent(url.href) + ';end';
-    a.removeAttribute('target');
-  });
   const note = document.createElement('div');
   note.className = 'inapp-note';
   note.innerHTML = 'For the smoothest checkout, open this page in ' + (ios ? 'Safari' : 'your browser') + ': tap <b>•••</b> then <b>Open in ' + (ios ? 'Safari' : 'browser') + '</b>. <button type="button" aria-label="Dismiss">✕</button>';
