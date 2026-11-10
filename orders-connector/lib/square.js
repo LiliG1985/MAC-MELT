@@ -90,7 +90,11 @@ export async function findOrCreateCustomer({ name, email, phone }) {
   try {
     return (await sq('/v2/customers', { method: 'POST', body })).customer;
   } catch (e) {
-    // A badly formatted phone number shouldn't block the booking.
+    // A badly formatted phone number or email shouldn't block the booking.
+    if (e.has?.('BAD_REQUEST') || e.has?.('INVALID_EMAIL_ADDRESS') || /email/i.test(e.message)) {
+      if (email) body.note = [body.note, `Email: ${email}`].filter(Boolean).join(' / ');
+      delete body.email_address;
+    }
     delete body.phone_number;
     body.idempotency_key = key();
     body.note = phone ? `Phone: ${phone}` : undefined;

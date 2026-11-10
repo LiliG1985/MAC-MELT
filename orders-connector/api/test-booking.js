@@ -11,7 +11,7 @@ export async function GET(request) {
   while (d.getUTCDay() !== 5) d.setUTCDate(d.getUTCDate() + 1); // a Friday
   d.setUTCHours(16, 0, 0, 0);
   try {
-    const cust = await findOrCreateCustomer({ name: 'Test Connector', email: 'test-connector@example.com' });
+    const cust = await findOrCreateCustomer({ name: 'Test Connector' });
     const b = await createBooking({ startAt: d.toISOString(), customerId: cust.id, sellerNote: 'TEST from order connector, will be cancelled', customerNote: 'TEST' });
     const status = b.status;
     await cancelBooking(b.id).catch(() => {});
