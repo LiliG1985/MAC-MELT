@@ -4,7 +4,9 @@ import { createBooking, cancelBooking, findOrCreateCustomer } from '../lib/squar
 
 export async function GET(request) {
   const k = new URL(request.url).searchParams.get('key');
-  if (!process.env.LINK_SECRET || k !== process.env.LINK_SECRET) return new Response('Not found', { status: 404 });
+  const want = (process.env.LINK_SECRET || '').trim();
+  if (!want) return new Response('Not ready: LINK_SECRET is not loaded yet. In Vercel go to Deployments, then ... on the top one, then Redeploy.', { status: 404 });
+  if ((k || '').trim() !== want) return new Response(`Not found: that key doesn't match LINK_SECRET (yours has ${(k || '').trim().length} characters, the saved one has ${want.length}).`, { status: 404 });
   const d = new Date(Date.now() + 21 * 86400000);
   while (d.getUTCDay() !== 5) d.setUTCDate(d.getUTCDate() + 1); // a Friday
   d.setUTCHours(16, 0, 0, 0);

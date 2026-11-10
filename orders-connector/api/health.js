@@ -3,7 +3,9 @@ import { locationId, collectionService, teamMemberId, sq } from '../lib/square.j
 
 export async function GET(request) {
   const k = new URL(request.url).searchParams.get('key');
-  if (!process.env.LINK_SECRET || k !== process.env.LINK_SECRET) return new Response('Not found', { status: 404 });
+  const want = (process.env.LINK_SECRET || '').trim();
+  if (!want) return new Response('Not ready: LINK_SECRET is not loaded yet. In Vercel go to Deployments, then ... on the top one, then Redeploy.', { status: 404 });
+  if ((k || '').trim() !== want) return new Response(`Not found: that key doesn't match LINK_SECRET (yours has ${(k || '').trim().length} characters, the saved one has ${want.length}).`, { status: 404 });
 
   const env = ['SQUARE_ACCESS_TOKEN', 'SQUARE_WEBHOOK_SIGNATURE_KEY', 'SQUARE_WEBHOOK_URL', 'LINK_SECRET', 'PUBLIC_URL',
     'TWILIO_ACCOUNT_SID', 'TWILIO_AUTH_TOKEN', 'RAYA_MOBILE', 'RESEND_API_KEY', 'PICKUP_ADDRESS'];
