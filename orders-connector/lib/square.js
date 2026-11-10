@@ -152,9 +152,9 @@ export async function teamMemberId() {
 // ---------- Bookings ----------
 export async function createBooking({ startAt, customerId, customerNote, sellerNote }) {
   const [loc, svc, tm] = await Promise.all([locationId(), collectionService(), teamMemberId()]);
-  const make = (withSellerNote) => sq('/v2/bookings', {
+  const make = (withSellerNote, asBuyer = true) => sq('/v2/bookings', {
     method: 'POST',
-    asBuyer: true,
+    asBuyer,
     body: {
       idempotency_key: key(),
       booking: {
@@ -172,8 +172,15 @@ export async function createBooking({ startAt, customerId, customerNote, sellerN
       },
     },
   });
-  try { return (await make(true)).booking; }
-  catch (e) { if (sellerNote) return (await make(false)).booking; throw e; }
+  // 1st choice: a customer-style REQUEST (Square texts Raya to accept/decline).
+  try { return (await make(false)).booking; }
+  catch (e) {
+    // If the calendar refuses a request (short notice, daily limit, slot rules),
+    // add it as the business instead so a paid order is never lost.
+    console.warn('request refused, adding directly:', e.message);
+    try { return (await make(true, false)).booking; }
+    catch { return (await make(false, false)).booking; }
+  }
 }
 
 export async function getBooking(id) {
