@@ -36,7 +36,7 @@ globalThis.fetch = async (url, opt = {}) => {
   if (p.startsWith('/v2/bookings/team-member-booking-profiles')) return json({ team_member_booking_profiles: [{ team_member_id: 'TM1', display_name: 'Soraya Brown' }] });
   if (p === '/v2/customers/search') return json({ customers: [] });
   if (p === '/v2/customers' && m === 'POST') return json({ customer: { id: 'C1' } });
-  if (p === '/v2/bookings' && m === 'POST') { const id = 'BK' + (Object.keys(bookings).length + 1); bookings[id] = { id, version: 1, status: 'ACCEPTED', ...body.booking }; log.push(['BOOKING', id, body.booking.start_at]); return json({ booking: bookings[id] }); }
+  if (p === '/v2/bookings' && m === 'POST') { const id = 'BK' + (Object.keys(bookings).length + 1); bookings[id] = { id, version: 1, status: process.env.TWILIO_ACCOUNT_SID ? 'ACCEPTED' : 'PENDING', ...body.booking }; log.push(['BOOKING', id, body.booking.start_at]); return json({ booking: bookings[id] }); }
   const bm = p.match(/^\/v2\/bookings\/(BK\d+)(\/cancel)?$/);
   if (bm && m === 'GET') return json({ booking: bookings[bm[1]] });
   if (bm && bm[2]) { bookings[bm[1]].status = 'CANCELLED_BY_SELLER'; log.push(['BOOKING CANCELLED', bm[1]]); return json({ booking: bookings[bm[1]] }); }
@@ -93,3 +93,20 @@ check(order.fulfillments[0].state === 'CANCELED', 'order cancelled in Square');
 check(Object.keys(bookings).length === 0, 'nothing put in calendar');
 check(log.some((l) => l[0] === 'EMAIL' && l[2].includes('About your')), 'customer emailed about decline');
 await post({ o: 'ORD123', t: sign('ORD123'), action: 'decline' }); check(refunds.length === 1, 'double tap does not refund twice');
+
+// ---- Square mode (no Twilio): order becomes a booking REQUEST; Raya accepts/declines in Square ----
+delete process.env.TWILIO_ACCOUNT_SID;
+log.length = 0; reset();
+await send(paid);
+check(log.filter((l) => l[0] === 'SMS').length === 0, 'square mode: no Twilio text');
+check(Object.keys(bookings).length === 1, 'square mode: booking request created in Appointments');
+check(bookings.BK1.seller_note.includes('Ref: ORD123') && bookings.BK1.seller_note.includes('2 x The Classic Mac'), 'square mode: calendar entry has order details + ref');
+await send(paid); check(Object.keys(bookings).length === 1, 'square mode: duplicate webhook does not double book');
+bookings.BK1.status = 'ACCEPTED';
+await send({ type: 'booking.updated', data: { id: 'BK1', object: { booking: { id: 'BK1' } } } });
+check(order.metadata.mm_status === 'accepted' && order.fulfillments[0].state === 'RESERVED', 'square mode: Raya accepts in Square -> order accepted');
+log.length = 0; reset();
+await send(paid);
+bookings.BK1.status = 'DECLINED';
+await send({ type: 'booking.updated', data: { id: 'BK1', object: { booking: { id: 'BK1' } } } });
+check(refunds.length === 1 && order.fulfillments[0].state === 'CANCELED', 'square mode: Raya declines in Square -> refunded + cancelled');

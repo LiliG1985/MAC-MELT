@@ -1,6 +1,6 @@
 // Square calls this when payments and orders change.
 import { createHmac, timingSafeEqual } from 'node:crypto';
-import { newPaidOrder, sync } from '../lib/flow.js';
+import { newPaidOrder, sync, bookingChanged } from '../lib/flow.js';
 import { textRaya } from '../lib/notify.js';
 
 function validSignature(raw, header) {
@@ -26,6 +26,9 @@ export async function POST(request) {
     if (type.startsWith('payment.')) {
       const p = event.data?.object?.payment;
       if (p?.status === 'COMPLETED' && p.order_id) result = await newPaidOrder(p.order_id);
+    } else if (type === 'booking.updated' || type === 'booking.created') {
+      const id = event.data?.object?.booking?.id || event.data?.id;
+      if (id) result = await bookingChanged(id);
     } else if (type === 'order.fulfillment.updated' || type === 'order.updated') {
       if (event.data?.id) result = await sync(event.data.id);
     }

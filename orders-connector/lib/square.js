@@ -131,7 +131,7 @@ export async function teamMemberId() {
 // ---------- Bookings ----------
 export async function createBooking({ startAt, customerId, customerNote, sellerNote }) {
   const [loc, svc, tm] = await Promise.all([locationId(), collectionService(), teamMemberId()]);
-  return (await sq('/v2/bookings', {
+  const make = (withSellerNote) => sq('/v2/bookings', {
     method: 'POST',
     body: {
       idempotency_key: key(),
@@ -139,8 +139,8 @@ export async function createBooking({ startAt, customerId, customerNote, sellerN
         location_id: loc,
         start_at: startAt,
         customer_id: customerId,
-        customer_note: customerNote?.slice(0, 4000),
-        seller_note: sellerNote?.slice(0, 4000),
+        customer_note: customerNote?.slice(0, 1500),
+        seller_note: withSellerNote ? sellerNote?.slice(0, 1500) : undefined,
         appointment_segments: [{
           service_variation_id: svc.id,
           service_variation_version: svc.version,
@@ -149,7 +149,9 @@ export async function createBooking({ startAt, customerId, customerNote, sellerN
         }],
       },
     },
-  })).booking;
+  });
+  try { return (await make(true)).booking; }
+  catch (e) { if (sellerNote) return (await make(false)).booking; throw e; }
 }
 
 export async function getBooking(id) {

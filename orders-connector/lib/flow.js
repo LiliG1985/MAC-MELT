@@ -12,6 +12,52 @@ async function setMeta(order, fields, extra = {}) {
   return S.updateOrder(order, { metadata: { ...fields }, ...extra });
 }
 
+// No text service configured: put the order into Square Appointments as a booking
+// request, so Square sends Raya its usual accept/decline text and emails the customer.
+export const squareMode = () => !process.env.TWILIO_ACCOUNT_SID;
+
+async function requestInAppointments(order) {
+  if (!O.pickupAt(order)) throw new Error('Order has no collection time');
+  const c = O.customer(order);
+  const cust = order.customer_id ? { id: order.customer_id } : await S.findOrCreateCustomer(c);
+  const booking = await S.createBooking({
+    startAt: O.pickupAt(order),
+    customerId: cust.id,
+    sellerNote: O.calendarNote(order),
+    customerNote: O.calendarNote(order),
+  });
+  const accepted = booking.status === 'ACCEPTED';
+  const patch = { metadata: { mm_status: accepted ? 'accepted' : 'requested', mm_booking: booking.id, mm_pickup: O.pickupAt(order), mm_texted: '1' } };
+  if (accepted && fState(order) === 'PROPOSED') patch.fulfillments = [{ uid: fulfillUid(order), state: 'RESERVED' }];
+  await S.updateOrder(await S.getOrder(order.id), patch);
+  return { booking: booking.id, bookingStatus: booking.status };
+}
+
+// Raya accepted / declined / cancelled the booking in Square Appointments.
+export async function bookingChanged(bookingId) {
+  const b = await S.getBooking(bookingId);
+  const ref = /Ref: (\S+)/.exec(`${b.seller_note || ''}\n${b.customer_note || ''}`)?.[1];
+  if (!ref) return { skipped: 'not an online order' };
+  let order = await S.getOrder(ref);
+  const m = O.meta(order);
+  if (m.mm_booking !== b.id) return { skipped: 'booking not linked' };
+  if (b.status === 'ACCEPTED' && m.mm_status === 'requested') {
+    const patch = { metadata: { mm_status: 'accepted' } };
+    if (fState(order) === 'PROPOSED') patch.fulfillments = [{ uid: fulfillUid(order), state: 'RESERVED' }];
+    await S.updateOrder(order, patch);
+    return { accepted: true };
+  }
+  if (/DECLINED|CANCELLED|NO_SHOW/.test(b.status || '') && !['declined', 'cancelled'].includes(m.mm_status)) {
+    await decline(order.id, b.status === 'DECLINED' ? '' : '');
+    return { refunded: true, status: b.status };
+  }
+  if (b.status === 'ACCEPTED' && m.mm_status === 'accepted' && b.start_at && b.start_at !== m.mm_pickup) {
+    await S.updateOrder(order, { metadata: { mm_pickup: b.start_at } }).catch(() => {});
+    return { moved: true };
+  }
+  return { nochange: b.status };
+}
+
 // 1. A paid order has arrived.
 export async function newPaidOrder(orderId) {
   let order = await S.getOrder(orderId);
@@ -30,6 +76,8 @@ export async function newPaidOrder(orderId) {
       throw e;
     }
   }
+
+  if (squareMode()) return requestInAppointments(order);
 
   const c = O.customer(order);
   await textRaya([

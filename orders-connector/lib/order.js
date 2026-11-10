@@ -66,6 +66,7 @@ export function calendarNote(order) {
     ' ',
     orderNote(order) && `Special requests: ${orderNote(order)}`,
     `Total paid: ${money(order.total_money)}`,
+    `Ref: ${order.id}`,
   ].filter(Boolean).join('\n');
 }
 
