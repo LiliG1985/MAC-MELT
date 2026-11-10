@@ -22,3 +22,5 @@ Deployed on Vercel with **Root Directory = `orders-connector`**. Settings live i
 Webhook events to subscribe: `payment.created`, `payment.updated`, `order.updated`, `order.fulfillment.updated`.
 
 Check setup: `https://<vercel-domain>/api/health?key=<LINK_SECRET>`. Test locally: `node test/sim.mjs`.
+
+<!-- deployed 2026-11-10T10:13:36Z -->
