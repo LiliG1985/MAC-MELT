@@ -11,5 +11,11 @@ export async function GET(request) {
   auth.searchParams.set('scope', 'APPOINTMENTS_READ APPOINTMENTS_WRITE CUSTOMERS_READ CUSTOMERS_WRITE');
   auth.searchParams.set('session', 'false');
   auth.searchParams.set('state', 'mm');
-  return Response.redirect(auth.toString(), 302);
+  const href = auth.toString().replace(/&/g, '&amp;');
+  return new Response(`<!doctype html><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<body style="font:17px/1.5 system-ui;max-width:560px;margin:40px auto;padding:0 16px;color:#1d2b2e">
+<h2 style="color:#0B4A54">Connect Mac and Melt orders to Appointments</h2>
+<p>Click the button, check it says <b>Mac and Melt</b>, then click <b>Allow</b>.</p>
+<p><a href="${href}" style="display:inline-block;background:#0B4A54;color:#fff;padding:14px 22px;border-radius:10px;font-weight:700;text-decoration:none">Continue to Square →</a></p>
+</body>`, { headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' } });
 }
