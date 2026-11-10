@@ -24,7 +24,7 @@ export async function sq(path, { method = 'GET', body } = {}) {
     body: body ? JSON.stringify(body) : undefined,
   });
   const data = await res.json().catch(() => ({}));
-  if (!res.ok || data.errors) throw new SquareError(res.status, data.errors);
+  if (!res.ok || data.errors?.length) throw new SquareError(res.status, data.errors);
   return data;
 }
 
