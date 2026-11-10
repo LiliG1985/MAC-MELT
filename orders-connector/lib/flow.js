@@ -37,7 +37,17 @@ async function requestInAppointments(order) {
 export async function bookingChanged(bookingId) {
   const b = await S.getBooking(bookingId);
   const ref = /Ref: (\S+)/.exec(`${b.seller_note || ''}\n${b.customer_note || ''}`)?.[1];
-  if (!ref) return { skipped: 'not an online order' };
+  if (!ref) {
+    // Someone booked the free "Online order collection" slot directly on the booking page,
+    // without ordering any food. Cancel it so it can't block a real order.
+    const svc = await S.collectionService().catch(() => null);
+    const usesCollection = svc && (b.appointment_segments || []).some((x) => x.service_variation_id === svc.id);
+    if (usesCollection && !/CANCELLED|DECLINED/.test(b.status || '')) {
+      await S.cancelBooking(b.id).catch((e) => console.error('auto-cancel stray booking', e.message));
+      return { cancelled_stray_collection_booking: b.id };
+    }
+    return { skipped: 'not an online order' };
+  }
   let order = await S.getOrder(ref);
   const m = O.meta(order);
   if (m.mm_booking !== b.id) return { skipped: 'booking not linked' };

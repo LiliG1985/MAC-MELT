@@ -110,3 +110,11 @@ await send(paid);
 bookings.BK1.status = 'DECLINED';
 await send({ type: 'booking.updated', data: { id: 'BK1', object: { booking: { id: 'BK1' } } } });
 check(refunds.length === 1 && order.fulfillments[0].state === 'CANCELED', 'square mode: Raya declines in Square -> refunded + cancelled');
+
+// ---- Stray booking of the collection service (no order) gets cancelled ----
+bookings.BK9 = { id: 'BK9', version: 1, status: 'PENDING', customer_note: 'hi', appointment_segments: [{ service_variation_id: 'SV1' }] };
+await send({ type: 'booking.created', data: { id: 'BK9', object: { booking: { id: 'BK9' } } } });
+check(bookings.BK9.status.startsWith('CANCELLED'), 'free collection slot booked without an order is auto-cancelled');
+bookings.BK8 = { id: 'BK8', version: 1, status: 'PENDING', customer_note: 'hi', appointment_segments: [{ service_variation_id: 'OTHER' }] };
+await send({ type: 'booking.created', data: { id: 'BK8', object: { booking: { id: 'BK8' } } } });
+check(bookings.BK8.status === 'PENDING', 'other bookings are left alone');
