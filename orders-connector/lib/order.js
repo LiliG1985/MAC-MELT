@@ -12,12 +12,21 @@ export function pickupAt(order) {
   return f?.pickup_details?.pickup_at || null;
 }
 
+// +4407943… / +447943… -> 07943…
+export function ukPhone(p) {
+  if (!p) return '';
+  const d = String(p).replace(/[^\d+]/g, '');
+  if (d.startsWith('+440')) return '0' + d.slice(4);
+  if (d.startsWith('+44')) return '0' + d.slice(3);
+  return p;
+}
+
 export function customer(order) {
   const r = pickupFulfillment(order)?.pickup_details?.recipient || {};
   return {
     name: r.display_name || [r.given_name, r.family_name].filter(Boolean).join(' ') || 'Customer',
     email: r.email_address || '',
-    phone: r.phone_number || '',
+    phone: ukPhone(r.phone_number || ''),
   };
 }
 
@@ -44,7 +53,8 @@ export function itemCount(order) {
 }
 
 export function orderNote(order) {
-  return pickupFulfillment(order)?.pickup_details?.note || '';
+  const f = pickupFulfillment(order);
+  return f?.pickup_details?.note || order.note || f?.pickup_details?.recipient?.note || '';
 }
 
 export function shortRef(order) {
