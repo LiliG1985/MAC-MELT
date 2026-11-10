@@ -13,11 +13,28 @@ export class SquareError extends Error {
   has(code) { return this.errors.some((e) => e.code === code); }
 }
 
-export async function sq(path, { method = 'GET', body } = {}) {
+// Customer-level token (from the one-time "Allow" step) so bookings arrive as requests.
+let buyer = { token: null, exp: 0 };
+async function buyerToken() {
+  if (!process.env.SQUARE_BOOKING_REFRESH_TOKEN) return null;
+  if (buyer.token && Date.now() < buyer.exp) return buyer.token;
+  const res = await fetch(BASE + '/oauth2/token', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Square-Version': VERSION },
+    body: JSON.stringify({ client_id: process.env.SQUARE_APP_ID, client_secret: process.env.SQUARE_APP_SECRET, grant_type: 'refresh_token', refresh_token: process.env.SQUARE_BOOKING_REFRESH_TOKEN }),
+  });
+  const d = await res.json().catch(() => ({}));
+  if (!res.ok || !d.access_token) throw new SquareError(res.status, d.errors || [{ code: 'OAUTH', detail: 'Could not refresh booking permission' }]);
+  buyer = { token: d.access_token, exp: Date.now() + 6 * 3600 * 1000 };
+  return buyer.token;
+}
+
+export async function sq(path, { method = 'GET', body, asBuyer = false } = {}) {
+  const token = (asBuyer && await buyerToken()) || process.env.SQUARE_ACCESS_TOKEN;
   const res = await fetch(BASE + path, {
     method,
     headers: {
-      Authorization: `Bearer ${process.env.SQUARE_ACCESS_TOKEN}`,
+      Authorization: `Bearer ${token}`,
       'Square-Version': VERSION,
       'Content-Type': 'application/json',
     },
@@ -133,6 +150,7 @@ export async function createBooking({ startAt, customerId, customerNote, sellerN
   const [loc, svc, tm] = await Promise.all([locationId(), collectionService(), teamMemberId()]);
   const make = (withSellerNote) => sq('/v2/bookings', {
     method: 'POST',
+    asBuyer: true,
     body: {
       idempotency_key: key(),
       booking: {
