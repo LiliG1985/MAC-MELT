@@ -68,7 +68,7 @@ g = await decide.GET(new Request(`https://hook.test/api/decide?o=ORD123&t=wrong`
 r = await post({ o: 'ORD123', t: sign('ORD123'), action: 'accept' }); html = await r.text();
 check(html.includes('Accepted'), 'accept page confirms');
 check(Object.keys(bookings).length === 1 && bookings.BK1.start_at === '2026-11-13T15:30:00Z', 'booking in calendar at collection time');
-check(bookings.BK1.seller_note.includes('2 x The Classic Mac (Medium, Baked') && bookings.BK1.seller_note.includes('+447700900111') && bookings.BK1.seller_note.includes('jane@example.com'), 'calendar note has items, phone, email');
+check(bookings.BK1.seller_note.includes('2 x The Classic Mac (Medium, Baked') && bookings.BK1.seller_note.includes('07700900111') && bookings.BK1.seller_note.includes('jane@example.com'), 'calendar note has items, phone, email');
 console.log('   calendar note:\n   ' + bookings.BK1.seller_note.replace(/\n/g, '\n   '));
 check(order.fulfillments[0].state === 'RESERVED', 'order marked accepted in Square');
 check(log.some((l) => l[0] === 'EMAIL' && l[2].includes('confirmed')), 'customer emailed confirmation');
