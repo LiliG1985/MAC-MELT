@@ -6,7 +6,7 @@ const VERSION = '2025-01-23';
 
 export class SquareError extends Error {
   constructor(status, errors) {
-    super((errors || []).map((e) => `${e.code}: ${e.detail || ''}`).join('; ') || `Square HTTP ${status}`);
+    super((errors || []).map((e) => `${e.code}${e.field ? ` [${e.field}]` : ''}: ${e.detail || ''}`).join('; ') || `Square HTTP ${status}`);
     this.status = status;
     this.errors = errors || [];
   }

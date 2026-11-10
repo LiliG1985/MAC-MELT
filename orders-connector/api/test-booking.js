@@ -1,6 +1,6 @@
 // One-off check: /api/test-booking?key=<LINK_SECRET>
 // Creates a test booking 3 weeks ahead, reports whether Square made it a REQUEST (pending) or ACCEPTED, then cancels it.
-import { createBooking, cancelBooking, findOrCreateCustomer } from '../lib/square.js';
+import { createBooking, cancelBooking, findOrCreateCustomer, sq, locationId, collectionService } from '../lib/square.js';
 
 export async function GET(request) {
   const k = new URL(request.url).searchParams.get('key');
@@ -20,6 +20,15 @@ export async function GET(request) {
       : `${status}: Square accepted it straight away (no request text). We need the extra permission step.`;
     return Response.json({ status, verdict, cancelled_after_test: true });
   } catch (e) {
-    return Response.json({ problem: e.message }, { status: 500 });
+    let availability;
+    try {
+      const [loc, svc] = await Promise.all([locationId(), collectionService()]);
+      const end = new Date(d.getTime() + 2 * 86400000);
+      const r = await sq('/v2/bookings/availability/search', { method: 'POST', asBuyer: true, body: { query: { filter: {
+        start_at_range: { start_at: new Date(d.getTime() - 86400000).toISOString(), end_at: end.toISOString() },
+        location_id: loc, segment_filters: [{ service_variation_id: svc.id }] } } } });
+      availability = `${(r.availabilities || []).length} free slots found for the collection service`;
+    } catch (e2) { availability = `availability check failed: ${e2.message}`; }
+    return Response.json({ problem: e.message, availability, tried: d.toISOString() }, { status: 500 });
   }
 }
