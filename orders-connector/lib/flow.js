@@ -122,7 +122,7 @@ export async function accept(orderId) {
       startAt: O.pickupAt(order),
       customerId: cust.id,
       sellerNote: O.calendarNote(order),
-      customerNote: O.orderNote(order) || undefined,
+      customerNote: O.calendarNote(order),
     });
   }
 
