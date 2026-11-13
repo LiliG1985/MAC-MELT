@@ -172,15 +172,9 @@ export async function createBooking({ startAt, customerId, customerNote, sellerN
       },
     },
   });
-  // 1st choice: a customer-style REQUEST (Square texts Raya to accept/decline).
-  try { return (await make(false)).booking; }
-  catch (e) {
-    // If the calendar refuses a request (short notice, daily limit, slot rules),
-    // add it as the business instead so a paid order is never lost.
-    console.warn('request refused, adding directly:', e.message);
-    try { return (await make(true, false)).booking; }
-    catch { return (await make(false, false)).booking; }
-  }
+  // Always a customer-style REQUEST, so Square texts Raya to Accept / Decline.
+  // Never added directly as the business: an order must never be confirmed without her.
+  return (await make(false)).booking;
 }
 
 export async function getBooking(id) {

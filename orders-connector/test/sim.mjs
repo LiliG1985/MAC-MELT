@@ -20,6 +20,7 @@ const json = (b, s = 200) => new Response(JSON.stringify(b), { status: s, header
 globalThis.fetch = async (url, opt = {}) => {
   const u = String(url), m = opt.method || 'GET', body = opt.body && typeof opt.body === 'string' && opt.body.startsWith('{') ? JSON.parse(opt.body) : opt.body;
   if (u.includes('twilio')) { log.push(['SMS', String(body.get('Body'))]); return json({ sid: 'SM1' }); }
+  if (u.includes('formspree')) { log.push(['ALERT', JSON.parse(opt.body).message]); return json({ ok: true }); }
   if (u.includes('resend')) { log.push(['EMAIL', body.to[0], body.subject]); return json({ id: 'E1' }); }
   const p = u.replace(/^https:\/\/[^/]+/, '');
   if (p === '/v2/orders/ORD123' && m === 'GET') return json({ order: structuredClone(order) });
@@ -36,6 +37,8 @@ globalThis.fetch = async (url, opt = {}) => {
   if (p.startsWith('/v2/bookings/team-member-booking-profiles')) return json({ team_member_booking_profiles: [{ team_member_id: 'TM1', display_name: 'Soraya Brown' }] });
   if (p === '/v2/customers/search') return json({ customers: [] });
   if (p === '/v2/customers' && m === 'POST') return json({ customer: { id: 'C1' } });
+  if (p === '/v2/bookings' && m === 'POST' && globalThis.REFUSE) return json({ errors: [{ code: 'BAD_REQUEST', detail: 'start_at is too soon' }] }, 400);
+  if (p === '/v2/bookings' && m === 'POST' && globalThis.AUTOACCEPT) { const id = 'BK' + (Object.keys(bookings).length + 1); bookings[id] = { id, version: 1, status: 'ACCEPTED', ...body.booking }; return json({ booking: bookings[id] }); }
   if (p === '/v2/bookings' && m === 'POST') { const id = 'BK' + (Object.keys(bookings).length + 1); bookings[id] = { id, version: 1, status: process.env.TWILIO_ACCOUNT_SID ? 'ACCEPTED' : 'PENDING', ...body.booking }; log.push(['BOOKING', id, body.booking.start_at]); return json({ booking: bookings[id] }); }
   const bm = p.match(/^\/v2\/bookings\/(BK\d+)(\/cancel)?$/);
   if (bm && m === 'GET') return json({ booking: bookings[bm[1]] });
@@ -118,3 +121,21 @@ check(bookings.BK9.status.startsWith('CANCELLED'), 'free collection slot booked 
 bookings.BK8 = { id: 'BK8', version: 1, status: 'PENDING', customer_note: 'hi', appointment_segments: [{ service_variation_id: 'OTHER' }] };
 await send({ type: 'booking.created', data: { id: 'BK8', object: { booking: { id: 'BK8' } } } });
 check(bookings.BK8.status === 'PENDING', 'other bookings are left alone');
+
+// ---- Square refuses the request: nothing confirmed, customer refunded, Raya alerted ----
+log.length = 0; reset(); globalThis.REFUSE = true;
+let rr = await send(paid);
+check(rr.status === 200, 'refused request handled without error');
+check(Object.keys(bookings).length === 0, 'refused request: nothing put in calendar');
+check(refunds.length === 1 && refunds[0] === 3100, 'refused request: customer refunded in full');
+check(order.fulfillments[0].state === 'CANCELED', 'refused request: order cancelled');
+check(log.some((l) => l[0] === 'ALERT' && /NOT accepted/.test(l[1])), 'refused request: Raya alerted by email');
+globalThis.REFUSE = false;
+
+// ---- Booking somehow auto-accepted: undone ----
+log.length = 0; reset(); globalThis.AUTOACCEPT = true;
+await send(paid);
+check(Object.values(bookings).every((b) => b.status.startsWith('CANCELLED')), 'auto-accepted booking is cancelled');
+check(refunds.length === 1, 'auto-accepted: customer refunded');
+check(log.some((l) => l[0] === 'ALERT'), 'auto-accepted: Raya alerted');
+globalThis.AUTOACCEPT = false;

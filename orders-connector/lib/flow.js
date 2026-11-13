@@ -1,7 +1,7 @@
 // What happens to an order: new -> text Raya -> accept/decline -> calendar, emails, refunds.
 import * as S from './square.js';
 import * as O from './order.js';
-import { textRaya, reviewLink, email } from './notify.js';
+import { textRaya, reviewLink, email, alertRaya } from './notify.js';
 
 const fulfillUid = (order) => O.pickupFulfillment(order)?.uid;
 const fState = (order) => O.pickupFulfillment(order)?.state;
@@ -20,13 +20,34 @@ async function requestInAppointments(order) {
   if (!O.pickupAt(order)) throw new Error('Order has no collection time');
   const c = O.customer(order);
   const cust = order.customer_id ? { id: order.customer_id } : await S.findOrCreateCustomer(c);
-  const booking = await S.createBooking({
-    startAt: O.pickupAt(order),
-    customerId: cust.id,
-    sellerNote: O.calendarNote(order),
-    customerNote: O.calendarNote(order),
-  });
-  const accepted = booking.status === 'ACCEPTED';
+  let booking;
+  try {
+    booking = await S.createBooking({
+      startAt: O.pickupAt(order),
+      customerId: cust.id,
+      sellerNote: O.calendarNote(order),
+      customerNote: O.calendarNote(order),
+    });
+  } catch (e) {
+    // Square refused the request (too short notice, day full, time unavailable).
+    // Nothing goes in the calendar unaccepted: refund the customer and tell Raya.
+    const refused = e instanceof S.SquareError && e.status >= 400 && e.status < 500 && ![401, 403].includes(e.status);
+    if (!refused) {
+      await alertRaya(`URGENT: order #${O.shortRef(order)} (${c.name}, ${O.when(O.pickupAt(order))}) could not be sent to your calendar (${e.message.slice(0, 120)}). Please check Square > Orders.`).catch(() => {});
+      throw e;
+    }
+    await decline(order.id, 'Sorry, we could not take an order for that collection time. Please choose another time.');
+    await alertRaya(`Order #${O.shortRef(order)} from ${c.name} for ${O.when(O.pickupAt(order))} was NOT accepted (Square refused the time: ${e.message.slice(0, 120)}). The customer has been refunded in full.`).catch(() => {});
+    return { refused: true, reason: e.message };
+  }
+  if (booking.status === 'ACCEPTED') {
+    // Should never happen with "Accept bookings automatically" off. Undo it: cancel + refund + tell Raya.
+    await S.updateOrder(await S.getOrder(order.id), { metadata: { mm_booking: booking.id } }).catch(() => {});
+    await decline(order.id, 'Sorry, we could not confirm this order. Please try again.');
+    await alertRaya(`Order #${O.shortRef(order)} from ${c.name} came in already confirmed, so it was cancelled and refunded. Check Appointments > Settings: "Accept bookings automatically" must be OFF.`).catch(() => {});
+    return { cancelled_auto_accepted: booking.id };
+  }
+  const accepted = false;
   const patch = { metadata: { mm_status: accepted ? 'accepted' : 'requested', mm_booking: booking.id, mm_pickup: O.pickupAt(order), mm_texted: '1' } };
   if (accepted && fState(order) === 'PROPOSED') patch.fulfillments = [{ uid: fulfillUid(order), state: 'RESERVED' }];
   await S.updateOrder(await S.getOrder(order.id), patch);

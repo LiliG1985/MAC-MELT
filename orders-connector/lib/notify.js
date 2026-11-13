@@ -67,3 +67,15 @@ export async function email({ to, subject, heading, paragraphs = [], list = [] }
   if (!res.ok) throw new Error(`Email: ${data.message || res.status}`);
   return data.id;
 }
+
+// Email Raya through the same Formspree form the website uses (no extra account needed).
+export async function alertRaya(message) {
+  const url = process.env.ALERT_FORM_URL || 'https://formspree.io/f/xgaaqweg';
+  console.warn('ALERT RAYA:', message);
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify({ _subject: 'Mac and Melt: order needs your attention', name: 'Order system', message }),
+  });
+  if (!res.ok) throw new Error(`alert email failed: ${res.status}`);
+}
