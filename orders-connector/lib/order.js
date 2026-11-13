@@ -65,6 +65,7 @@ export function shortRef(order) {
 export function calendarNote(order) {
   const c = customer(order);
   return [
+    `PAID ONLINE: ${money(order.total_money)} (nothing to charge at collection)`,
     `ONLINE ORDER #${shortRef(order)}`,
     `Collection: ${when(pickupAt(order))}`,
     `Customer: ${c.name}`,
