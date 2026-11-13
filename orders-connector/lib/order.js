@@ -71,14 +71,12 @@ export function calendarNote(order) {
     `Customer: ${c.name}`,
     c.phone && `Phone: ${c.phone}`,
     c.email && `Email: ${c.email}`,
-    ' ',
-    'Items:',
-    ...itemLines(order),
-    ' ',
+    'ITEMS:',
+    ...itemLines(order).map((l) => `• ${l}`),
     orderNote(order) && `Special requests: ${orderNote(order)}`,
     `Total paid: ${money(order.total_money)}`,
     `Ref: ${order.id}`,
-  ].filter(Boolean).join('\n');
+  ].filter((l) => l && l.trim()).join(' | ');
 }
 
 export const meta = (order) => order.metadata || {};
