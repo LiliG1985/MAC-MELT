@@ -1923,11 +1923,3 @@ html.v2 .care__card--main h2 { color: var(--cheese) !important; }
 .inapp-note { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 9999; background: var(--ink-deep); color: #fff; border: 2px solid var(--cheese); border-radius: 12px; padding: 12px 40px 12px 14px; font-size: .92rem; line-height: 1.4; box-shadow: 0 10px 30px rgba(0,0,0,.3); }
 .inapp-note b { color: var(--cheese); }
 .inapp-note button { position: absolute; top: 8px; right: 10px; background: none; border: 0; color: #fff; font-size: 1rem; cursor: pointer; }
-/* Holiday closure notice + preorder pop-up (driven by script.js) */
-.closed-note { margin: 0 0 18px; padding: 12px 16px; background: var(--white); color: var(--ink-deep); border: 3px solid var(--bonnet); border-radius: 16px; box-shadow: 4px 4px 0 var(--bonnet); font-size: 1rem; line-height: 1.45; }
-.closed-note b { color: var(--bonnet); }
-.closed-pop { position: fixed; inset: 0; z-index: 10000; display: grid; place-items: center; padding: 20px; background: rgba(11,74,84,.55); }
-.closed-pop[hidden] { display: none; }
-.closed-pop__box { width: min(440px, 100%); padding: 28px 24px 24px; background: var(--crust); color: var(--ink-deep); border: 3px solid var(--ink); border-radius: var(--radius-lg); box-shadow: var(--lift); text-align: center; }
-.closed-pop__box h2 { margin: 0 0 10px; font-family: var(--display); font-weight: 400; font-size: 1.7rem; line-height: 1.1; color: var(--ink); }
-.closed-pop__box p { margin: 0 0 20px; line-height: 1.5; }
