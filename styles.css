@@ -1941,7 +1941,7 @@ html.v2 .care__card--main h2 { color: var(--cheese) !important; }
 .fb__c { position: absolute; display: block; height: auto; }
 .fb__c--tl { top: 0; left: 0; width: clamp(160px, 25vw, 330px); }
 .fb__c--bl { bottom: 0; left: 0; width: clamp(80px, 12vw, 155px); }
-.fb__c--tr { top: 0; right: 0; width: clamp(120px, 18vw, 235px); }
+.fb__c--tr { top: 0; right: 0; width: clamp(160px, 25vw, 330px); }
 .fb__c--br { bottom: 0; right: 0; width: clamp(92px, 14vw, 180px); }
 .fb__inner { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; display: grid; gap: 14px; text-align: center; }
 .fb__head { display: grid; justify-items: center; }
@@ -1974,7 +1974,7 @@ html.v2 .care__card--main h2 { color: var(--cheese) !important; }
   .fb__bottom { flex-direction: column; align-items: center; }
   .fb__notes { flex: none; width: 100%; }
   .fb__pill { font-size: .85rem; }
-  .fb__c--tl { width: 150px; } .fb__c--tr { width: 108px; }
+  .fb__c--tl { width: 150px; } .fb__c--tr { width: 150px; }
   .fb__c--bl { width: 70px; } .fb__c--br { width: 84px; }
   .fb__logo { width: 72px; height: 72px; }
   .fb__head { padding-top: 64px; }
