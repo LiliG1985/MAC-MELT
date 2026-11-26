@@ -1923,50 +1923,22 @@ html.v2 .care__card--main h2 { color: var(--cheese) !important; }
 .inapp-note { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 9999; background: var(--ink-deep); color: #fff; border: 2px solid var(--cheese); border-radius: 12px; padding: 12px 40px 12px 14px; font-size: .92rem; line-height: 1.4; box-shadow: 0 10px 30px rgba(0,0,0,.3); }
 .inapp-note b { color: var(--cheese); }
 .inapp-note button { position: absolute; top: 8px; right: 10px; background: none; border: 0; color: #fff; font-size: 1rem; cursor: pointer; }
-/* ---------- Festive bakes banner (Christmas, colours from Raya's flyer) ---------- */
-.festive {
-  --pine: #0F4A2C; --pine-deep: #0A3520; --gold: #D9A93A; --gold-hi: #F3D27A; --gold-deep: #A87A1C; --cream: #FBF3E1; --berry: #C1272D;
-  position: relative; overflow: hidden; isolation: isolate;
-  padding: clamp(56px, 7vw, 96px) 0;
-  color: var(--pine);
-  background: radial-gradient(110% 90% at 30% 20%, #FFFBF0 0%, var(--cream) 55%, #F3E3BE 100%);
-  border-top: 4px solid var(--gold); border-bottom: 4px solid var(--gold);
+/* ---------- Festive bakes banner: Raya's flyer, with a real button over its pre-order strip ---------- */
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.festive { position: relative; overflow: hidden; isolation: isolate; padding: clamp(28px, 4vw, 56px) var(--gutter); border-top: 4px solid #D9A93A; border-bottom: 4px solid #D9A93A; background: #F6ECD6; }
+.festive::before { content: ""; position: absolute; inset: -40px; z-index: -1; background: url("images/festive-flyer.jpg") center / cover; filter: blur(36px) saturate(1.1) brightness(1.08); opacity: .6; }
+.festive__post { position: relative; width: min(680px, 100%); margin: 0 auto; container-type: inline-size; border-radius: 18px; overflow: hidden; box-shadow: 0 0 0 4px #D9A93A, 0 30px 60px -20px rgba(10,53,32,.55); }
+.festive__post img { display: block; width: 100%; height: auto; }
+/* Sits exactly over the flyer's "Pre-order now via our website" strip */
+.festive__btn {
+  position: absolute; left: 20.5%; top: 86%; width: 59%; height: 11.2%;
+  display: grid; place-items: center; border-radius: 999px; text-decoration: none;
+  font-family: var(--body); font-weight: 900; letter-spacing: .06em; text-transform: uppercase; font-size: 4.6cqw;
+  color: #FBF3E1; background: linear-gradient(180deg, #14593A, #0F4A2C);
+  border: .8cqw solid #E8BE55; box-shadow: 0 0 0 .6cqw #A87A1C, 0 1.2cqw 2.4cqw rgba(10,53,32,.45);
+  transition: transform .15s ease, filter .15s ease;
 }
-.festive__snow {
-  position: absolute; inset: -200px 0 0; z-index: 0; pointer-events: none; opacity: .5;
-  background-image: radial-gradient(circle, var(--gold) 0 1.5px, transparent 2.5px), radial-gradient(circle, var(--gold-hi) 0 1px, transparent 2px), radial-gradient(circle, rgba(193,39,45,.5) 0 1.2px, transparent 2px);
-  background-size: 90px 90px, 140px 140px, 210px 210px; background-position: 0 0, 40px 60px, 120px 20px;
-  animation: festive-snow 18s linear infinite;
-}
-@keyframes festive-snow { to { transform: translateY(200px); } }
-@media (prefers-reduced-motion: reduce) { .festive__snow { animation: none; } }
-.festive__inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr minmax(0, 1.05fr); gap: clamp(28px, 5vw, 64px); align-items: center; }
-.festive__ribbon-row { display: flex; align-items: center; gap: 8px; margin: 0 0 16px; }
-.fx-holly { width: 52px; height: auto; flex: none; }
-.festive__ribbon { display: inline-block; margin: 0; padding: 7px 26px 7px 20px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; font-size: .85rem; color: var(--pine-deep); background: linear-gradient(180deg, var(--gold-hi), var(--gold) 55%, var(--gold-deep)); clip-path: polygon(0 0, 100% 0, 95% 50%, 100% 100%, 0 100%); }
-.festive h2 { margin: 0; font-family: var(--display); font-weight: 400; font-size: clamp(2.4rem, 5.5vw, 4.2rem); line-height: 1; color: var(--pine); }
-.festive h2 em { display: block; font-family: "Brush Script MT", "Segoe Script", cursive; font-style: italic; text-transform: none; font-size: 1.05em; color: var(--gold); text-shadow: 0 2px 0 var(--gold-deep); }
-.festive h2::after { background: var(--gold); }
-.festive__lede { margin: 18px 0 10px; font-size: 1.1rem; font-weight: 700; color: var(--pine); }
-.festive__list { margin: 0 0 18px; padding: 0; list-style: none; display: grid; gap: 8px; }
-.festive__list li { position: relative; padding-left: 30px; font-size: 1.1rem; font-weight: 700; }
-.festive__list li::before { content: ""; position: absolute; left: 4px; top: .35em; width: 9px; height: 9px; border-radius: 50%; background: var(--berry); box-shadow: 8px 2px 0 var(--berry), 3px 8px 0 #9E1C22; }
-.festive__note { margin: 0 0 22px; font-size: 1.02rem; line-height: 1.5; max-width: 46ch; }
-.festive__note b { text-transform: uppercase; letter-spacing: .02em; }
-.festive__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
-.festive__date { margin: 0; display: grid; text-align: center; padding: 10px 18px; border-radius: 16px; background: var(--pine); color: var(--cream); border: 3px solid var(--gold); }
-.festive__date span { font-weight: 800; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-hi); }
-.festive__date b { font-family: var(--display); font-weight: 400; font-size: 1.4rem; white-space: nowrap; }
-.festive__cta.btn { white-space: nowrap; background: linear-gradient(180deg, var(--gold-hi), var(--gold)); color: var(--pine-deep); border-color: var(--pine); box-shadow: 4px 4px 0 var(--pine); }
-.festive__flyer { margin: 0; }
-.festive__flyer img { display: block; width: 100%; height: auto; border-radius: 22px; border: 4px solid var(--gold); box-shadow: 0 0 0 6px rgba(217,169,58,.25), 0 30px 50px -20px rgba(10,53,32,.5); rotate: 1.5deg; }
-@media (max-width: 860px) {
-  .festive__inner { grid-template-columns: 1fr; }
-  .festive__text { text-align: center; }
-  .festive__ribbon-row, .festive__actions { justify-content: center; }
-  .festive h2::after { margin-left: auto; margin-right: auto; }
-  .festive__list { justify-content: center; text-align: left; }
-  .festive__note { margin-left: auto; margin-right: auto; }
-  .festive__flyer { order: -1; }
-  .festive__flyer img { rotate: 0deg; }
-}
+.festive__btn::after { content: "\2192"; margin-left: .4em; }
+.festive__btn:hover, .festive__btn:focus-visible { transform: scale(1.03); filter: brightness(1.12); }
+.festive__btn:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.festive__btn { grid-auto-flow: column; }
