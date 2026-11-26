@@ -1927,103 +1927,46 @@ html.v2 .care__card--main h2 { color: var(--cheese) !important; }
 .festive {
   --pine: #0F4A2C; --pine-deep: #0A3520; --gold: #D9A93A; --gold-hi: #F3D27A; --gold-deep: #A87A1C; --cream: #FBF3E1; --berry: #C1272D;
   position: relative; overflow: hidden; isolation: isolate;
-  padding: clamp(64px, 8vw, 96px) 0 clamp(52px, 7vw, 84px);
+  padding: clamp(56px, 7vw, 96px) 0;
   color: var(--pine);
-  background: radial-gradient(110% 90% at 50% 20%, #FFFBF0 0%, var(--cream) 55%, #F3E3BE 100%);
+  background: radial-gradient(110% 90% at 30% 20%, #FFFBF0 0%, var(--cream) 55%, #F3E3BE 100%);
   border-top: 4px solid var(--gold); border-bottom: 4px solid var(--gold);
 }
-.festive__lights {
-  position: absolute; left: 0; right: 0; top: 0; height: 46px; z-index: 1;
-  background:
-    radial-gradient(circle at 20px 26px, var(--gold-hi) 0 7px, transparent 8px) 0 0 / 80px 46px,
-    radial-gradient(circle at 60px 30px, var(--berry) 0 6px, transparent 7px) 0 0 / 80px 46px,
-    radial-gradient(70px 26px at 40px -6px, transparent 22px, var(--pine) 23px 24px, transparent 25px) 0 0 / 80px 46px;
-  filter: drop-shadow(0 0 5px rgba(243,210,122,.9));
-  animation: festive-twinkle 2.4s ease-in-out infinite alternate;
-}
-@keyframes festive-twinkle { from { opacity: .75; } to { opacity: 1; } }
 .festive__snow {
-  position: absolute; inset: -200px 0 0; z-index: 0; pointer-events: none; opacity: .55;
-  background-image:
-    radial-gradient(circle, var(--gold) 0 1.5px, transparent 2.5px),
-    radial-gradient(circle, var(--gold-hi) 0 1px, transparent 2px),
-    radial-gradient(circle, rgba(217,169,58,.7) 0 1.2px, transparent 2px);
-  background-size: 90px 90px, 140px 140px, 210px 210px;
-  background-position: 0 0, 40px 60px, 120px 20px;
+  position: absolute; inset: -200px 0 0; z-index: 0; pointer-events: none; opacity: .5;
+  background-image: radial-gradient(circle, var(--gold) 0 1.5px, transparent 2.5px), radial-gradient(circle, var(--gold-hi) 0 1px, transparent 2px), radial-gradient(circle, rgba(193,39,45,.5) 0 1.2px, transparent 2px);
+  background-size: 90px 90px, 140px 140px, 210px 210px; background-position: 0 0, 40px 60px, 120px 20px;
   animation: festive-snow 18s linear infinite;
 }
 @keyframes festive-snow { to { transform: translateY(200px); } }
-@media (prefers-reduced-motion: reduce) { .festive__snow, .festive__lights { animation: none; } }
-.festive__inner { position: relative; z-index: 2; display: grid; gap: clamp(28px, 4vw, 40px); }
-.festive__head { text-align: center; }
-.festive__badge { width: 104px; height: 104px; margin: 0 auto 14px; border-radius: 50%; overflow: hidden; background: var(--cream); border: 4px solid var(--gold); box-shadow: 0 0 0 6px rgba(217,169,58,.25), 0 12px 30px rgba(10,53,32,.25); }
-.festive__ribbon {
-  display: inline-block; margin: 0 0 14px; padding: 7px 26px;
-  font-weight: 800; letter-spacing: .14em; text-transform: uppercase; font-size: .85rem;
-  color: var(--pine-deep); background: linear-gradient(180deg, var(--gold-hi), var(--gold) 55%, var(--gold-deep));
-  clip-path: polygon(0 0, 100% 0, 96% 50%, 100% 100%, 0 100%, 4% 50%);
-}
-.festive h2 { margin: 0; font-family: var(--display); font-weight: 400; font-size: clamp(2.4rem, 6.5vw, 4.4rem); line-height: 1; color: var(--pine); }
+@media (prefers-reduced-motion: reduce) { .festive__snow { animation: none; } }
+.festive__inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr minmax(0, 1.05fr); gap: clamp(28px, 5vw, 64px); align-items: center; }
+.festive__ribbon-row { display: flex; align-items: center; gap: 8px; margin: 0 0 16px; }
+.fx-holly { width: 52px; height: auto; flex: none; }
+.festive__ribbon { display: inline-block; margin: 0; padding: 7px 26px 7px 20px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; font-size: .85rem; color: var(--pine-deep); background: linear-gradient(180deg, var(--gold-hi), var(--gold) 55%, var(--gold-deep)); clip-path: polygon(0 0, 100% 0, 95% 50%, 100% 100%, 0 100%); }
+.festive h2 { margin: 0; font-family: var(--display); font-weight: 400; font-size: clamp(2.4rem, 5.5vw, 4.2rem); line-height: 1; color: var(--pine); }
 .festive h2 em { display: block; font-family: "Brush Script MT", "Segoe Script", cursive; font-style: italic; text-transform: none; font-size: 1.05em; color: var(--gold); text-shadow: 0 2px 0 var(--gold-deep); }
-.festive h2::after { margin: 16px auto 0; background: var(--gold); }
-.festive__lede { margin: 14px auto 0; max-width: 40ch; font-size: 1.15rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--pine); }
-.festive__flavours { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-.festive__flavours li {
-  position: relative; padding: 34px 18px 22px; text-align: center;
-  background: linear-gradient(180deg, #14593A, var(--pine)); color: var(--cream);
-  border: 3px solid var(--gold); border-radius: 22px;
-  box-shadow: 0 0 0 4px rgba(217,169,58,.25), 0 18px 36px -14px rgba(10,53,32,.5);
-}
-.festive__flavours li::before, .festive__flavours li::after { content: ""; position: absolute; top: 12px; width: 10px; height: 10px; border-radius: 50%; background: var(--berry); box-shadow: 8px 3px 0 var(--berry), 3px 9px 0 #9E1C22; }
-.festive__flavours li::before { left: 14px; } .festive__flavours li::after { right: 22px; }
-.festive__num { position: absolute; top: -20px; left: 50%; translate: -50% 0; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; font-family: var(--display); font-size: 1.2rem; color: var(--pine-deep); background: radial-gradient(circle at 35% 30%, #FFF1C2, var(--gold) 55%, var(--gold-deep)); border: 2px solid var(--cream); }
-.festive__flavours h3 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-weight: 700; font-size: 1.4rem; line-height: 1.15; text-transform: none; }
-.festive__flavours h3 span { display: block; margin-top: 2px; color: var(--gold-hi); }
-.festive__info { display: grid; grid-template-columns: 1.4fr auto auto; align-items: center; gap: 18px 24px; padding: 18px 22px; border: 3px solid var(--gold); border-radius: 22px; background: #FFFBF0; box-shadow: 0 10px 24px -12px rgba(10,53,32,.35); }
-.festive__note { margin: 0; font-size: 1.05rem; line-height: 1.45; color: var(--pine); }
+.festive h2::after { background: var(--gold); }
+.festive__lede { margin: 18px 0 10px; font-size: 1.1rem; font-weight: 700; color: var(--pine); }
+.festive__list { margin: 0 0 18px; padding: 0; list-style: none; display: grid; gap: 8px; }
+.festive__list li { position: relative; padding-left: 30px; font-size: 1.1rem; font-weight: 700; }
+.festive__list li::before { content: ""; position: absolute; left: 4px; top: .35em; width: 9px; height: 9px; border-radius: 50%; background: var(--berry); box-shadow: 8px 2px 0 var(--berry), 3px 8px 0 #9E1C22; }
+.festive__note { margin: 0 0 22px; font-size: 1.02rem; line-height: 1.5; max-width: 46ch; }
 .festive__note b { text-transform: uppercase; letter-spacing: .02em; }
+.festive__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
 .festive__date { margin: 0; display: grid; text-align: center; padding: 10px 18px; border-radius: 16px; background: var(--pine); color: var(--cream); border: 3px solid var(--gold); }
 .festive__date span { font-weight: 800; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-hi); }
 .festive__date b { font-family: var(--display); font-weight: 400; font-size: 1.4rem; white-space: nowrap; }
 .festive__cta.btn { white-space: nowrap; background: linear-gradient(180deg, var(--gold-hi), var(--gold)); color: var(--pine-deep); border-color: var(--pine); box-shadow: 4px 4px 0 var(--pine); }
+.festive__flyer { margin: 0; }
+.festive__flyer img { display: block; width: 100%; height: auto; border-radius: 22px; border: 4px solid var(--gold); box-shadow: 0 0 0 6px rgba(217,169,58,.25), 0 30px 50px -20px rgba(10,53,32,.5); rotate: 1.5deg; }
 @media (max-width: 860px) {
-  .festive__flavours { grid-template-columns: 1fr; gap: 28px; max-width: 420px; margin: 0 auto; width: 100%; }
-  .festive__info { grid-template-columns: 1fr; text-align: center; justify-items: center; }
+  .festive__inner { grid-template-columns: 1fr; }
+  .festive__text { text-align: center; }
+  .festive__ribbon-row, .festive__actions { justify-content: center; }
+  .festive h2::after { margin-left: auto; margin-right: auto; }
+  .festive__list { justify-content: center; text-align: left; }
+  .festive__note { margin-left: auto; margin-right: auto; }
+  .festive__flyer { order: -1; }
+  .festive__flyer img { rotate: 0deg; }
 }
-/* Festive decorations */
-.festive__decor { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
-.fx-bauble { position: absolute; top: 0; display: block; width: 2px; background: linear-gradient(var(--gold-deep), var(--gold)); transform-origin: top center; animation: fx-swing 4s ease-in-out infinite alternate; }
-.fx-bauble i { position: absolute; left: 50%; bottom: -30px; translate: -50% 0; width: 34px; height: 34px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff 0 8%, var(--c1) 22%, var(--c2) 75%); box-shadow: 0 6px 12px rgba(10,53,32,.3); }
-.fx-bauble i::before { content: ""; position: absolute; left: 50%; top: -6px; translate: -50% 0; width: 10px; height: 7px; border-radius: 2px; background: var(--gold); }
-.fx-bauble--1 { left: 15%; height: 90px; --c1: #F3D27A; --c2: #A87A1C; }
-.fx-bauble--2 { left: 26%; height: 54px; --c1: #E24B4B; --c2: #8E1B22; animation-delay: -1s; }
-.fx-bauble--3 { right: 24%; height: 70px; --c1: #F3D27A; --c2: #A87A1C; animation-delay: -2s; }
-.fx-bauble--4 { right: 14%; height: 110px; --c1: #2B8A5A; --c2: #0A3520; animation-delay: -3s; }
-@keyframes fx-swing { from { rotate: -4deg; } to { rotate: 4deg; } }
-.fx-star { position: absolute; width: 20px; height: 20px; fill: var(--gold); filter: drop-shadow(0 0 6px rgba(243,210,122,.9)); animation: fx-twinkle 2.2s ease-in-out infinite alternate; }
-.fx-star--1 { left: 8%; top: 46%; }
-.fx-star--2 { right: 9%; top: 40%; width: 26px; height: 26px; animation-delay: -.8s; }
-.fx-star--3 { left: 32%; top: 22%; width: 14px; height: 14px; animation-delay: -1.4s; }
-.fx-star--4 { right: 33%; top: 26%; width: 16px; height: 16px; animation-delay: -.4s; }
-@keyframes fx-twinkle { from { opacity: .35; scale: .8; } to { opacity: 1; scale: 1.1; } }
-.festive__ribbon-row { display: flex; align-items: center; justify-content: center; gap: 6px; margin: 0 0 14px; }
-.festive__ribbon-row .festive__ribbon { margin: 0; }
-.fx-holly { width: 56px; height: auto; flex: none; }
-.fx-holly--r { transform: scaleX(-1); }
-@media (prefers-reduced-motion: reduce) { .fx-bauble, .fx-star { animation: none; } }
-@media (max-width: 860px) {
-  .fx-bauble--2, .fx-bauble--3, .fx-star--3, .fx-star--4 { display: none; }
-  .fx-bauble--1 { left: 6%; height: 70px; } .fx-bauble--4 { right: 6%; height: 80px; }
-  .fx-holly { width: 38px; }
-  .festive__ribbon { font-size: .72rem; padding: 6px 16px; }
-}
-.festive__pies { margin: 0 auto; width: 100%; max-width: 1040px; }
-.festive__pies img { display: block; width: 100%; height: auto; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%), linear-gradient(180deg, transparent 0, #000 12%, #000 86%, transparent 100%); -webkit-mask-composite: source-in; mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%), linear-gradient(180deg, transparent 0, #000 12%, #000 86%, transparent 100%); mask-composite: intersect; filter: drop-shadow(0 18px 22px rgba(10,53,32,.25)); }
-/* Corner decorations taken from Raya's flyer, faded into the cream */
-.fx-corner { position: absolute; display: block; height: auto; }
-.fx-corner--tl { top: 0; left: 0; width: clamp(150px, 24vw, 330px); -webkit-mask-image: linear-gradient(to right, #000 50%, transparent 96%), linear-gradient(to bottom, #000 50%, transparent 96%); -webkit-mask-composite: source-in; mask-image: linear-gradient(to right, #000 50%, transparent 96%), linear-gradient(to bottom, #000 50%, transparent 96%); mask-composite: intersect; }
-.fx-corner--tr { top: 0; right: 0; width: clamp(160px, 26vw, 360px); -webkit-mask-image: linear-gradient(to left, #000 50%, transparent 96%), linear-gradient(to bottom, #000 50%, transparent 96%); -webkit-mask-composite: source-in; mask-image: linear-gradient(to left, #000 50%, transparent 96%), linear-gradient(to bottom, #000 50%, transparent 96%); mask-composite: intersect; }
-.fx-corner--bl { bottom: 0; left: 0; width: clamp(60px, 9vw, 120px); -webkit-mask-image: linear-gradient(90deg, #000 55%, transparent), linear-gradient(0deg, #000 70%, transparent); -webkit-mask-composite: source-in; mask-image: linear-gradient(90deg, #000 55%, transparent), linear-gradient(0deg, #000 70%, transparent); mask-composite: intersect; }
-.fx-corner--br { bottom: 0; right: 0; width: clamp(64px, 10vw, 130px); -webkit-mask-image: linear-gradient(270deg, #000 55%, transparent), linear-gradient(0deg, #000 70%, transparent); -webkit-mask-composite: source-in; mask-image: linear-gradient(270deg, #000 55%, transparent), linear-gradient(0deg, #000 70%, transparent); mask-composite: intersect; }
-.festive__lights { z-index: 3; }
-@media (max-width: 860px) { .fx-corner--bl, .fx-corner--br { display: none; } .fx-corner--tl { width: 120px; } .fx-corner--tr { width: 130px; } }
