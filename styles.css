@@ -1923,3 +1923,65 @@ html.v2 .care__card--main h2 { color: var(--cheese) !important; }
 .inapp-note { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 9999; background: var(--ink-deep); color: #fff; border: 2px solid var(--cheese); border-radius: 12px; padding: 12px 40px 12px 14px; font-size: .92rem; line-height: 1.4; box-shadow: 0 10px 30px rgba(0,0,0,.3); }
 .inapp-note b { color: var(--cheese); }
 .inapp-note button { position: absolute; top: 8px; right: 10px; background: none; border: 0; color: #fff; font-size: 1rem; cursor: pointer; }
+/* ---------- Festive bakes banner: landscape version of Raya's Christmas poster ---------- */
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.fb {
+  --pine: #0E4A2B; --pine-hi: #16613A; --gold: #D9A93A; --gold-hi: #F6D77E; --gold-deep: #A4741A; --cream: #FEF3DD;
+  position: relative; overflow: hidden; isolation: isolate; color: var(--pine);
+  padding: clamp(36px, 4vw, 52px) clamp(120px, 15vw, 210px) clamp(36px, 4vw, 48px);
+  background:
+    radial-gradient(60px 60px at 22% 18%, rgba(255,232,170,.8), transparent 70%),
+    radial-gradient(90px 90px at 72% 12%, rgba(255,232,170,.7), transparent 70%),
+    radial-gradient(70px 70px at 85% 62%, rgba(255,226,150,.55), transparent 70%),
+    radial-gradient(80px 80px at 12% 70%, rgba(255,226,150,.5), transparent 70%),
+    radial-gradient(100% 120% at 50% 40%, #FFF9EE 0%, var(--cream) 55%, #F8DFB8 100%);
+  border-top: 5px solid var(--gold); border-bottom: 5px solid var(--gold);
+}
+.fb__decor { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.fb__c { position: absolute; display: block; height: auto; }
+.fb__c--tl { top: 0; left: 0; width: clamp(160px, 25vw, 330px); }
+.fb__c--bl { bottom: 0; left: 0; width: clamp(80px, 12vw, 155px); }
+.fb__c--tr { top: 0; right: 0; width: clamp(160px, 25vw, 330px); }
+.fb__c--br { bottom: 0; right: 0; width: clamp(92px, 14vw, 180px); }
+.fb__inner { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; display: grid; gap: 14px; text-align: center; }
+.fb__head { display: grid; justify-items: center; }
+.fb__logo { width: 92px; height: 92px; border-radius: 50%; overflow: hidden; border: 4px solid var(--gold); background: var(--cream); box-shadow: 0 8px 18px rgba(10,53,32,.25); margin-bottom: 6px; }
+.fb h2 { margin: 0; display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: 0 .25em; line-height: 1; text-transform: none; letter-spacing: 0; }
+.fb h2::after { display: none; }
+.fb__xmas { font-family: "Fraunces", Georgia, serif; font-weight: 700; font-size: clamp(2.4rem, 5.6vw, 4.6rem); text-transform: uppercase; color: var(--pine); letter-spacing: -.01em; }
+.fb__script { font-family: "Great Vibes", "Brush Script MT", cursive; font-weight: 400; font-size: clamp(2.6rem, 6vw, 5rem); color: var(--gold); background: linear-gradient(180deg, var(--gold-hi), var(--gold) 50%, var(--gold-deep)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 2px 0 rgba(120,80,10,.35)); }
+.fb__ribbon-row { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 10px; }
+.fb-holly { width: 54px; height: auto; flex: none; }
+.fb-holly--r { transform: scaleX(-1); }
+.fb__ribbon { margin: 0; padding: 8px 40px; font-family: var(--body); font-weight: 800; letter-spacing: .1em; text-transform: uppercase; font-size: clamp(.95rem, 1.8vw, 1.35rem); color: var(--pine); background: linear-gradient(180deg, var(--gold-hi), var(--gold) 55%, var(--gold-deep)); clip-path: polygon(0 0, 100% 0, 96% 50%, 100% 100%, 0 100%, 4% 50%); }
+.fb__three { margin: 8px 0 0; display: flex; align-items: center; gap: 14px; font-weight: 800; letter-spacing: .28em; text-transform: uppercase; font-size: .9rem; }
+.fb__three::before, .fb__three::after { content: ""; width: 60px; height: 2px; background: var(--pine); }
+.fb__pies { display: block; width: 100%; height: auto; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%), linear-gradient(180deg, transparent 0, #000 10%, #000 88%, transparent 100%); -webkit-mask-composite: source-in; mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%), linear-gradient(180deg, transparent 0, #000 10%, #000 88%, transparent 100%); mask-composite: intersect; }
+.fb__bottom { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-end; gap: 14px 28px; }
+.fb__notes { flex: 1 1 100%; display: grid; gap: 10px; justify-items: center; }
+.fb__pill { margin: 0; padding: 8px 18px; border-radius: 999px; background: #FFFBF2; border: 3px solid var(--gold); font-weight: 900; text-transform: uppercase; font-size: .95rem; letter-spacing: .01em; box-shadow: 0 4px 10px rgba(10,53,32,.15); }
+.fb__brush { margin: 0; padding: 8px 40px; font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: .95rem; line-height: 1.25; color: #FFF8EA; background: var(--pine); clip-path: polygon(2% 10%, 100% 0, 97% 50%, 100% 100%, 3% 92%, 0 55%); }
+.fb__final { display: grid; justify-items: center; }
+.fb__final-tag { margin: 0 0 -6px; position: relative; z-index: 1; padding: 4px 18px; border-radius: 999px; font-family: "Fraunces", Georgia, serif; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; font-size: .9rem; color: var(--pine); background: linear-gradient(180deg, var(--gold-hi), var(--gold)); }
+.fb__final-date { margin: 0; display: flex; align-items: center; gap: 10px; padding: 12px 22px; border-radius: 999px; background: linear-gradient(180deg, var(--pine-hi), var(--pine)); border: 3px solid var(--gold); color: #fff; font-weight: 900; text-transform: uppercase; font-size: clamp(1.05rem, 1.8vw, 1.35rem); white-space: nowrap; box-shadow: 0 6px 14px rgba(10,53,32,.3); }
+.fb__final-date svg { width: 1.3em; height: 1.3em; color: var(--gold-hi); }
+.fb__btn { display: grid; justify-items: center; gap: 2px; padding: 10px 24px; border-radius: 999px; text-decoration: none; font-weight: 900; font-size: 1.05rem; color: var(--pine); background: linear-gradient(180deg, var(--gold-hi), var(--gold) 60%, var(--gold-deep)); border: 3px solid var(--pine); box-shadow: 0 6px 0 var(--pine), 0 12px 22px rgba(10,53,32,.3); transition: transform .15s ease, box-shadow .15s ease; white-space: nowrap; }
+.fb__btn small { font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 800; }
+.fb__btn:hover { transform: translateY(-2px); box-shadow: 0 8px 0 var(--pine), 0 16px 26px rgba(10,53,32,.3); }
+.fb__btn:focus-visible { outline: 3px solid var(--pine); outline-offset: 4px; }
+@media (max-width: 960px) {
+  .fb { padding: 28px 16px 30px; }
+  .fb__bottom { flex-direction: column; align-items: center; }
+  .fb__notes { flex: none; width: 100%; }
+  .fb__pill { font-size: .85rem; }
+  .fb__c--tl { width: 150px; } .fb__c--tr { width: 150px; }
+  .fb__c--bl { width: 70px; } .fb__c--br { width: 84px; }
+  .fb__logo { width: 72px; height: 72px; }
+  .fb__head { padding-top: 64px; }
+  .fb-holly { width: 34px; }
+  .fb__ribbon { padding: 6px 22px; font-size: .8rem; }
+  .fb__three { font-size: .72rem; letter-spacing: .2em; }
+  .fb__three::before, .fb__three::after { width: 28px; }
+  .fb__brush { font-size: .85rem; }
+  .fb__inner { padding-bottom: 96px; }
+}
