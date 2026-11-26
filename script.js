@@ -326,8 +326,3 @@ document.querySelectorAll('.cform').forEach((form) => {
   note.querySelector('button').addEventListener('click', () => note.remove());
   document.body.appendChild(note);
 })();
-
-// Seasonal sections remove themselves after their date: <section data-show-until="ISO time">
-document.querySelectorAll('[data-show-until]').forEach((el) => {
-  if (new Date() >= new Date(el.dataset.showUntil)) el.remove();
-});
